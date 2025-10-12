@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.models.entity_entity_read_entity_read_parent import EntityEntityReadEntityReadParent
+from jsonhub_sdk.models.entity_entity_read_entity_read_parent import EntityEntityReadEntityReadParent
 
 class TestEntityEntityReadEntityReadParent(unittest.TestCase):
     """EntityEntityReadEntityReadParent unit test stubs"""
@@ -37,21 +37,21 @@ class TestEntityEntityReadEntityReadParent(unittest.TestCase):
             return EntityEntityReadEntityReadParent(
                 id = '',
                 slug = '',
-                data = jsonhub-sdk.models.data.data(),
-                definition = jsonhub-sdk.models.entity_definition/read.entity-definition.read(
+                data = jsonhub_sdk.models.data.data(),
+                definition = jsonhub_sdk.models.entity_definition/read.entity-definition.read(
                     id = '', 
                     slug = '', ),
-                parent = jsonhub-sdk.models.entity_entity/read_entity/read/parent.entity-entity.read_entity.read.parent(
+                parent = jsonhub_sdk.models.entity_entity/read_entity/read/parent.entity-entity.read_entity.read.parent(
                     id = '', 
                     slug = '', 
-                    data = jsonhub-sdk.models.data.data(), 
-                    definition = jsonhub-sdk.models.entity_definition/read.entity-definition.read(
+                    data = jsonhub_sdk.models.data.data(), 
+                    definition = jsonhub_sdk.models.entity_definition/read.entity-definition.read(
                         id = '', 
                         slug = '', ), 
-                    parent = jsonhub-sdk.models.entity_entity/read_entity/read/parent.entity-entity.read_entity.read.parent(
+                    parent = jsonhub_sdk.models.entity_entity/read_entity/read/parent.entity-entity.read_entity.read.parent(
                         id = '', 
                         slug = '', 
-                        data = jsonhub-sdk.models.data.data(), 
+                        data = jsonhub_sdk.models.data.data(), 
                         private = True, 
                         is_owned_by_current_user = True, ), 
                     private = True, 

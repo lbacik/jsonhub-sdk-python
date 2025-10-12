@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.models.definition_definition_write import DefinitionDefinitionWrite
+from jsonhub_sdk.models.definition_definition_write import DefinitionDefinitionWrite
 
 class TestDefinitionDefinitionWrite(unittest.TestCase):
     """DefinitionDefinitionWrite unit test stubs"""

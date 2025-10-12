@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.models.oauth2_jsonhal_oauth2_read import Oauth2JsonhalOauth2Read
+from jsonhub_sdk.models.oauth2_jsonhal_oauth2_read import Oauth2JsonhalOauth2Read
 
 class TestOauth2JsonhalOauth2Read(unittest.TestCase):
     """Oauth2JsonhalOauth2Read unit test stubs"""
@@ -35,8 +35,8 @@ class TestOauth2JsonhalOauth2Read(unittest.TestCase):
         model = Oauth2JsonhalOauth2Read()
         if include_optional:
             return Oauth2JsonhalOauth2Read(
-                links = jsonhub-sdk.models.definition_jsonhal_definition_read__links.definition_jsonhal_definition_read__links(
-                    self = jsonhub-sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
+                links = jsonhub_sdk.models.definition_jsonhal_definition_read__links.definition_jsonhal_definition_read__links(
+                    self = jsonhub_sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
                         href = '', ), ),
                 access_token = ''
             )

@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.models.entity_jsonhal_definition_read import EntityJsonhalDefinitionRead
+from jsonhub_sdk.models.entity_jsonhal_definition_read import EntityJsonhalDefinitionRead
 
 class TestEntityJsonhalDefinitionRead(unittest.TestCase):
     """EntityJsonhalDefinitionRead unit test stubs"""
@@ -35,8 +35,8 @@ class TestEntityJsonhalDefinitionRead(unittest.TestCase):
         model = EntityJsonhalDefinitionRead()
         if include_optional:
             return EntityJsonhalDefinitionRead(
-                links = jsonhub-sdk.models.definition_jsonhal_definition_read__links.definition_jsonhal_definition_read__links(
-                    self = jsonhub-sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
+                links = jsonhub_sdk.models.definition_jsonhal_definition_read__links.definition_jsonhal_definition_read__links(
+                    self = jsonhub_sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
                         href = '', ), ),
                 id = '',
                 slug = ''

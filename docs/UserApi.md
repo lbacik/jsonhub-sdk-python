@@ -1,4 +1,4 @@
-# jsonhub-sdk.UserApi
+# jsonhub_sdk.UserApi
 
 All URIs are relative to *http://localhost*
 
@@ -24,13 +24,13 @@ Removes the user resource.
 * Bearer Authentication (access_token):
 
 ```python
-import jsonhub-sdk
-from jsonhub-sdk.rest import ApiException
+import jsonhub_sdk
+from jsonhub_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = jsonhub-sdk.Configuration(
+configuration = jsonhub_sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -40,14 +40,14 @@ configuration = jsonhub-sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: access_token
-configuration = jsonhub-sdk.Configuration(
+configuration = jsonhub_sdk.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with jsonhub-sdk.ApiClient(configuration) as api_client:
+with jsonhub_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = jsonhub-sdk.UserApi(api_client)
+    api_instance = jsonhub_sdk.UserApi(api_client)
     id = 'id_example' # str | user identifier
 
     try:
@@ -101,15 +101,15 @@ Updates the user resource.
 * Bearer Authentication (access_token):
 
 ```python
-import jsonhub-sdk
-from jsonhub-sdk.models.user_jsonhal_user_empty import UserJsonhalUserEmpty
-from jsonhub-sdk.models.user_user_update import UserUserUpdate
-from jsonhub-sdk.rest import ApiException
+import jsonhub_sdk
+from jsonhub_sdk.models.user_jsonhal_user_empty import UserJsonhalUserEmpty
+from jsonhub_sdk.models.user_user_update import UserUserUpdate
+from jsonhub_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = jsonhub-sdk.Configuration(
+configuration = jsonhub_sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -119,16 +119,16 @@ configuration = jsonhub-sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: access_token
-configuration = jsonhub-sdk.Configuration(
+configuration = jsonhub_sdk.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with jsonhub-sdk.ApiClient(configuration) as api_client:
+with jsonhub_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = jsonhub-sdk.UserApi(api_client)
+    api_instance = jsonhub_sdk.UserApi(api_client)
     id = 'id_example' # str | user identifier
-    user_user_update = jsonhub-sdk.UserUserUpdate() # UserUserUpdate | The updated user resource
+    user_user_update = jsonhub_sdk.UserUserUpdate() # UserUserUpdate | The updated user resource
 
     try:
         # Updates the user resource.
@@ -185,24 +185,24 @@ Creates a user resource.
 
 
 ```python
-import jsonhub-sdk
-from jsonhub-sdk.models.user_jsonhal_user_create import UserJsonhalUserCreate
-from jsonhub-sdk.models.user_jsonhal_user_read import UserJsonhalUserRead
-from jsonhub-sdk.rest import ApiException
+import jsonhub_sdk
+from jsonhub_sdk.models.user_jsonhal_user_create import UserJsonhalUserCreate
+from jsonhub_sdk.models.user_jsonhal_user_read import UserJsonhalUserRead
+from jsonhub_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = jsonhub-sdk.Configuration(
+configuration = jsonhub_sdk.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with jsonhub-sdk.ApiClient(configuration) as api_client:
+with jsonhub_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = jsonhub-sdk.UserApi(api_client)
-    user_jsonhal_user_create = jsonhub-sdk.UserJsonhalUserCreate() # UserJsonhalUserCreate | The new user resource
+    api_instance = jsonhub_sdk.UserApi(api_client)
+    user_jsonhal_user_create = jsonhub_sdk.UserJsonhalUserCreate() # UserJsonhalUserCreate | The new user resource
 
     try:
         # Creates a user resource.
@@ -256,23 +256,23 @@ This endpoint resends the activation email to the user.
 
 
 ```python
-import jsonhub-sdk
-from jsonhub-sdk.models.user_jsonhal_user_resend_activation import UserJsonhalUserResendActivation
-from jsonhub-sdk.rest import ApiException
+import jsonhub_sdk
+from jsonhub_sdk.models.user_jsonhal_user_resend_activation import UserJsonhalUserResendActivation
+from jsonhub_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = jsonhub-sdk.Configuration(
+configuration = jsonhub_sdk.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with jsonhub-sdk.ApiClient(configuration) as api_client:
+with jsonhub_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = jsonhub-sdk.UserApi(api_client)
-    user_jsonhal_user_resend_activation = jsonhub-sdk.UserJsonhalUserResendActivation() # UserJsonhalUserResendActivation | The new user resource
+    api_instance = jsonhub_sdk.UserApi(api_client)
+    user_jsonhal_user_resend_activation = jsonhub_sdk.UserJsonhalUserResendActivation() # UserJsonhalUserResendActivation | The new user resource
 
     try:
         # Resend activation email
@@ -324,23 +324,23 @@ This endpoint resets the password of the user using the token sent by email.
 
 
 ```python
-import jsonhub-sdk
-from jsonhub-sdk.models.user_jsonhal_user_reset_password import UserJsonhalUserResetPassword
-from jsonhub-sdk.rest import ApiException
+import jsonhub_sdk
+from jsonhub_sdk.models.user_jsonhal_user_reset_password import UserJsonhalUserResetPassword
+from jsonhub_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = jsonhub-sdk.Configuration(
+configuration = jsonhub_sdk.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with jsonhub-sdk.ApiClient(configuration) as api_client:
+with jsonhub_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = jsonhub-sdk.UserApi(api_client)
-    user_jsonhal_user_reset_password = jsonhub-sdk.UserJsonhalUserResetPassword() # UserJsonhalUserResetPassword | The new user resource
+    api_instance = jsonhub_sdk.UserApi(api_client)
+    user_jsonhal_user_reset_password = jsonhub_sdk.UserJsonhalUserResetPassword() # UserJsonhalUserResetPassword | The new user resource
 
     try:
         # Reset password (with token)
@@ -392,23 +392,23 @@ This endpoint sends a reset password email to the user.
 
 
 ```python
-import jsonhub-sdk
-from jsonhub-sdk.models.user_jsonhal_user_send_reset_password import UserJsonhalUserSendResetPassword
-from jsonhub-sdk.rest import ApiException
+import jsonhub_sdk
+from jsonhub_sdk.models.user_jsonhal_user_send_reset_password import UserJsonhalUserSendResetPassword
+from jsonhub_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = jsonhub-sdk.Configuration(
+configuration = jsonhub_sdk.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with jsonhub-sdk.ApiClient(configuration) as api_client:
+with jsonhub_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = jsonhub-sdk.UserApi(api_client)
-    user_jsonhal_user_send_reset_password = jsonhub-sdk.UserJsonhalUserSendResetPassword() # UserJsonhalUserSendResetPassword | The new user resource
+    api_instance = jsonhub_sdk.UserApi(api_client)
+    user_jsonhal_user_send_reset_password = jsonhub_sdk.UserJsonhalUserSendResetPassword() # UserJsonhalUserSendResetPassword | The new user resource
 
     try:
         # Send reset password email

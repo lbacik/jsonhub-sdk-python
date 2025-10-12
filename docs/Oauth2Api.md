@@ -1,4 +1,4 @@
-# jsonhub-sdk.Oauth2Api
+# jsonhub_sdk.Oauth2Api
 
 All URIs are relative to *http://localhost*
 
@@ -18,24 +18,24 @@ This endpoint issues an OAuth2 token using your client credentials.
 
 
 ```python
-import jsonhub-sdk
-from jsonhub-sdk.models.oauth2_jsonhal_oauth2_read import Oauth2JsonhalOauth2Read
-from jsonhub-sdk.models.oauth2_jsonhal_oauth2_write import Oauth2JsonhalOauth2Write
-from jsonhub-sdk.rest import ApiException
+import jsonhub_sdk
+from jsonhub_sdk.models.oauth2_jsonhal_oauth2_read import Oauth2JsonhalOauth2Read
+from jsonhub_sdk.models.oauth2_jsonhal_oauth2_write import Oauth2JsonhalOauth2Write
+from jsonhub_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = jsonhub-sdk.Configuration(
+configuration = jsonhub_sdk.Configuration(
     host = "http://localhost"
 )
 
 
 # Enter a context with an instance of the API client
-with jsonhub-sdk.ApiClient(configuration) as api_client:
+with jsonhub_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = jsonhub-sdk.Oauth2Api(api_client)
-    oauth2_jsonhal_oauth2_write = jsonhub-sdk.Oauth2JsonhalOauth2Write() # Oauth2JsonhalOauth2Write | The new oauth2 resource
+    api_instance = jsonhub_sdk.Oauth2Api(api_client)
+    oauth2_jsonhal_oauth2_write = jsonhub_sdk.Oauth2JsonhalOauth2Write() # Oauth2JsonhalOauth2Write | The new oauth2 resource
 
     try:
         # Retrieve an OAuth2 Token

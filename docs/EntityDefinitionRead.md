@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from jsonhub-sdk.models.entity_definition_read import EntityDefinitionRead
+from jsonhub_sdk.models.entity_definition_read import EntityDefinitionRead
 
 # TODO update the JSON string below
 json = "{}"

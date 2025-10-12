@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.models.user_jsonhal import UserJsonhal
+from jsonhub_sdk.models.user_jsonhal import UserJsonhal
 
 class TestUserJsonhal(unittest.TestCase):
     """UserJsonhal unit test stubs"""
@@ -35,8 +35,8 @@ class TestUserJsonhal(unittest.TestCase):
         model = UserJsonhal()
         if include_optional:
             return UserJsonhal(
-                links = jsonhub-sdk.models.definition_jsonhal_definition_read__links.definition_jsonhal_definition_read__links(
-                    self = jsonhub-sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
+                links = jsonhub_sdk.models.definition_jsonhal_definition_read__links.definition_jsonhal_definition_read__links(
+                    self = jsonhub_sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
                         href = '', ), ),
                 id = '',
                 email = '',

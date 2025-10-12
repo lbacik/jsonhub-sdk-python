@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.models.user_user_read import UserUserRead
+from jsonhub_sdk.models.user_user_read import UserUserRead
 
 class TestUserUserRead(unittest.TestCase):
     """UserUserRead unit test stubs"""

@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from jsonhub-sdk.models.oauth2_jsonld_oauth2_read import Oauth2JsonldOauth2Read
+from jsonhub_sdk.models.oauth2_jsonld_oauth2_read import Oauth2JsonldOauth2Read
 
 # TODO update the JSON string below
 json = "{}"

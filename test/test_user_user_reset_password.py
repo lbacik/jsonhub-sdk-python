@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.models.user_user_reset_password import UserUserResetPassword
+from jsonhub_sdk.models.user_user_reset_password import UserUserResetPassword
 
 class TestUserUserResetPassword(unittest.TestCase):
     """UserUserResetPassword unit test stubs"""

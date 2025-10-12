@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from jsonhub-sdk.models.user_jsonld import UserJsonld
+from jsonhub_sdk.models.user_jsonld import UserJsonld
 
 # TODO update the JSON string below
 json = "{}"

@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.models.user_user_resend_activation import UserUserResendActivation
+from jsonhub_sdk.models.user_user_resend_activation import UserUserResendActivation
 
 class TestUserUserResendActivation(unittest.TestCase):
     """UserUserResendActivation unit test stubs"""

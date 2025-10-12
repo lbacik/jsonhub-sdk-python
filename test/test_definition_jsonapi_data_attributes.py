@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.models.definition_jsonapi_data_attributes import DefinitionJsonapiDataAttributes
+from jsonhub_sdk.models.definition_jsonapi_data_attributes import DefinitionJsonapiDataAttributes
 
 class TestDefinitionJsonapiDataAttributes(unittest.TestCase):
     """DefinitionJsonapiDataAttributes unit test stubs"""
@@ -37,11 +37,11 @@ class TestDefinitionJsonapiDataAttributes(unittest.TestCase):
             return DefinitionJsonapiDataAttributes(
                 id = '',
                 slug = '',
-                json_schema = jsonhub-sdk.models.json_schema.jsonSchema()
+                json_schema = jsonhub_sdk.models.json_schema.jsonSchema()
             )
         else:
             return DefinitionJsonapiDataAttributes(
-                json_schema = jsonhub-sdk.models.json_schema.jsonSchema(),
+                json_schema = jsonhub_sdk.models.json_schema.jsonSchema(),
         )
         """
 

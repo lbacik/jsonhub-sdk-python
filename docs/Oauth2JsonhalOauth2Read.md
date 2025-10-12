@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from jsonhub-sdk.models.oauth2_jsonhal_oauth2_read import Oauth2JsonhalOauth2Read
+from jsonhub_sdk.models.oauth2_jsonhal_oauth2_read import Oauth2JsonhalOauth2Read
 
 # TODO update the JSON string below
 json = "{}"

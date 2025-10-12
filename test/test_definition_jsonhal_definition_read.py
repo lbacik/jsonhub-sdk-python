@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.models.definition_jsonhal_definition_read import DefinitionJsonhalDefinitionRead
+from jsonhub_sdk.models.definition_jsonhal_definition_read import DefinitionJsonhalDefinitionRead
 
 class TestDefinitionJsonhalDefinitionRead(unittest.TestCase):
     """DefinitionJsonhalDefinitionRead unit test stubs"""
@@ -35,15 +35,15 @@ class TestDefinitionJsonhalDefinitionRead(unittest.TestCase):
         model = DefinitionJsonhalDefinitionRead()
         if include_optional:
             return DefinitionJsonhalDefinitionRead(
-                links = jsonhub-sdk.models.definition_jsonhal_definition_read__links.definition_jsonhal_definition_read__links(
-                    self = jsonhub-sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
+                links = jsonhub_sdk.models.definition_jsonhal_definition_read__links.definition_jsonhal_definition_read__links(
+                    self = jsonhub_sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
                         href = '', ), ),
                 id = '',
                 slug = '',
                 json_schema = None,
-                parent_entity = jsonhub-sdk.models.entity/jsonhal_definition/read.entity.jsonhal-definition.read(
-                    _links = jsonhub-sdk.models.definition_jsonhal_definition_read__links.definition_jsonhal_definition_read__links(
-                        self = jsonhub-sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
+                parent_entity = jsonhub_sdk.models.entity/jsonhal_definition/read.entity.jsonhal-definition.read(
+                    _links = jsonhub_sdk.models.definition_jsonhal_definition_read__links.definition_jsonhal_definition_read__links(
+                        self = jsonhub_sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
                             href = '', ), ), 
                     id = '', 
                     slug = '', ),

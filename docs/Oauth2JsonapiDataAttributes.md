@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from jsonhub-sdk.models.oauth2_jsonapi_data_attributes import Oauth2JsonapiDataAttributes
+from jsonhub_sdk.models.oauth2_jsonapi_data_attributes import Oauth2JsonapiDataAttributes
 
 # TODO update the JSON string below
 json = "{}"

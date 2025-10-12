@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.models.oauth2_jsonapi_data_attributes import Oauth2JsonapiDataAttributes
+from jsonhub_sdk.models.oauth2_jsonapi_data_attributes import Oauth2JsonapiDataAttributes
 
 class TestOauth2JsonapiDataAttributes(unittest.TestCase):
     """Oauth2JsonapiDataAttributes unit test stubs"""

@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.models.definition_definition_read import DefinitionDefinitionRead
+from jsonhub_sdk.models.definition_definition_read import DefinitionDefinitionRead
 
 class TestDefinitionDefinitionRead(unittest.TestCase):
     """DefinitionDefinitionRead unit test stubs"""
@@ -38,7 +38,7 @@ class TestDefinitionDefinitionRead(unittest.TestCase):
                 id = '',
                 slug = '',
                 json_schema = None,
-                parent_entity = jsonhub-sdk.models.entity_definition/read.entity-definition.read(
+                parent_entity = jsonhub_sdk.models.entity_definition/read.entity-definition.read(
                     id = '', 
                     slug = '', ),
                 is_owned_by_current_user = True

@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from jsonhub-sdk.models.user_jsonhal_user_resend_activation import UserJsonhalUserResendActivation
+from jsonhub_sdk.models.user_jsonhal_user_resend_activation import UserJsonhalUserResendActivation
 
 # TODO update the JSON string below
 json = "{}"

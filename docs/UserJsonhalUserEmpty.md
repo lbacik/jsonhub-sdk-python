@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from jsonhub-sdk.models.user_jsonhal_user_empty import UserJsonhalUserEmpty
+from jsonhub_sdk.models.user_jsonhal_user_empty import UserJsonhalUserEmpty
 
 # TODO update the JSON string below
 json = "{}"

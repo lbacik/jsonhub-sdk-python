@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.models.oauth2_jsonhal_oauth2_write import Oauth2JsonhalOauth2Write
+from jsonhub_sdk.models.oauth2_jsonhal_oauth2_write import Oauth2JsonhalOauth2Write
 
 class TestOauth2JsonhalOauth2Write(unittest.TestCase):
     """Oauth2JsonhalOauth2Write unit test stubs"""
@@ -35,8 +35,8 @@ class TestOauth2JsonhalOauth2Write(unittest.TestCase):
         model = Oauth2JsonhalOauth2Write()
         if include_optional:
             return Oauth2JsonhalOauth2Write(
-                links = jsonhub-sdk.models.definition_jsonhal_definition_read__links.definition_jsonhal_definition_read__links(
-                    self = jsonhub-sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
+                links = jsonhub_sdk.models.definition_jsonhal_definition_read__links.definition_jsonhal_definition_read__links(
+                    self = jsonhub_sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
                         href = '', ), ),
                 grant_type = 'client_credentials',
                 client_id = '',

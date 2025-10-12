@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from jsonhub-sdk.models.definition_jsonld_definition_read_context import DefinitionJsonldDefinitionReadContext
+from jsonhub_sdk.models.definition_jsonld_definition_read_context import DefinitionJsonldDefinitionReadContext
 
 # TODO update the JSON string below
 json = "{}"

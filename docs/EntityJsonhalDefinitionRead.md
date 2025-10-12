@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from jsonhub-sdk.models.entity_jsonhal_definition_read import EntityJsonhalDefinitionRead
+from jsonhub_sdk.models.entity_jsonhal_definition_read import EntityJsonhalDefinitionRead
 
 # TODO update the JSON string below
 json = "{}"

@@ -1,4 +1,4 @@
-# jsonhub-sdk.EntityApi
+# jsonhub_sdk.EntityApi
 
 All URIs are relative to *http://localhost*
 
@@ -23,14 +23,14 @@ Retrieves the collection of entity resources.
 * Bearer Authentication (access_token):
 
 ```python
-import jsonhub-sdk
-from jsonhub-sdk.models.api_entities_get_collection200_response import ApiEntitiesGetCollection200Response
-from jsonhub-sdk.rest import ApiException
+import jsonhub_sdk
+from jsonhub_sdk.models.api_entities_get_collection200_response import ApiEntitiesGetCollection200Response
+from jsonhub_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = jsonhub-sdk.Configuration(
+configuration = jsonhub_sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -40,14 +40,14 @@ configuration = jsonhub-sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: access_token
-configuration = jsonhub-sdk.Configuration(
+configuration = jsonhub_sdk.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with jsonhub-sdk.ApiClient(configuration) as api_client:
+with jsonhub_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = jsonhub-sdk.EntityApi(api_client)
+    api_instance = jsonhub_sdk.EntityApi(api_client)
     qid = 'qid_example' # str | Filter by slug/id (partial match) (optional)
     private = True # bool | Show only private entities (owned by the current user) (optional)
     owned = True # bool | Show only entities owned by the current user (optional)
@@ -115,13 +115,13 @@ Removes the entity resource.
 * Bearer Authentication (access_token):
 
 ```python
-import jsonhub-sdk
-from jsonhub-sdk.rest import ApiException
+import jsonhub_sdk
+from jsonhub_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = jsonhub-sdk.Configuration(
+configuration = jsonhub_sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -131,14 +131,14 @@ configuration = jsonhub-sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: access_token
-configuration = jsonhub-sdk.Configuration(
+configuration = jsonhub_sdk.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with jsonhub-sdk.ApiClient(configuration) as api_client:
+with jsonhub_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = jsonhub-sdk.EntityApi(api_client)
+    api_instance = jsonhub_sdk.EntityApi(api_client)
     id = 'id_example' # str | entity identifier
 
     try:
@@ -192,14 +192,14 @@ Retrieves a entity resource.
 * Bearer Authentication (access_token):
 
 ```python
-import jsonhub-sdk
-from jsonhub-sdk.models.entity_jsonhal_entity_read_entity_read_parent import EntityJsonhalEntityReadEntityReadParent
-from jsonhub-sdk.rest import ApiException
+import jsonhub_sdk
+from jsonhub_sdk.models.entity_jsonhal_entity_read_entity_read_parent import EntityJsonhalEntityReadEntityReadParent
+from jsonhub_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = jsonhub-sdk.Configuration(
+configuration = jsonhub_sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -209,14 +209,14 @@ configuration = jsonhub-sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: access_token
-configuration = jsonhub-sdk.Configuration(
+configuration = jsonhub_sdk.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with jsonhub-sdk.ApiClient(configuration) as api_client:
+with jsonhub_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = jsonhub-sdk.EntityApi(api_client)
+    api_instance = jsonhub_sdk.EntityApi(api_client)
     id = 'id_example' # str | entity identifier
 
     try:
@@ -271,15 +271,15 @@ Updates the entity resource.
 * Bearer Authentication (access_token):
 
 ```python
-import jsonhub-sdk
-from jsonhub-sdk.models.entity_entity_update import EntityEntityUpdate
-from jsonhub-sdk.models.entity_jsonhal_entity_read_entity_read_parent import EntityJsonhalEntityReadEntityReadParent
-from jsonhub-sdk.rest import ApiException
+import jsonhub_sdk
+from jsonhub_sdk.models.entity_entity_update import EntityEntityUpdate
+from jsonhub_sdk.models.entity_jsonhal_entity_read_entity_read_parent import EntityJsonhalEntityReadEntityReadParent
+from jsonhub_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = jsonhub-sdk.Configuration(
+configuration = jsonhub_sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -289,16 +289,16 @@ configuration = jsonhub-sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: access_token
-configuration = jsonhub-sdk.Configuration(
+configuration = jsonhub_sdk.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with jsonhub-sdk.ApiClient(configuration) as api_client:
+with jsonhub_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = jsonhub-sdk.EntityApi(api_client)
+    api_instance = jsonhub_sdk.EntityApi(api_client)
     id = 'id_example' # str | entity identifier
-    entity_entity_update = jsonhub-sdk.EntityEntityUpdate() # EntityEntityUpdate | The updated entity resource
+    entity_entity_update = jsonhub_sdk.EntityEntityUpdate() # EntityEntityUpdate | The updated entity resource
 
     try:
         # Updates the entity resource.
@@ -356,15 +356,15 @@ Creates a entity resource.
 * Bearer Authentication (access_token):
 
 ```python
-import jsonhub-sdk
-from jsonhub-sdk.models.entity_jsonhal_entity_create import EntityJsonhalEntityCreate
-from jsonhub-sdk.models.entity_jsonhal_entity_read_entity_read_parent import EntityJsonhalEntityReadEntityReadParent
-from jsonhub-sdk.rest import ApiException
+import jsonhub_sdk
+from jsonhub_sdk.models.entity_jsonhal_entity_create import EntityJsonhalEntityCreate
+from jsonhub_sdk.models.entity_jsonhal_entity_read_entity_read_parent import EntityJsonhalEntityReadEntityReadParent
+from jsonhub_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = jsonhub-sdk.Configuration(
+configuration = jsonhub_sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -374,15 +374,15 @@ configuration = jsonhub-sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: access_token
-configuration = jsonhub-sdk.Configuration(
+configuration = jsonhub_sdk.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with jsonhub-sdk.ApiClient(configuration) as api_client:
+with jsonhub_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = jsonhub-sdk.EntityApi(api_client)
-    entity_jsonhal_entity_create = jsonhub-sdk.EntityJsonhalEntityCreate() # EntityJsonhalEntityCreate | The new entity resource
+    api_instance = jsonhub_sdk.EntityApi(api_client)
+    entity_jsonhal_entity_create = jsonhub_sdk.EntityJsonhalEntityCreate() # EntityJsonhalEntityCreate | The new entity resource
 
     try:
         # Creates a entity resource.

@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.models.entity_entity_create import EntityEntityCreate
+from jsonhub_sdk.models.entity_entity_create import EntityEntityCreate
 
 class TestEntityEntityCreate(unittest.TestCase):
     """EntityEntityCreate unit test stubs"""
@@ -38,13 +38,13 @@ class TestEntityEntityCreate(unittest.TestCase):
                 slug = '',
                 data = None,
                 definition = 'https://example.com/',
-                parent = jsonhub-sdk.models.entity_entity/create.entity-entity.create(
+                parent = jsonhub_sdk.models.entity_entity/create.entity-entity.create(
                     slug = '', 
-                    data = jsonhub-sdk.models.data.data(), 
+                    data = jsonhub_sdk.models.data.data(), 
                     definition = 'https://example.com/', 
-                    parent = jsonhub-sdk.models.entity_entity/create.entity-entity.create(
+                    parent = jsonhub_sdk.models.entity_entity/create.entity-entity.create(
                         slug = '', 
-                        data = jsonhub-sdk.models.data.data(), 
+                        data = jsonhub_sdk.models.data.data(), 
                         definition = 'https://example.com/', 
                         private = True, ), 
                     private = True, ),

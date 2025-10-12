@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.models.entity_jsonld_entity_create import EntityJsonldEntityCreate
+from jsonhub_sdk.models.entity_jsonld_entity_create import EntityJsonldEntityCreate
 
 class TestEntityJsonldEntityCreate(unittest.TestCase):
     """EntityJsonldEntityCreate unit test stubs"""
@@ -36,15 +36,15 @@ class TestEntityJsonldEntityCreate(unittest.TestCase):
         if include_optional:
             return EntityJsonldEntityCreate(
                 slug = '',
-                data = jsonhub-sdk.models.data.data(),
+                data = jsonhub_sdk.models.data.data(),
                 definition = 'https://example.com/',
-                parent = jsonhub-sdk.models.entity/jsonld_entity/create.entity.jsonld-entity.create(
+                parent = jsonhub_sdk.models.entity/jsonld_entity/create.entity.jsonld-entity.create(
                     slug = '', 
-                    data = jsonhub-sdk.models.data.data(), 
+                    data = jsonhub_sdk.models.data.data(), 
                     definition = 'https://example.com/', 
-                    parent = jsonhub-sdk.models.entity/jsonld_entity/create.entity.jsonld-entity.create(
+                    parent = jsonhub_sdk.models.entity/jsonld_entity/create.entity.jsonld-entity.create(
                         slug = '', 
-                        data = jsonhub-sdk.models.data.data(), 
+                        data = jsonhub_sdk.models.data.data(), 
                         definition = 'https://example.com/', 
                         private = True, ), 
                     private = True, ),

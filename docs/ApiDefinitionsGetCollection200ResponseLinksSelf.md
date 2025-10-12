@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from jsonhub-sdk.models.api_definitions_get_collection200_response_links_self import ApiDefinitionsGetCollection200ResponseLinksSelf
+from jsonhub_sdk.models.api_definitions_get_collection200_response_links_self import ApiDefinitionsGetCollection200ResponseLinksSelf
 
 # TODO update the JSON string below
 json = "{}"

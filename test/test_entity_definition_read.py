@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.models.entity_definition_read import EntityDefinitionRead
+from jsonhub_sdk.models.entity_definition_read import EntityDefinitionRead
 
 class TestEntityDefinitionRead(unittest.TestCase):
     """EntityDefinitionRead unit test stubs"""

@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.models.user_jsonld_user_create import UserJsonldUserCreate
+from jsonhub_sdk.models.user_jsonld_user_create import UserJsonldUserCreate
 
 class TestUserJsonldUserCreate(unittest.TestCase):
     """UserJsonldUserCreate unit test stubs"""

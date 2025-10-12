@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.models.definition_jsonld_definition_read_context_one_of import DefinitionJsonldDefinitionReadContextOneOf
+from jsonhub_sdk.models.definition_jsonld_definition_read_context_one_of import DefinitionJsonldDefinitionReadContextOneOf
 
 class TestDefinitionJsonldDefinitionReadContextOneOf(unittest.TestCase):
     """DefinitionJsonldDefinitionReadContextOneOf unit test stubs"""

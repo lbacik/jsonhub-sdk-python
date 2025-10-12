@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.api.oauth2_api import Oauth2Api
+from jsonhub_sdk.api.oauth2_api import Oauth2Api
 
 
 class TestOauth2Api(unittest.TestCase):

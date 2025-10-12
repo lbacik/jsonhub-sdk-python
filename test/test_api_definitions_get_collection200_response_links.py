@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.models.api_definitions_get_collection200_response_links import ApiDefinitionsGetCollection200ResponseLinks
+from jsonhub_sdk.models.api_definitions_get_collection200_response_links import ApiDefinitionsGetCollection200ResponseLinks
 
 class TestApiDefinitionsGetCollection200ResponseLinks(unittest.TestCase):
     """ApiDefinitionsGetCollection200ResponseLinks unit test stubs"""
@@ -35,15 +35,15 @@ class TestApiDefinitionsGetCollection200ResponseLinks(unittest.TestCase):
         model = ApiDefinitionsGetCollection200ResponseLinks()
         if include_optional:
             return ApiDefinitionsGetCollection200ResponseLinks(
-                var_self = jsonhub-sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
+                var_self = jsonhub_sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
                     href = '', ),
-                first = jsonhub-sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
+                first = jsonhub_sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
                     href = '', ),
-                last = jsonhub-sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
+                last = jsonhub_sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
                     href = '', ),
-                next = jsonhub-sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
+                next = jsonhub_sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
                     href = '', ),
-                previous = jsonhub-sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
+                previous = jsonhub_sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
                     href = '', )
             )
         else:

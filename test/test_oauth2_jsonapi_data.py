@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.models.oauth2_jsonapi_data import Oauth2JsonapiData
+from jsonhub_sdk.models.oauth2_jsonapi_data import Oauth2JsonapiData
 
 class TestOauth2JsonapiData(unittest.TestCase):
     """Oauth2JsonapiData unit test stubs"""
@@ -37,7 +37,7 @@ class TestOauth2JsonapiData(unittest.TestCase):
             return Oauth2JsonapiData(
                 id = '',
                 type = '',
-                attributes = jsonhub-sdk.models.oauth2_jsonapi_data_attributes.oauth2_jsonapi_data_attributes(
+                attributes = jsonhub_sdk.models.oauth2_jsonapi_data_attributes.oauth2_jsonapi_data_attributes(
                     grant_type = 'client_credentials', 
                     client_id = '', 
                     client_secret = '', 

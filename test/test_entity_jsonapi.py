@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.models.entity_jsonapi import EntityJsonapi
+from jsonhub_sdk.models.entity_jsonapi import EntityJsonapi
 
 class TestEntityJsonapi(unittest.TestCase):
     """EntityJsonapi unit test stubs"""
@@ -37,19 +37,19 @@ class TestEntityJsonapi(unittest.TestCase):
             return EntityJsonapi(
                 id = '',
                 slug = '',
-                data = jsonhub-sdk.models.data.data(),
-                definition = jsonhub-sdk.models.definition/jsonapi.definition.jsonapi(
-                    data = jsonhub-sdk.models.definition_jsonapi_data.definition_jsonapi_data(
+                data = jsonhub_sdk.models.data.data(),
+                definition = jsonhub_sdk.models.definition/jsonapi.definition.jsonapi(
+                    data = jsonhub_sdk.models.definition_jsonapi_data.definition_jsonapi_data(
                         id = '', 
                         type = '', 
-                        attributes = jsonhub-sdk.models.definition_jsonapi_data_attributes.definition_jsonapi_data_attributes(
+                        attributes = jsonhub_sdk.models.definition_jsonapi_data_attributes.definition_jsonapi_data_attributes(
                             _id = '', 
                             slug = '', 
-                            json_schema = jsonhub-sdk.models.json_schema.jsonSchema(), ), ), 
-                    parent_entity = jsonhub-sdk.models.entity/jsonapi.entity.jsonapi(
+                            json_schema = jsonhub_sdk.models.json_schema.jsonSchema(), ), ), 
+                    parent_entity = jsonhub_sdk.models.entity/jsonapi.entity.jsonapi(
                         id = '', 
                         slug = '', 
-                        parent = jsonhub-sdk.models.entity/jsonapi.entity.jsonapi(
+                        parent = jsonhub_sdk.models.entity/jsonapi.entity.jsonapi(
                             id = '', 
                             slug = '', 
                             private = True, 
@@ -57,19 +57,19 @@ class TestEntityJsonapi(unittest.TestCase):
                         private = True, 
                         is_owned_by_current_user = True, ), 
                     is_owned_by_current_user = True, ),
-                parent = jsonhub-sdk.models.entity/jsonapi.entity.jsonapi(
+                parent = jsonhub_sdk.models.entity/jsonapi.entity.jsonapi(
                     id = '', 
                     slug = '', 
-                    data = jsonhub-sdk.models.data.data(), 
-                    definition = jsonhub-sdk.models.definition/jsonapi.definition.jsonapi(
-                        data = jsonhub-sdk.models.definition_jsonapi_data.definition_jsonapi_data(
+                    data = jsonhub_sdk.models.data.data(), 
+                    definition = jsonhub_sdk.models.definition/jsonapi.definition.jsonapi(
+                        data = jsonhub_sdk.models.definition_jsonapi_data.definition_jsonapi_data(
                             id = '', 
                             type = '', 
-                            attributes = jsonhub-sdk.models.definition_jsonapi_data_attributes.definition_jsonapi_data_attributes(
+                            attributes = jsonhub_sdk.models.definition_jsonapi_data_attributes.definition_jsonapi_data_attributes(
                                 _id = '', 
                                 slug = '', 
-                                json_schema = jsonhub-sdk.models.json_schema.jsonSchema(), ), ), 
-                        parent_entity = jsonhub-sdk.models.entity/jsonapi.entity.jsonapi(
+                                json_schema = jsonhub_sdk.models.json_schema.jsonSchema(), ), ), 
+                        parent_entity = jsonhub_sdk.models.entity/jsonapi.entity.jsonapi(
                             id = '', 
                             slug = '', 
                             private = True, 

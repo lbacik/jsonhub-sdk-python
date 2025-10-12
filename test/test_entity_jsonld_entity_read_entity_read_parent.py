@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.models.entity_jsonld_entity_read_entity_read_parent import EntityJsonldEntityReadEntityReadParent
+from jsonhub_sdk.models.entity_jsonld_entity_read_entity_read_parent import EntityJsonldEntityReadEntityReadParent
 
 class TestEntityJsonldEntityReadEntityReadParent(unittest.TestCase):
     """EntityJsonldEntityReadEntityReadParent unit test stubs"""
@@ -40,31 +40,31 @@ class TestEntityJsonldEntityReadEntityReadParent(unittest.TestCase):
                 type = '',
                 id = '',
                 slug = '',
-                data = jsonhub-sdk.models.data.data(),
-                definition = jsonhub-sdk.models.definition/jsonld_entity/read_entity/read/parent.definition.jsonld-entity.read_entity.read.parent(
+                data = jsonhub_sdk.models.data.data(),
+                definition = jsonhub_sdk.models.definition/jsonld_entity/read_entity/read/parent.definition.jsonld-entity.read_entity.read.parent(
                     @context = null, 
                     @id = '', 
                     @type = '', 
                     id = '', 
                     slug = '', ),
-                parent = jsonhub-sdk.models.entity/jsonld_entity/read_entity/read/parent.entity.jsonld-entity.read_entity.read.parent(
+                parent = jsonhub_sdk.models.entity/jsonld_entity/read_entity/read/parent.entity.jsonld-entity.read_entity.read.parent(
                     @context = null, 
                     @id = '', 
                     @type = '', 
                     id = '', 
                     slug = '', 
-                    data = jsonhub-sdk.models.data.data(), 
-                    definition = jsonhub-sdk.models.definition/jsonld_entity/read_entity/read/parent.definition.jsonld-entity.read_entity.read.parent(
+                    data = jsonhub_sdk.models.data.data(), 
+                    definition = jsonhub_sdk.models.definition/jsonld_entity/read_entity/read/parent.definition.jsonld-entity.read_entity.read.parent(
                         @id = '', 
                         @type = '', 
                         id = '', 
                         slug = '', ), 
-                    parent = jsonhub-sdk.models.entity/jsonld_entity/read_entity/read/parent.entity.jsonld-entity.read_entity.read.parent(
+                    parent = jsonhub_sdk.models.entity/jsonld_entity/read_entity/read/parent.entity.jsonld-entity.read_entity.read.parent(
                         @id = '', 
                         @type = '', 
                         id = '', 
                         slug = '', 
-                        data = jsonhub-sdk.models.data.data(), 
+                        data = jsonhub_sdk.models.data.data(), 
                         private = True, 
                         is_owned_by_current_user = True, ), 
                     private = True, 

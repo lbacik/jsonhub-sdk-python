@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.models.definition_jsonhal_definition_read_links import DefinitionJsonhalDefinitionReadLinks
+from jsonhub_sdk.models.definition_jsonhal_definition_read_links import DefinitionJsonhalDefinitionReadLinks
 
 class TestDefinitionJsonhalDefinitionReadLinks(unittest.TestCase):
     """DefinitionJsonhalDefinitionReadLinks unit test stubs"""
@@ -35,7 +35,7 @@ class TestDefinitionJsonhalDefinitionReadLinks(unittest.TestCase):
         model = DefinitionJsonhalDefinitionReadLinks()
         if include_optional:
             return DefinitionJsonhalDefinitionReadLinks(
-                var_self = jsonhub-sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
+                var_self = jsonhub_sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
                     href = '', )
             )
         else:

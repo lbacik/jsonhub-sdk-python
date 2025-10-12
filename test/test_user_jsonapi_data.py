@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.models.user_jsonapi_data import UserJsonapiData
+from jsonhub_sdk.models.user_jsonapi_data import UserJsonapiData
 
 class TestUserJsonapiData(unittest.TestCase):
     """UserJsonapiData unit test stubs"""
@@ -37,7 +37,7 @@ class TestUserJsonapiData(unittest.TestCase):
             return UserJsonapiData(
                 id = '',
                 type = '',
-                attributes = jsonhub-sdk.models.user_jsonapi_data_attributes.user_jsonapi_data_attributes(
+                attributes = jsonhub_sdk.models.user_jsonapi_data_attributes.user_jsonapi_data_attributes(
                     _id = '', 
                     email = '', 
                     password = '', 

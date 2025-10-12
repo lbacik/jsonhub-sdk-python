@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.api.definition_api import DefinitionApi
+from jsonhub_sdk.api.definition_api import DefinitionApi
 
 
 class TestDefinitionApi(unittest.TestCase):

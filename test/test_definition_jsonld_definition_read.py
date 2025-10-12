@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.models.definition_jsonld_definition_read import DefinitionJsonldDefinitionRead
+from jsonhub_sdk.models.definition_jsonld_definition_read import DefinitionJsonldDefinitionRead
 
 class TestDefinitionJsonldDefinitionRead(unittest.TestCase):
     """DefinitionJsonldDefinitionRead unit test stubs"""
@@ -41,7 +41,7 @@ class TestDefinitionJsonldDefinitionRead(unittest.TestCase):
                 id = '',
                 slug = '',
                 json_schema = None,
-                parent_entity = jsonhub-sdk.models.entity/jsonld_definition/read.entity.jsonld-definition.read(
+                parent_entity = jsonhub_sdk.models.entity/jsonld_definition/read.entity.jsonld-definition.read(
                     @context = null, 
                     @id = '', 
                     @type = '', 

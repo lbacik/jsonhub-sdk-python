@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.models.user_user_update import UserUserUpdate
+from jsonhub_sdk.models.user_user_update import UserUserUpdate
 
 class TestUserUserUpdate(unittest.TestCase):
     """UserUserUpdate unit test stubs"""

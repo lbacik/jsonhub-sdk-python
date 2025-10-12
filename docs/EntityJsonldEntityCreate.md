@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from jsonhub-sdk.models.entity_jsonld_entity_create import EntityJsonldEntityCreate
+from jsonhub_sdk.models.entity_jsonld_entity_create import EntityJsonldEntityCreate
 
 # TODO update the JSON string below
 json = "{}"

@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.models.definition_jsonhal_definition_write import DefinitionJsonhalDefinitionWrite
+from jsonhub_sdk.models.definition_jsonhal_definition_write import DefinitionJsonhalDefinitionWrite
 
 class TestDefinitionJsonhalDefinitionWrite(unittest.TestCase):
     """DefinitionJsonhalDefinitionWrite unit test stubs"""
@@ -35,8 +35,8 @@ class TestDefinitionJsonhalDefinitionWrite(unittest.TestCase):
         model = DefinitionJsonhalDefinitionWrite()
         if include_optional:
             return DefinitionJsonhalDefinitionWrite(
-                links = jsonhub-sdk.models.definition_jsonhal_definition_read__links.definition_jsonhal_definition_read__links(
-                    self = jsonhub-sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
+                links = jsonhub_sdk.models.definition_jsonhal_definition_read__links.definition_jsonhal_definition_read__links(
+                    self = jsonhub_sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
                         href = '', ), ),
                 slug = '',
                 json_schema = None,

@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.models.api_definitions_get_collection200_response import ApiDefinitionsGetCollection200Response
+from jsonhub_sdk.models.api_definitions_get_collection200_response import ApiDefinitionsGetCollection200Response
 
 class TestApiDefinitionsGetCollection200Response(unittest.TestCase):
     """ApiDefinitionsGetCollection200Response unit test stubs"""
@@ -38,10 +38,10 @@ class TestApiDefinitionsGetCollection200Response(unittest.TestCase):
                 embedded = None,
                 total_items = 0,
                 items_per_page = 0,
-                links = jsonhub-sdk.models.api_definitions_get_collection_200_response__links.api_definitions_get_collection_200_response__links(
-                    self = jsonhub-sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
+                links = jsonhub_sdk.models.api_definitions_get_collection_200_response__links.api_definitions_get_collection_200_response__links(
+                    self = jsonhub_sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
                         href = '', ), 
-                    first = jsonhub-sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
+                    first = jsonhub_sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
                         href = '', ), 
                     last = , 
                     next = , 
@@ -50,10 +50,10 @@ class TestApiDefinitionsGetCollection200Response(unittest.TestCase):
         else:
             return ApiDefinitionsGetCollection200Response(
                 embedded = None,
-                links = jsonhub-sdk.models.api_definitions_get_collection_200_response__links.api_definitions_get_collection_200_response__links(
-                    self = jsonhub-sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
+                links = jsonhub_sdk.models.api_definitions_get_collection_200_response__links.api_definitions_get_collection_200_response__links(
+                    self = jsonhub_sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
                         href = '', ), 
-                    first = jsonhub-sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
+                    first = jsonhub_sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
                         href = '', ), 
                     last = , 
                     next = , 

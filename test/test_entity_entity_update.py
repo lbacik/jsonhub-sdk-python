@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.models.entity_entity_update import EntityEntityUpdate
+from jsonhub_sdk.models.entity_entity_update import EntityEntityUpdate
 
 class TestEntityEntityUpdate(unittest.TestCase):
     """EntityEntityUpdate unit test stubs"""
@@ -37,12 +37,12 @@ class TestEntityEntityUpdate(unittest.TestCase):
             return EntityEntityUpdate(
                 slug = '',
                 data = None,
-                parent = jsonhub-sdk.models.entity_entity/update.entity-entity.update(
+                parent = jsonhub_sdk.models.entity_entity/update.entity-entity.update(
                     slug = '', 
-                    data = jsonhub-sdk.models.data.data(), 
-                    parent = jsonhub-sdk.models.entity_entity/update.entity-entity.update(
+                    data = jsonhub_sdk.models.data.data(), 
+                    parent = jsonhub_sdk.models.entity_entity/update.entity-entity.update(
                         slug = '', 
-                        data = jsonhub-sdk.models.data.data(), 
+                        data = jsonhub_sdk.models.data.data(), 
                         private = True, ), 
                     private = True, ),
                 private = True

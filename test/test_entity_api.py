@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.api.entity_api import EntityApi
+from jsonhub_sdk.api.entity_api import EntityApi
 
 
 class TestEntityApi(unittest.TestCase):

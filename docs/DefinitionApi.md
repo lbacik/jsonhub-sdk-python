@@ -1,4 +1,4 @@
-# jsonhub-sdk.DefinitionApi
+# jsonhub_sdk.DefinitionApi
 
 All URIs are relative to *http://localhost*
 
@@ -23,14 +23,14 @@ Retrieves the collection of definition resources.
 * Bearer Authentication (access_token):
 
 ```python
-import jsonhub-sdk
-from jsonhub-sdk.models.api_definitions_get_collection200_response import ApiDefinitionsGetCollection200Response
-from jsonhub-sdk.rest import ApiException
+import jsonhub_sdk
+from jsonhub_sdk.models.api_definitions_get_collection200_response import ApiDefinitionsGetCollection200Response
+from jsonhub_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = jsonhub-sdk.Configuration(
+configuration = jsonhub_sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -40,14 +40,14 @@ configuration = jsonhub-sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: access_token
-configuration = jsonhub-sdk.Configuration(
+configuration = jsonhub_sdk.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with jsonhub-sdk.ApiClient(configuration) as api_client:
+with jsonhub_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = jsonhub-sdk.DefinitionApi(api_client)
+    api_instance = jsonhub_sdk.DefinitionApi(api_client)
     qid = 'qid_example' # str | Filter by slug/id (partial match) (optional)
     owned = True # bool | Show only definitions owned by the current user (optional)
     page = 1 # int | The collection page number (optional) (default to 1)
@@ -111,13 +111,13 @@ Removes the definition resource.
 * Bearer Authentication (access_token):
 
 ```python
-import jsonhub-sdk
-from jsonhub-sdk.rest import ApiException
+import jsonhub_sdk
+from jsonhub_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = jsonhub-sdk.Configuration(
+configuration = jsonhub_sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -127,14 +127,14 @@ configuration = jsonhub-sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: access_token
-configuration = jsonhub-sdk.Configuration(
+configuration = jsonhub_sdk.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with jsonhub-sdk.ApiClient(configuration) as api_client:
+with jsonhub_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = jsonhub-sdk.DefinitionApi(api_client)
+    api_instance = jsonhub_sdk.DefinitionApi(api_client)
     id = 'id_example' # str | definition identifier
 
     try:
@@ -188,14 +188,14 @@ Retrieves a definition resource.
 * Bearer Authentication (access_token):
 
 ```python
-import jsonhub-sdk
-from jsonhub-sdk.models.definition_jsonhal_definition_read import DefinitionJsonhalDefinitionRead
-from jsonhub-sdk.rest import ApiException
+import jsonhub_sdk
+from jsonhub_sdk.models.definition_jsonhal_definition_read import DefinitionJsonhalDefinitionRead
+from jsonhub_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = jsonhub-sdk.Configuration(
+configuration = jsonhub_sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -205,14 +205,14 @@ configuration = jsonhub-sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: access_token
-configuration = jsonhub-sdk.Configuration(
+configuration = jsonhub_sdk.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with jsonhub-sdk.ApiClient(configuration) as api_client:
+with jsonhub_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = jsonhub-sdk.DefinitionApi(api_client)
+    api_instance = jsonhub_sdk.DefinitionApi(api_client)
     id = 'id_example' # str | definition identifier
 
     try:
@@ -267,15 +267,15 @@ Updates the definition resource.
 * Bearer Authentication (access_token):
 
 ```python
-import jsonhub-sdk
-from jsonhub-sdk.models.definition_definition_write import DefinitionDefinitionWrite
-from jsonhub-sdk.models.definition_jsonhal_definition_read import DefinitionJsonhalDefinitionRead
-from jsonhub-sdk.rest import ApiException
+import jsonhub_sdk
+from jsonhub_sdk.models.definition_definition_write import DefinitionDefinitionWrite
+from jsonhub_sdk.models.definition_jsonhal_definition_read import DefinitionJsonhalDefinitionRead
+from jsonhub_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = jsonhub-sdk.Configuration(
+configuration = jsonhub_sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -285,16 +285,16 @@ configuration = jsonhub-sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: access_token
-configuration = jsonhub-sdk.Configuration(
+configuration = jsonhub_sdk.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with jsonhub-sdk.ApiClient(configuration) as api_client:
+with jsonhub_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = jsonhub-sdk.DefinitionApi(api_client)
+    api_instance = jsonhub_sdk.DefinitionApi(api_client)
     id = 'id_example' # str | definition identifier
-    definition_definition_write = jsonhub-sdk.DefinitionDefinitionWrite() # DefinitionDefinitionWrite | The updated definition resource
+    definition_definition_write = jsonhub_sdk.DefinitionDefinitionWrite() # DefinitionDefinitionWrite | The updated definition resource
 
     try:
         # Updates the definition resource.
@@ -352,15 +352,15 @@ Creates a definition resource.
 * Bearer Authentication (access_token):
 
 ```python
-import jsonhub-sdk
-from jsonhub-sdk.models.definition_jsonhal_definition_read import DefinitionJsonhalDefinitionRead
-from jsonhub-sdk.models.definition_jsonhal_definition_write import DefinitionJsonhalDefinitionWrite
-from jsonhub-sdk.rest import ApiException
+import jsonhub_sdk
+from jsonhub_sdk.models.definition_jsonhal_definition_read import DefinitionJsonhalDefinitionRead
+from jsonhub_sdk.models.definition_jsonhal_definition_write import DefinitionJsonhalDefinitionWrite
+from jsonhub_sdk.rest import ApiException
 from pprint import pprint
 
 # Defining the host is optional and defaults to http://localhost
 # See configuration.py for a list of all supported configuration parameters.
-configuration = jsonhub-sdk.Configuration(
+configuration = jsonhub_sdk.Configuration(
     host = "http://localhost"
 )
 
@@ -370,15 +370,15 @@ configuration = jsonhub-sdk.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization: access_token
-configuration = jsonhub-sdk.Configuration(
+configuration = jsonhub_sdk.Configuration(
     access_token = os.environ["BEARER_TOKEN"]
 )
 
 # Enter a context with an instance of the API client
-with jsonhub-sdk.ApiClient(configuration) as api_client:
+with jsonhub_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = jsonhub-sdk.DefinitionApi(api_client)
-    definition_jsonhal_definition_write = jsonhub-sdk.DefinitionJsonhalDefinitionWrite() # DefinitionJsonhalDefinitionWrite | The new definition resource
+    api_instance = jsonhub_sdk.DefinitionApi(api_client)
+    definition_jsonhal_definition_write = jsonhub_sdk.DefinitionJsonhalDefinitionWrite() # DefinitionJsonhalDefinitionWrite | The new definition resource
 
     try:
         # Creates a definition resource.

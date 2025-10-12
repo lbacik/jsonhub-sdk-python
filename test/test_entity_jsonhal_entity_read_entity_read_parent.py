@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.models.entity_jsonhal_entity_read_entity_read_parent import EntityJsonhalEntityReadEntityReadParent
+from jsonhub_sdk.models.entity_jsonhal_entity_read_entity_read_parent import EntityJsonhalEntityReadEntityReadParent
 
 class TestEntityJsonhalEntityReadEntityReadParent(unittest.TestCase):
     """EntityJsonhalEntityReadEntityReadParent unit test stubs"""
@@ -35,32 +35,32 @@ class TestEntityJsonhalEntityReadEntityReadParent(unittest.TestCase):
         model = EntityJsonhalEntityReadEntityReadParent()
         if include_optional:
             return EntityJsonhalEntityReadEntityReadParent(
-                links = jsonhub-sdk.models.definition_jsonhal_definition_read__links.definition_jsonhal_definition_read__links(
-                    self = jsonhub-sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
+                links = jsonhub_sdk.models.definition_jsonhal_definition_read__links.definition_jsonhal_definition_read__links(
+                    self = jsonhub_sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
                         href = '', ), ),
                 id = '',
                 slug = '',
                 data = None,
-                definition = jsonhub-sdk.models.entity/jsonhal_definition/read.entity.jsonhal-definition.read(
-                    _links = jsonhub-sdk.models.definition_jsonhal_definition_read__links.definition_jsonhal_definition_read__links(
-                        self = jsonhub-sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
+                definition = jsonhub_sdk.models.entity/jsonhal_definition/read.entity.jsonhal-definition.read(
+                    _links = jsonhub_sdk.models.definition_jsonhal_definition_read__links.definition_jsonhal_definition_read__links(
+                        self = jsonhub_sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
                             href = '', ), ), 
                     id = '', 
                     slug = '', ),
-                parent = jsonhub-sdk.models.entity/jsonhal_entity/read_entity/read/parent.entity.jsonhal-entity.read_entity.read.parent(
-                    _links = jsonhub-sdk.models.definition_jsonhal_definition_read__links.definition_jsonhal_definition_read__links(
-                        self = jsonhub-sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
+                parent = jsonhub_sdk.models.entity/jsonhal_entity/read_entity/read/parent.entity.jsonhal-entity.read_entity.read.parent(
+                    _links = jsonhub_sdk.models.definition_jsonhal_definition_read__links.definition_jsonhal_definition_read__links(
+                        self = jsonhub_sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
                             href = '', ), ), 
                     id = '', 
                     slug = '', 
-                    data = jsonhub-sdk.models.data.data(), 
-                    definition = jsonhub-sdk.models.entity/jsonhal_definition/read.entity.jsonhal-definition.read(
+                    data = jsonhub_sdk.models.data.data(), 
+                    definition = jsonhub_sdk.models.entity/jsonhal_definition/read.entity.jsonhal-definition.read(
                         id = '', 
                         slug = '', ), 
-                    parent = jsonhub-sdk.models.entity/jsonhal_entity/read_entity/read/parent.entity.jsonhal-entity.read_entity.read.parent(
+                    parent = jsonhub_sdk.models.entity/jsonhal_entity/read_entity/read/parent.entity.jsonhal-entity.read_entity.read.parent(
                         id = '', 
                         slug = '', 
-                        data = jsonhub-sdk.models.data.data(), 
+                        data = jsonhub_sdk.models.data.data(), 
                         private = True, 
                         is_owned_by_current_user = True, ), 
                     private = True, 

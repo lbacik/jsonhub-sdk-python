@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.models.oauth2_jsonld_oauth2_read import Oauth2JsonldOauth2Read
+from jsonhub_sdk.models.oauth2_jsonld_oauth2_read import Oauth2JsonldOauth2Read
 
 class TestOauth2JsonldOauth2Read(unittest.TestCase):
     """Oauth2JsonldOauth2Read unit test stubs"""

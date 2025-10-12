@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from jsonhub-sdk.models.user_jsonapi import UserJsonapi
+from jsonhub_sdk.models.user_jsonapi import UserJsonapi
 
 # TODO update the JSON string below
 json = "{}"

@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.models.entity_jsonhal_entity_create import EntityJsonhalEntityCreate
+from jsonhub_sdk.models.entity_jsonhal_entity_create import EntityJsonhalEntityCreate
 
 class TestEntityJsonhalEntityCreate(unittest.TestCase):
     """EntityJsonhalEntityCreate unit test stubs"""
@@ -35,22 +35,22 @@ class TestEntityJsonhalEntityCreate(unittest.TestCase):
         model = EntityJsonhalEntityCreate()
         if include_optional:
             return EntityJsonhalEntityCreate(
-                links = jsonhub-sdk.models.definition_jsonhal_definition_read__links.definition_jsonhal_definition_read__links(
-                    self = jsonhub-sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
+                links = jsonhub_sdk.models.definition_jsonhal_definition_read__links.definition_jsonhal_definition_read__links(
+                    self = jsonhub_sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
                         href = '', ), ),
                 slug = '',
                 data = None,
                 definition = 'https://example.com/',
-                parent = jsonhub-sdk.models.entity/jsonhal_entity/create.entity.jsonhal-entity.create(
-                    _links = jsonhub-sdk.models.definition_jsonhal_definition_read__links.definition_jsonhal_definition_read__links(
-                        self = jsonhub-sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
+                parent = jsonhub_sdk.models.entity/jsonhal_entity/create.entity.jsonhal-entity.create(
+                    _links = jsonhub_sdk.models.definition_jsonhal_definition_read__links.definition_jsonhal_definition_read__links(
+                        self = jsonhub_sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
                             href = '', ), ), 
                     slug = '', 
-                    data = jsonhub-sdk.models.data.data(), 
+                    data = jsonhub_sdk.models.data.data(), 
                     definition = 'https://example.com/', 
-                    parent = jsonhub-sdk.models.entity/jsonhal_entity/create.entity.jsonhal-entity.create(
+                    parent = jsonhub_sdk.models.entity/jsonhal_entity/create.entity.jsonhal-entity.create(
                         slug = '', 
-                        data = jsonhub-sdk.models.data.data(), 
+                        data = jsonhub_sdk.models.data.data(), 
                         definition = 'https://example.com/', 
                         private = True, ), 
                     private = True, ),

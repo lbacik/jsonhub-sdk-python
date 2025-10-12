@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.models.user_jsonhal_user_send_reset_password import UserJsonhalUserSendResetPassword
+from jsonhub_sdk.models.user_jsonhal_user_send_reset_password import UserJsonhalUserSendResetPassword
 
 class TestUserJsonhalUserSendResetPassword(unittest.TestCase):
     """UserJsonhalUserSendResetPassword unit test stubs"""
@@ -35,8 +35,8 @@ class TestUserJsonhalUserSendResetPassword(unittest.TestCase):
         model = UserJsonhalUserSendResetPassword()
         if include_optional:
             return UserJsonhalUserSendResetPassword(
-                links = jsonhub-sdk.models.definition_jsonhal_definition_read__links.definition_jsonhal_definition_read__links(
-                    self = jsonhub-sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
+                links = jsonhub_sdk.models.definition_jsonhal_definition_read__links.definition_jsonhal_definition_read__links(
+                    self = jsonhub_sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
                         href = '', ), ),
                 email = '',
                 reset_password_link = ''

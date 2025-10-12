@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.models.user_jsonhal_user_empty import UserJsonhalUserEmpty
+from jsonhub_sdk.models.user_jsonhal_user_empty import UserJsonhalUserEmpty
 
 class TestUserJsonhalUserEmpty(unittest.TestCase):
     """UserJsonhalUserEmpty unit test stubs"""
@@ -35,8 +35,8 @@ class TestUserJsonhalUserEmpty(unittest.TestCase):
         model = UserJsonhalUserEmpty()
         if include_optional:
             return UserJsonhalUserEmpty(
-                links = jsonhub-sdk.models.definition_jsonhal_definition_read__links.definition_jsonhal_definition_read__links(
-                    self = jsonhub-sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
+                links = jsonhub_sdk.models.definition_jsonhal_definition_read__links.definition_jsonhal_definition_read__links(
+                    self = jsonhub_sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
                         href = '', ), )
             )
         else:

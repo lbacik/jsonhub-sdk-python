@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from jsonhub-sdk.models.oauth2_jsonhal_oauth2_write import Oauth2JsonhalOauth2Write
+from jsonhub_sdk.models.oauth2_jsonhal_oauth2_write import Oauth2JsonhalOauth2Write
 
 # TODO update the JSON string below
 json = "{}"

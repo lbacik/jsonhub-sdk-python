@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from jsonhub-sdk.models.definition_jsonhal_definition_write import DefinitionJsonhalDefinitionWrite
+from jsonhub_sdk.models.definition_jsonhal_definition_write import DefinitionJsonhalDefinitionWrite
 
 # TODO update the JSON string below
 json = "{}"

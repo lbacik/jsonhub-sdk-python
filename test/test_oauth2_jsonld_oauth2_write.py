@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.models.oauth2_jsonld_oauth2_write import Oauth2JsonldOauth2Write
+from jsonhub_sdk.models.oauth2_jsonld_oauth2_write import Oauth2JsonldOauth2Write
 
 class TestOauth2JsonldOauth2Write(unittest.TestCase):
     """Oauth2JsonldOauth2Write unit test stubs"""

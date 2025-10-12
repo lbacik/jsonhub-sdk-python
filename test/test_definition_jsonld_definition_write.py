@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.models.definition_jsonld_definition_write import DefinitionJsonldDefinitionWrite
+from jsonhub_sdk.models.definition_jsonld_definition_write import DefinitionJsonldDefinitionWrite
 
 class TestDefinitionJsonldDefinitionWrite(unittest.TestCase):
     """DefinitionJsonldDefinitionWrite unit test stubs"""

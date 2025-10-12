@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from jsonhub-sdk.models.api_definitions_get_collection200_response_links import ApiDefinitionsGetCollection200ResponseLinks
+from jsonhub_sdk.models.api_definitions_get_collection200_response_links import ApiDefinitionsGetCollection200ResponseLinks
 
 # TODO update the JSON string below
 json = "{}"

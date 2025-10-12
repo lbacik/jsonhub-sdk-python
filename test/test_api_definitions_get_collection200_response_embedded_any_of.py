@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.models.api_definitions_get_collection200_response_embedded_any_of import ApiDefinitionsGetCollection200ResponseEmbeddedAnyOf
+from jsonhub_sdk.models.api_definitions_get_collection200_response_embedded_any_of import ApiDefinitionsGetCollection200ResponseEmbeddedAnyOf
 
 class TestApiDefinitionsGetCollection200ResponseEmbeddedAnyOf(unittest.TestCase):
     """ApiDefinitionsGetCollection200ResponseEmbeddedAnyOf unit test stubs"""
@@ -36,14 +36,14 @@ class TestApiDefinitionsGetCollection200ResponseEmbeddedAnyOf(unittest.TestCase)
         if include_optional:
             return ApiDefinitionsGetCollection200ResponseEmbeddedAnyOf(
                 item = [
-                    jsonhub-sdk.models.definition/jsonhal_definition/read.definition.jsonhal-definition.read(
-                        _links = jsonhub-sdk.models.definition_jsonhal_definition_read__links.definition_jsonhal_definition_read__links(
-                            self = jsonhub-sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
+                    jsonhub_sdk.models.definition/jsonhal_definition/read.definition.jsonhal-definition.read(
+                        _links = jsonhub_sdk.models.definition_jsonhal_definition_read__links.definition_jsonhal_definition_read__links(
+                            self = jsonhub_sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
                                 href = '', ), ), 
                         id = '', 
                         slug = '', 
-                        json_schema = jsonhub-sdk.models.json_schema.jsonSchema(), 
-                        parent_entity = jsonhub-sdk.models.entity/jsonhal_definition/read.entity.jsonhal-definition.read(
+                        json_schema = jsonhub_sdk.models.json_schema.jsonSchema(), 
+                        parent_entity = jsonhub_sdk.models.entity/jsonhal_definition/read.entity.jsonhal-definition.read(
                             id = '', 
                             slug = '', ), 
                         is_owned_by_current_user = True, )

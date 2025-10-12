@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from jsonhub-sdk.models.definition_jsonld_definition_write import DefinitionJsonldDefinitionWrite
+from jsonhub_sdk.models.definition_jsonld_definition_write import DefinitionJsonldDefinitionWrite
 
 # TODO update the JSON string below
 json = "{}"

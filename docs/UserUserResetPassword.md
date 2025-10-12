@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from jsonhub-sdk.models.user_user_reset_password import UserUserResetPassword
+from jsonhub_sdk.models.user_user_reset_password import UserUserResetPassword
 
 # TODO update the JSON string below
 json = "{}"

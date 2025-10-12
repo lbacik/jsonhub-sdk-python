@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.models.api_definitions_get_collection200_response_links_self import ApiDefinitionsGetCollection200ResponseLinksSelf
+from jsonhub_sdk.models.api_definitions_get_collection200_response_links_self import ApiDefinitionsGetCollection200ResponseLinksSelf
 
 class TestApiDefinitionsGetCollection200ResponseLinksSelf(unittest.TestCase):
     """ApiDefinitionsGetCollection200ResponseLinksSelf unit test stubs"""

@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from jsonhub-sdk.models.api_entities_get_collection200_response import ApiEntitiesGetCollection200Response
+from jsonhub_sdk.models.api_entities_get_collection200_response import ApiEntitiesGetCollection200Response
 
 # TODO update the JSON string below
 json = "{}"

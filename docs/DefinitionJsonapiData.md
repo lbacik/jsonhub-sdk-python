@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from jsonhub-sdk.models.definition_jsonapi_data import DefinitionJsonapiData
+from jsonhub_sdk.models.definition_jsonapi_data import DefinitionJsonapiData
 
 # TODO update the JSON string below
 json = "{}"

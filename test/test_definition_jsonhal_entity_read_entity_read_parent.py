@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.models.definition_jsonhal_entity_read_entity_read_parent import DefinitionJsonhalEntityReadEntityReadParent
+from jsonhub_sdk.models.definition_jsonhal_entity_read_entity_read_parent import DefinitionJsonhalEntityReadEntityReadParent
 
 class TestDefinitionJsonhalEntityReadEntityReadParent(unittest.TestCase):
     """DefinitionJsonhalEntityReadEntityReadParent unit test stubs"""
@@ -35,8 +35,8 @@ class TestDefinitionJsonhalEntityReadEntityReadParent(unittest.TestCase):
         model = DefinitionJsonhalEntityReadEntityReadParent()
         if include_optional:
             return DefinitionJsonhalEntityReadEntityReadParent(
-                links = jsonhub-sdk.models.definition_jsonhal_definition_read__links.definition_jsonhal_definition_read__links(
-                    self = jsonhub-sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
+                links = jsonhub_sdk.models.definition_jsonhal_definition_read__links.definition_jsonhal_definition_read__links(
+                    self = jsonhub_sdk.models.api_definitions_get_collection_200_response__links_self.api_definitions_get_collection_200_response__links_self(
                         href = '', ), ),
                 id = '',
                 slug = ''

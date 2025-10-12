@@ -14,7 +14,7 @@
 
 import unittest
 
-from jsonhub-sdk.models.definition_entity_read_entity_read_parent import DefinitionEntityReadEntityReadParent
+from jsonhub_sdk.models.definition_entity_read_entity_read_parent import DefinitionEntityReadEntityReadParent
 
 class TestDefinitionEntityReadEntityReadParent(unittest.TestCase):
     """DefinitionEntityReadEntityReadParent unit test stubs"""
