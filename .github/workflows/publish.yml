@@ -1,0 +1,61 @@
+name: Publish to PyPI
+
+# Reacts to the v<version> tag jsonhub-sdk-generator's scripts/publish-to-target.sh
+# pushes here after a release commit (see that repository's jsonhub-sdk-generator
+# issue #10 and its README "Publishing the Python SDK Release to PyPI" section).
+# Publication is gated on the package building and passing its smoke test: a
+# broken SDK Release can't be unpublished cleanly, so that gate is the whole
+# point - mirrors jsonhub-sdk-ts's publish.yml; the two SDK Targets differ
+# only in their generator and registry.
+#
+# Authenticates to PyPI via Trusted Publishing (OIDC) rather than a long-lived
+# API token secret: id-token: write below lets pypa/gh-action-pypi-publish
+# exchange a GitHub Actions OIDC token for a short-lived publish token, so no
+# credential is stored in this repository at all. This requires a one-time
+# setup on pypi.org - see jsonhub-sdk-generator's README.
+on:
+  push:
+    tags:
+      - "v*"
+
+# One release per tag; a re-run of the same tag should not race a fresh one.
+concurrency:
+  group: publish-${{ github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      id-token: write # required for Trusted Publishing (OIDC)
+    steps:
+      - name: Check out the tagged commit
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install Poetry
+        run: pipx install poetry
+
+      - name: Install dependencies
+        run: poetry install
+
+      - name: Verify the tag, version, and Source API Version agree
+        run: poetry run python .github/scripts/verify_package_metadata.py
+
+      # .github/scripts/smoke_test.py builds the package, installs it into a
+      # scratch virtualenv, and imports it from there - the closest a
+      # pre-publish check can get to "installable from PyPI and importable in
+      # a fresh environment" without actually publishing first.
+      - name: Build and smoke test the package
+        run: poetry run python .github/scripts/smoke_test.py
+
+      # No token: Trusted Publishing authenticates via the OIDC token GitHub
+      # Actions provides through id-token: write above. dist/ was already
+      # built by smoke_test.py, so this step only uploads it.
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
