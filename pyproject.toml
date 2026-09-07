@@ -1,16 +1,16 @@
 [tool.poetry]
-name = "jsonhub-sdk-python"
-version = "0.9.0"
+name = "jsonhub-sdk"
+version = "0.9.1"
 description = "A client library for accessing JsonHub API"
 authors = [ "Łukasz Bacik <mail@luka.sh>" ]
 readme = "README.md"
-include = [ "CHANGELOG.md", "jsonhub_sdk_python/py.typed" ]
+include = [ "CHANGELOG.md", "jsonhub_sdk/py.typed" ]
 license = "MIT"
 repository = "https://github.com/lbacik/jsonhub-sdk-python"
 keywords = [ "jsonhub", "sdk", "openapi", "python", "api-client" ]
 
 [[tool.poetry.packages]]
-include = "jsonhub_sdk_python"
+include = "jsonhub_sdk"
 
 [tool.poetry.dependencies]
 python = "^3.9"
