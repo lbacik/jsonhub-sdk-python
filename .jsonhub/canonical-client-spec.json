@@ -1,0 +1,3301 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "JsonHub API",
+    "description": "",
+    "version": "0.10.4"
+  },
+  "servers": [
+    {
+      "url": "/",
+      "description": ""
+    }
+  ],
+  "paths": {
+    "/api/definitions": {
+      "get": {
+        "operationId": "api_definitions_get_collection",
+        "tags": [
+          "definition"
+        ],
+        "responses": {
+          "200": {
+            "description": "definition collection",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "description": "definition.jsonhal-definition.read collection.",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/HalCollectionBaseSchema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "_embedded": {
+                          "additionalProperties": {
+                            "type": "array",
+                            "items": {
+                              "$ref": "#/components/schemas/definition.jsonhal-definition.read"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "summary": "Retrieves the collection of definition resources.",
+        "description": "Retrieves the collection of definition resources.",
+        "parameters": [
+          {
+            "name": "qid",
+            "in": "query",
+            "description": "Filter by slug/id (partial match)",
+            "required": false,
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "owned",
+            "in": "query",
+            "description": "Show only definitions owned by the current user",
+            "required": false,
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The collection page number",
+            "required": false,
+            "deprecated": false,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The number of items per page",
+            "required": false,
+            "deprecated": false,
+            "schema": {
+              "type": "integer",
+              "default": 10,
+              "minimum": 0,
+              "maximum": 30
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "properties[]",
+            "in": "query",
+            "description": "Allows you to reduce the response to contain only the properties you need. If your desired property is nested, you can address it using nested arrays. Example: properties[]={propertyName}&properties[]={anotherPropertyName}&properties[{nestedPropertyParent}][]={nestedProperty}",
+            "required": false,
+            "deprecated": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "parentEntity",
+            "in": "query",
+            "description": "Filter by parentEntity (uuid)",
+            "required": false,
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form",
+            "explode": false
+          }
+        ]
+      },
+      "post": {
+        "operationId": "api_definitions_post",
+        "tags": [
+          "definition"
+        ],
+        "responses": {
+          "201": {
+            "description": "definition resource created",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/definition.jsonhal-definition.read"
+                }
+              }
+            },
+            "links": {}
+          },
+          "400": {
+            "description": "Invalid input",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "links": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "links": {}
+          },
+          "422": {
+            "description": "An error occurred",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConstraintViolation"
+                }
+              }
+            },
+            "links": {}
+          }
+        },
+        "summary": "Creates a definition resource.",
+        "description": "Creates a definition resource.",
+        "parameters": [],
+        "requestBody": {
+          "description": "The new definition resource",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/definition-definition.write"
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "/api/definitions/{id}": {
+      "get": {
+        "operationId": "api_definitions_id_get",
+        "tags": [
+          "definition"
+        ],
+        "responses": {
+          "200": {
+            "description": "definition resource",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/definition.jsonhal-definition.read"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "links": {}
+          }
+        },
+        "summary": "Retrieves a definition resource.",
+        "description": "Retrieves a definition resource.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "definition identifier",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple",
+            "explode": false
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "api_definitions_id_delete",
+        "tags": [
+          "definition"
+        ],
+        "responses": {
+          "204": {
+            "description": "definition resource deleted"
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "links": {}
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "links": {}
+          }
+        },
+        "summary": "Removes the definition resource.",
+        "description": "Removes the definition resource.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "definition identifier",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple",
+            "explode": false
+          }
+        ]
+      },
+      "patch": {
+        "operationId": "api_definitions_id_patch",
+        "tags": [
+          "definition"
+        ],
+        "responses": {
+          "200": {
+            "description": "definition resource updated",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/definition.jsonhal-definition.read"
+                }
+              }
+            },
+            "links": {}
+          },
+          "400": {
+            "description": "Invalid input",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "links": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "links": {}
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "links": {}
+          },
+          "422": {
+            "description": "An error occurred",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConstraintViolation"
+                }
+              }
+            },
+            "links": {}
+          }
+        },
+        "summary": "Updates the definition resource.",
+        "description": "Updates the definition resource.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "definition identifier",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple",
+            "explode": false
+          }
+        ],
+        "requestBody": {
+          "description": "The updated definition resource",
+          "content": {
+            "application/merge-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/definition-definition.write.jsonMergePatch"
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "/api/entities": {
+      "get": {
+        "operationId": "api_entities_get_collection",
+        "tags": [
+          "entity"
+        ],
+        "responses": {
+          "200": {
+            "description": "entity collection",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "description": "entity.jsonhal-entity.read_entity.read.parent collection.",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/HalCollectionBaseSchema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "_embedded": {
+                          "additionalProperties": {
+                            "type": "array",
+                            "items": {
+                              "$ref": "#/components/schemas/entity.jsonhal-entity.read_entity.read.parent"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "summary": "Retrieves the collection of entity resources.",
+        "description": "Retrieves the collection of entity resources.",
+        "parameters": [
+          {
+            "name": "qid",
+            "in": "query",
+            "description": "Filter by slug/id (partial match)",
+            "required": false,
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "private",
+            "in": "query",
+            "description": "Show only private entities (owned by the current user)",
+            "required": false,
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "owned",
+            "in": "query",
+            "description": "Show only entities owned by the current user",
+            "required": false,
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The collection page number",
+            "required": false,
+            "deprecated": false,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The number of items per page",
+            "required": false,
+            "deprecated": false,
+            "schema": {
+              "type": "integer",
+              "default": 10,
+              "minimum": 0,
+              "maximum": 30
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "properties[]",
+            "in": "query",
+            "description": "Allows you to reduce the response to contain only the properties you need. If your desired property is nested, you can address it using nested arrays. Example: properties[]={propertyName}&properties[]={anotherPropertyName}&properties[{nestedPropertyParent}][]={nestedProperty}",
+            "required": false,
+            "deprecated": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "definition",
+            "in": "query",
+            "description": "Filter by definition (uuid)",
+            "required": false,
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form",
+            "explode": false
+          },
+          {
+            "name": "parent",
+            "in": "query",
+            "description": "Filter by parent (uuid)",
+            "required": false,
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form",
+            "explode": false
+          }
+        ]
+      },
+      "post": {
+        "operationId": "api_entities_post",
+        "tags": [
+          "entity"
+        ],
+        "responses": {
+          "201": {
+            "description": "entity resource created",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/entity.jsonhal-entity.read_entity.read.parent"
+                }
+              }
+            },
+            "links": {}
+          },
+          "400": {
+            "description": "Invalid input",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "links": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "links": {}
+          },
+          "422": {
+            "description": "An error occurred",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConstraintViolation"
+                }
+              }
+            },
+            "links": {}
+          }
+        },
+        "summary": "Creates a entity resource.",
+        "description": "Creates a entity resource.",
+        "parameters": [],
+        "requestBody": {
+          "description": "The new entity resource",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/entity-entity.create"
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "/api/entities/{id}": {
+      "get": {
+        "operationId": "api_entities_id_get",
+        "tags": [
+          "entity"
+        ],
+        "responses": {
+          "200": {
+            "description": "entity resource",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/entity.jsonhal-entity.read_entity.read.parent"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "links": {}
+          }
+        },
+        "summary": "Retrieves a entity resource.",
+        "description": "Retrieves a entity resource.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "entity identifier",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple",
+            "explode": false
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "api_entities_id_delete",
+        "tags": [
+          "entity"
+        ],
+        "responses": {
+          "204": {
+            "description": "entity resource deleted"
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "links": {}
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "links": {}
+          }
+        },
+        "summary": "Removes the entity resource.",
+        "description": "Removes the entity resource.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "entity identifier",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple",
+            "explode": false
+          }
+        ]
+      },
+      "patch": {
+        "operationId": "api_entities_id_patch",
+        "tags": [
+          "entity"
+        ],
+        "responses": {
+          "200": {
+            "description": "entity resource updated",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/entity.jsonhal-entity.read_entity.read.parent"
+                }
+              }
+            },
+            "links": {}
+          },
+          "400": {
+            "description": "Invalid input",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "links": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "links": {}
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "links": {}
+          },
+          "422": {
+            "description": "An error occurred",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConstraintViolation"
+                }
+              }
+            },
+            "links": {}
+          }
+        },
+        "summary": "Updates the entity resource.",
+        "description": "Updates the entity resource.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "entity identifier",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple",
+            "explode": false
+          }
+        ],
+        "requestBody": {
+          "description": "The updated entity resource",
+          "content": {
+            "application/merge-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/entity-entity.update.jsonMergePatch"
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "/.well-known/oauth-authorization-server": {
+      "get": {
+        "operationId": "oauth2_metadata",
+        "tags": [
+          "oauth2"
+        ],
+        "responses": {
+          "200": {
+            "description": "OAuth2 Authorization Server metadata",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "issuer": {
+                      "type": "string",
+                      "example": "https://jsonhub.example"
+                    },
+                    "authorization_endpoint": {
+                      "type": "string",
+                      "example": "https://jsonhub.example/oauth2/authorize"
+                    },
+                    "token_endpoint": {
+                      "type": "string",
+                      "example": "https://jsonhub.example/oauth2/token"
+                    },
+                    "jwks_uri": {
+                      "type": "string",
+                      "example": "https://jsonhub.example/oauth2/jwks"
+                    },
+                    "registration_endpoint": {
+                      "type": "string",
+                      "example": "https://jsonhub.example/oauth2/register"
+                    },
+                    "revocation_endpoint": {
+                      "type": "string",
+                      "example": "https://jsonhub.example/oauth2/revoke"
+                    },
+                    "token_exchange_endpoint": {
+                      "type": "string",
+                      "example": "https://jsonhub.example/oauth2/token-exchange"
+                    },
+                    "response_types_supported": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "example": [
+                        "code"
+                      ]
+                    },
+                    "grant_types_supported": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "example": [
+                        "authorization_code",
+                        "urn:ietf:params:oauth:grant-type:token-exchange"
+                      ]
+                    },
+                    "code_challenge_methods_supported": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "example": [
+                        "S256"
+                      ]
+                    },
+                    "scopes_supported": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "example": [
+                        "idea-forge-mcp"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "OAuth2 authorization server metadata",
+        "description": "Discovery document for ChatGPT/MCP OAuth2 Authorization Code with PKCE, JWKS, revocation, and token exchange.",
+        "security": []
+      }
+    },
+    "/oauth2/authorize": {
+      "get": {
+        "operationId": "oauth2_authorize",
+        "tags": [
+          "oauth2"
+        ],
+        "responses": {
+          "302": {
+            "description": "Redirects to JsonHub login, consent, or the client redirect_uri with code/error and state."
+          },
+          "400": {
+            "description": "JsonHub-hosted authorization error when redirect_uri is missing or unsafe."
+          }
+        },
+        "summary": "Start OAuth authorization",
+        "description": "Browser endpoint for Authorization Code with PKCE. Requires a JsonHub session and consent before issuing an authorization code.",
+        "parameters": [
+          {
+            "name": "response_type",
+            "in": "query",
+            "description": "Must be code.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "code"
+              ],
+              "example": "code"
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "client_id",
+            "in": "query",
+            "description": "Registered OAuth client identifier.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "type": "string",
+              "example": "jh_client_id"
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "redirect_uri",
+            "in": "query",
+            "description": "Exact registered redirect URI.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "type": "string",
+              "example": "https://chat.openai.com/aip/g-abc/oauth/callback"
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "description": "Requested scopes. MVP supports idea-forge-mcp.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "type": "string",
+              "example": "idea-forge-mcp"
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "description": "Opaque client state returned unchanged.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "type": "string",
+              "example": "client-csrf-state"
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "code_challenge",
+            "in": "query",
+            "description": "PKCE S256 code challenge.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "code_challenge_method",
+            "in": "query",
+            "description": "Must be S256.",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "S256"
+              ],
+              "example": "S256"
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "resource",
+            "in": "query",
+            "description": "Optional MCP resource/audience.",
+            "required": false,
+            "deprecated": false,
+            "schema": {
+              "type": "string",
+              "example": "idea-forge-mcp"
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "audience",
+            "in": "query",
+            "description": "Optional alias for resource.",
+            "required": false,
+            "deprecated": false,
+            "schema": {
+              "type": "string",
+              "example": "idea-forge-mcp"
+            },
+            "style": "form",
+            "explode": true
+          }
+        ],
+        "security": []
+      }
+    },
+    "/oauth2/jwks": {
+      "get": {
+        "operationId": "oauth2_jwks",
+        "tags": [
+          "oauth2"
+        ],
+        "responses": {
+          "200": {
+            "description": "JSON Web Key Set used to validate RS256 JWT signatures",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "keys": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "kty": {
+                            "type": "string",
+                            "example": "RSA"
+                          },
+                          "use": {
+                            "type": "string",
+                            "example": "sig"
+                          },
+                          "kid": {
+                            "type": "string"
+                          },
+                          "alg": {
+                            "type": "string",
+                            "example": "RS256"
+                          },
+                          "n": {
+                            "type": "string"
+                          },
+                          "e": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get OAuth signing keys",
+        "description": "Publishes public RSA keys for local JWT validation by MCP and other resource servers.",
+        "security": []
+      }
+    },
+    "/oauth2/register": {
+      "post": {
+        "operationId": "oauth2_register",
+        "tags": [
+          "oauth2"
+        ],
+        "responses": {
+          "201": {
+            "description": "Registered OAuth client metadata",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "client_id": {
+                      "type": "string",
+                      "example": "jh_client_id"
+                    },
+                    "client_secret": {
+                      "type": "string",
+                      "description": "Only returned for confidential clients."
+                    },
+                    "redirect_uris": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "grant_types": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "example": [
+                        "authorization_code"
+                      ]
+                    },
+                    "response_types": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "example": [
+                        "code"
+                      ]
+                    },
+                    "scope": {
+                      "type": "string",
+                      "example": "idea-forge-mcp"
+                    },
+                    "token_endpoint_auth_method": {
+                      "type": "string",
+                      "example": "none"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "OAuth registration error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "invalid_grant"
+                    },
+                    "error_description": {
+                      "type": "string",
+                      "example": "Authorization code is invalid, used, or expired"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "Register OAuth client",
+        "description": "Controlled Dynamic Client Registration. Redirect URIs must be HTTPS, except HTTP localhost/127.0.0.1 for development.",
+        "requestBody": {
+          "description": "Client metadata",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "redirect_uris"
+                ],
+                "properties": {
+                  "client_name": {
+                    "type": "string",
+                    "example": "ChatGPT Idea Forge MCP"
+                  },
+                  "redirect_uris": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "example": [
+                      "https://chat.openai.com/aip/g-abc/oauth/callback"
+                    ]
+                  },
+                  "grant_types": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "example": [
+                      "authorization_code"
+                    ]
+                  },
+                  "response_types": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "example": [
+                      "code"
+                    ]
+                  },
+                  "scope": {
+                    "type": "string",
+                    "example": "idea-forge-mcp"
+                  },
+                  "token_endpoint_auth_method": {
+                    "type": "string",
+                    "enum": [
+                      "none",
+                      "client_secret_post",
+                      "client_secret_basic"
+                    ],
+                    "example": "none"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "security": []
+      }
+    },
+    "/oauth2/revoke": {
+      "post": {
+        "operationId": "oauth2_revoke",
+        "tags": [
+          "oauth2"
+        ],
+        "responses": {
+          "200": {
+            "description": "Idempotent empty revocation response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Revoke OAuth consent",
+        "description": "Revokes the matching consent grant when the token can be validated. Already-issued short-lived JWTs remain valid until expiry.",
+        "requestBody": {
+          "description": "Revocation request",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "token",
+                  "client_id"
+                ],
+                "properties": {
+                  "token": {
+                    "type": "string"
+                  },
+                  "client_id": {
+                    "type": "string"
+                  },
+                  "client_secret": {
+                    "type": "string"
+                  },
+                  "audience": {
+                    "type": "string",
+                    "example": "idea-forge-mcp"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "security": []
+      }
+    },
+    "/oauth2/token": {
+      "post": {
+        "operationId": "oauth2_token",
+        "tags": [
+          "oauth2"
+        ],
+        "responses": {
+          "200": {
+            "description": "Bearer access token for the MCP resource audience",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "access_token": {
+                      "type": "string"
+                    },
+                    "token_type": {
+                      "type": "string",
+                      "example": "Bearer"
+                    },
+                    "expires_in": {
+                      "type": "integer",
+                      "example": 900
+                    },
+                    "scope": {
+                      "type": "string",
+                      "example": "idea-forge-mcp"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "OAuth token error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "invalid_grant"
+                    },
+                    "error_description": {
+                      "type": "string",
+                      "example": "Authorization code is invalid, used, or expired"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid client or authorization code",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "invalid_grant"
+                    },
+                    "error_description": {
+                      "type": "string",
+                      "example": "Authorization code is invalid, used, or expired"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "Exchange authorization code",
+        "description": "Exchanges a single-use authorization code for a short-lived RS256 JWT access token. Public clients must provide the PKCE verifier.",
+        "requestBody": {
+          "description": "Authorization code token request",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "grant_type",
+                  "code",
+                  "redirect_uri",
+                  "client_id",
+                  "code_verifier"
+                ],
+                "properties": {
+                  "grant_type": {
+                    "type": "string",
+                    "enum": [
+                      "authorization_code"
+                    ],
+                    "example": "authorization_code"
+                  },
+                  "code": {
+                    "type": "string"
+                  },
+                  "redirect_uri": {
+                    "type": "string"
+                  },
+                  "client_id": {
+                    "type": "string"
+                  },
+                  "code_verifier": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "security": []
+      }
+    },
+    "/oauth2/token-exchange": {
+      "post": {
+        "operationId": "oauth2_token_exchange",
+        "tags": [
+          "oauth2"
+        ],
+        "responses": {
+          "200": {
+            "description": "Downstream JsonHub API access token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "access_token": {
+                      "type": "string"
+                    },
+                    "token_type": {
+                      "type": "string",
+                      "example": "Bearer"
+                    },
+                    "expires_in": {
+                      "type": "integer",
+                      "example": 300
+                    },
+                    "scope": {
+                      "type": "string",
+                      "example": "jsonhub:entities:write jsonhub:definitions:write"
+                    },
+                    "issued_token_type": {
+                      "type": "string",
+                      "example": "urn:ietf:params:oauth:token-type:access_token"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "OAuth token exchange error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "invalid_grant"
+                    },
+                    "error_description": {
+                      "type": "string",
+                      "example": "Authorization code is invalid, used, or expired"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid confidential client or subject token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "invalid_grant"
+                    },
+                    "error_description": {
+                      "type": "string",
+                      "example": "Authorization code is invalid, used, or expired"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Missing scope or revoked consent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "error"
+                  ],
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "example": "invalid_grant"
+                    },
+                    "error_description": {
+                      "type": "string",
+                      "example": "Authorization code is invalid, used, or expired"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "Exchange MCP token for JsonHub API token",
+        "description": "OAuth 2.0 Token Exchange style endpoint. The MCP backend authenticates as a confidential client and exchanges an MCP-audience subject token for a short-lived downstream token with aud=jsonhub-api.",
+        "requestBody": {
+          "description": "Token exchange request",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "grant_type",
+                  "client_id",
+                  "subject_token",
+                  "subject_token_type",
+                  "audience"
+                ],
+                "properties": {
+                  "grant_type": {
+                    "type": "string",
+                    "example": "urn:ietf:params:oauth:grant-type:token-exchange"
+                  },
+                  "client_id": {
+                    "type": "string"
+                  },
+                  "client_secret": {
+                    "type": "string"
+                  },
+                  "subject_token": {
+                    "type": "string"
+                  },
+                  "subject_token_type": {
+                    "type": "string",
+                    "example": "urn:ietf:params:oauth:token-type:access_token"
+                  },
+                  "audience": {
+                    "type": "string",
+                    "enum": [
+                      "jsonhub-api"
+                    ],
+                    "example": "jsonhub-api"
+                  },
+                  "subject_audience": {
+                    "type": "string",
+                    "example": "idea-forge-mcp"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "security": []
+      }
+    },
+    "/api/me/api-tokens": {
+      "get": {
+        "operationId": "api_meapi-tokens_get_collection",
+        "tags": [
+          "personal access token"
+        ],
+        "responses": {
+          "200": {
+            "description": "personal access token collection",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "description": "personal.access.token.jsonhal-personal_access_token.read collection.",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/HalCollectionBaseSchema"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "_embedded": {
+                          "additionalProperties": {
+                            "type": "array",
+                            "items": {
+                              "$ref": "#/components/schemas/personal.access.token.jsonhal-personal_access_token.read"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "links": {}
+          }
+        },
+        "summary": "Retrieves the collection of personal access token resources.",
+        "description": "Retrieves the collection of personal access token resources.",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The collection page number",
+            "required": false,
+            "deprecated": false,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The number of items per page",
+            "required": false,
+            "deprecated": false,
+            "schema": {
+              "type": "integer",
+              "default": 30,
+              "minimum": 0,
+              "maximum": 30
+            },
+            "style": "form",
+            "explode": true
+          }
+        ]
+      },
+      "post": {
+        "operationId": "api_meapi-tokens_post",
+        "tags": [
+          "personal access token"
+        ],
+        "responses": {
+          "201": {
+            "description": "personal access token resource created",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/personal.access.token.jsonhal-personal_access_token.read_personal_access_token.create.read"
+                }
+              }
+            },
+            "links": {}
+          },
+          "400": {
+            "description": "Invalid input",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "links": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "links": {}
+          },
+          "422": {
+            "description": "An error occurred",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConstraintViolation"
+                }
+              }
+            },
+            "links": {}
+          }
+        },
+        "summary": "Creates a personal access token resource.",
+        "description": "Creates a personal access token resource.",
+        "parameters": [],
+        "requestBody": {
+          "description": "The new personal access token resource",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/personal.access.token-personal_access_token.write"
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "/api/me/api-tokens/{id}": {
+      "delete": {
+        "operationId": "api_meapi-tokens_id_delete",
+        "tags": [
+          "personal access token"
+        ],
+        "responses": {
+          "204": {
+            "description": "personal access token resource deleted"
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "links": {}
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "links": {}
+          }
+        },
+        "summary": "Removes the personal access token resource.",
+        "description": "Removes the personal access token resource.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "personal access token identifier",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple",
+            "explode": false
+          }
+        ]
+      },
+      "patch": {
+        "operationId": "api_meapi-tokens_id_patch",
+        "tags": [
+          "personal access token"
+        ],
+        "responses": {
+          "200": {
+            "description": "personal access token resource updated",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/personal.access.token.jsonhal-personal_access_token.read"
+                }
+              }
+            },
+            "links": {}
+          },
+          "400": {
+            "description": "Invalid input",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "links": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "links": {}
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "links": {}
+          },
+          "422": {
+            "description": "An error occurred",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConstraintViolation"
+                }
+              }
+            },
+            "links": {}
+          }
+        },
+        "summary": "Updates the personal access token resource.",
+        "description": "Updates the personal access token resource.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "personal access token identifier",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple",
+            "explode": false
+          }
+        ],
+        "requestBody": {
+          "description": "The updated personal access token resource",
+          "content": {
+            "application/merge-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/personal.access.token-personal_access_token.write.jsonMergePatch"
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    },
+    "/api/users": {
+      "post": {
+        "operationId": "api_users_post",
+        "tags": [
+          "user"
+        ],
+        "responses": {
+          "201": {
+            "description": "user resource created",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User.jsonhal-user.read"
+                }
+              }
+            },
+            "links": {}
+          },
+          "400": {
+            "description": "Invalid input",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "links": {}
+          },
+          "422": {
+            "description": "An error occurred",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConstraintViolation"
+                }
+              }
+            },
+            "links": {}
+          }
+        },
+        "summary": "Creates a user resource.",
+        "description": "Creates a user resource.",
+        "parameters": [],
+        "requestBody": {
+          "description": "The new user resource",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User-user.create"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": []
+      }
+    },
+    "/api/users/me": {
+      "get": {
+        "operationId": "api_usersme_get",
+        "tags": [
+          "user"
+        ],
+        "responses": {
+          "200": {
+            "description": "Current user quota usage.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "limits": {
+                      "$ref": "#/components/schemas/CurrentUserLimits"
+                    }
+                  },
+                  "required": [
+                    "limits"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication required."
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "links": {}
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "links": {}
+          }
+        },
+        "summary": "Get current user information",
+        "description": "Returns quota usage and limits for the authenticated user.",
+        "parameters": []
+      }
+    },
+    "/api/users/resend-activation": {
+      "post": {
+        "operationId": "api_usersresend-activation_post",
+        "tags": [
+          "user"
+        ],
+        "responses": {
+          "204": {
+            "description": "No content.",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User.jsonhal"
+                }
+              }
+            },
+            "links": {}
+          },
+          "400": {
+            "description": "Invalid input",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "links": {}
+          },
+          "422": {
+            "description": "Unprocessable entity",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConstraintViolation"
+                }
+              }
+            },
+            "links": {}
+          }
+        },
+        "summary": "Resend activation email",
+        "description": "This endpoint resends the activation email to the user.",
+        "parameters": [],
+        "requestBody": {
+          "description": "The new user resource",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User-user.resend-activation"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": []
+      }
+    },
+    "/api/users/reset-password": {
+      "post": {
+        "operationId": "api_usersreset-password_post",
+        "tags": [
+          "user"
+        ],
+        "responses": {
+          "204": {
+            "description": "No content.",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User.jsonhal-user.empty"
+                }
+              }
+            },
+            "links": {}
+          },
+          "400": {
+            "description": "Invalid input",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "links": {}
+          },
+          "422": {
+            "description": "Unprocessable entity",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConstraintViolation"
+                }
+              }
+            },
+            "links": {}
+          }
+        },
+        "summary": "Reset password (with token)",
+        "description": "This endpoint resets the password of the user using the token sent by email.",
+        "parameters": [],
+        "requestBody": {
+          "description": "The new user resource",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User-user.reset-password"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": []
+      }
+    },
+    "/api/users/send-reset-password": {
+      "post": {
+        "operationId": "api_userssend-reset-password_post",
+        "tags": [
+          "user"
+        ],
+        "responses": {
+          "204": {
+            "description": "No content.",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User.jsonhal"
+                }
+              }
+            },
+            "links": {}
+          },
+          "400": {
+            "description": "Invalid input",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "links": {}
+          },
+          "422": {
+            "description": "Unprocessable entity",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConstraintViolation"
+                }
+              }
+            },
+            "links": {}
+          }
+        },
+        "summary": "Send reset password email",
+        "description": "This endpoint sends a reset password email to the user.",
+        "parameters": [],
+        "requestBody": {
+          "description": "The new user resource",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User-user.send-reset-password"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": []
+      }
+    },
+    "/api/users/{id}": {
+      "delete": {
+        "operationId": "api_users_id_delete",
+        "tags": [
+          "user"
+        ],
+        "responses": {
+          "204": {
+            "description": "user resource deleted"
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "links": {}
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "links": {}
+          }
+        },
+        "summary": "Removes the user resource.",
+        "description": "Removes the user resource.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "user identifier",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple",
+            "explode": false
+          }
+        ]
+      },
+      "patch": {
+        "operationId": "api_users_id_patch",
+        "tags": [
+          "user"
+        ],
+        "responses": {
+          "200": {
+            "description": "user resource updated",
+            "content": {
+              "application/hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User.jsonhal-user.empty"
+                }
+              }
+            },
+            "links": {}
+          },
+          "400": {
+            "description": "Invalid input",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "links": {}
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "links": {}
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "links": {}
+          },
+          "422": {
+            "description": "An error occurred",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConstraintViolation"
+                }
+              }
+            },
+            "links": {}
+          }
+        },
+        "summary": "Updates the user resource.",
+        "description": "Updates the user resource.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "user identifier",
+            "required": true,
+            "deprecated": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple",
+            "explode": false
+          }
+        ],
+        "requestBody": {
+          "description": "The updated user resource",
+          "content": {
+            "application/merge-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/User-user.update.jsonMergePatch"
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ConstraintViolation": {
+        "type": "object",
+        "description": "Unprocessable entity",
+        "properties": {
+          "status": {
+            "default": 422,
+            "type": "integer"
+          },
+          "violations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "propertyPath": {
+                  "type": "string",
+                  "description": "The property path of the violation"
+                },
+                "message": {
+                  "type": "string",
+                  "description": "The message associated with the violation"
+                },
+                "code": {
+                  "type": "string",
+                  "description": "The code of the violation"
+                },
+                "hint": {
+                  "type": "string",
+                  "description": "An extra hint to understand the violation"
+                },
+                "payload": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "description": "The serialized payload of the violation"
+                }
+              },
+              "required": [
+                "propertyPath",
+                "message"
+              ]
+            }
+          },
+          "detail": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "type": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "title": {
+            "readOnly": true,
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "instance": {
+            "readOnly": true,
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      },
+      "CurrentUserLimitUsage": {
+        "type": "object",
+        "required": [
+          "used",
+          "limit"
+        ],
+        "properties": {
+          "used": {
+            "example": 3,
+            "type": "integer"
+          },
+          "limit": {
+            "example": 100,
+            "type": "integer"
+          }
+        }
+      },
+      "CurrentUserLimits": {
+        "type": "object",
+        "required": [
+          "entities",
+          "privateEntities",
+          "definitions"
+        ],
+        "properties": {
+          "entities": {
+            "$ref": "#/components/schemas/CurrentUserLimitUsage"
+          },
+          "privateEntities": {
+            "$ref": "#/components/schemas/CurrentUserLimitUsage"
+          },
+          "definitions": {
+            "$ref": "#/components/schemas/CurrentUserLimitUsage"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "description": "A representation of common errors.",
+        "properties": {
+          "title": {
+            "readOnly": true,
+            "description": "A short, human-readable summary of the problem.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "detail": {
+            "readOnly": true,
+            "description": "A human-readable explanation specific to this occurrence of the problem.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "examples": [
+              404
+            ],
+            "default": 400
+          },
+          "instance": {
+            "readOnly": true,
+            "description": "A URI reference that identifies the specific occurrence of the problem. It may or may not yield further information if dereferenced.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "type": {
+            "readOnly": true,
+            "description": "A URI reference that identifies the problem type",
+            "type": "string"
+          }
+        }
+      },
+      "HalCollectionBaseSchema": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/HalCollectionBaseSchemaNoPagination"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "itemsPerPage": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "_links": {
+                "properties": {
+                  "first": {
+                    "type": "object",
+                    "properties": {
+                      "href": {
+                        "type": "string",
+                        "format": "iri-reference"
+                      }
+                    }
+                  },
+                  "last": {
+                    "type": "object",
+                    "properties": {
+                      "href": {
+                        "type": "string",
+                        "format": "iri-reference"
+                      }
+                    }
+                  },
+                  "next": {
+                    "type": "object",
+                    "properties": {
+                      "href": {
+                        "type": "string",
+                        "format": "iri-reference"
+                      }
+                    }
+                  },
+                  "previous": {
+                    "type": "object",
+                    "properties": {
+                      "href": {
+                        "type": "string",
+                        "format": "iri-reference"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "HalCollectionBaseSchemaNoPagination": {
+        "type": "object",
+        "properties": {
+          "totalItems": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "_embedded": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "item": {
+                    "type": "array",
+                    "items": {}
+                  }
+                }
+              },
+              {
+                "type": "object"
+              }
+            ]
+          },
+          "_links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string",
+                    "format": "iri-reference"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "_links",
+          "_embedded"
+        ]
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uuid"
+          },
+          "email": {
+            "format": "email",
+            "externalDocs": {
+              "url": "https://schema.org/email"
+            },
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "password": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "oldPassword": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "token": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "resetPasswordLink": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "activationUrl": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "email"
+        ]
+      },
+      "User-user.create": {
+        "type": "object",
+        "description": "Create user",
+        "required": [
+          "email",
+          "password"
+        ],
+        "properties": {
+          "email": {
+            "format": "email",
+            "externalDocs": {
+              "url": "https://schema.org/email"
+            },
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "password": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "activationUrl": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      },
+      "User-user.empty": {
+        "type": "object",
+        "description": "Change user password"
+      },
+      "User-user.read": {
+        "type": "object",
+        "description": "Create user",
+        "properties": {
+          "id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uuid"
+          },
+          "email": {
+            "format": "email",
+            "externalDocs": {
+              "url": "https://schema.org/email"
+            },
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "email"
+        ]
+      },
+      "User-user.resend-activation": {
+        "type": "object",
+        "required": [
+          "email"
+        ],
+        "properties": {
+          "email": {
+            "format": "email",
+            "externalDocs": {
+              "url": "https://schema.org/email"
+            },
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "activationUrl": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      },
+      "User-user.reset-password": {
+        "type": "object",
+        "required": [
+          "password",
+          "token"
+        ],
+        "properties": {
+          "password": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "token": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      },
+      "User-user.send-reset-password": {
+        "type": "object",
+        "required": [
+          "email",
+          "resetPasswordLink"
+        ],
+        "properties": {
+          "email": {
+            "format": "email",
+            "externalDocs": {
+              "url": "https://schema.org/email"
+            },
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "resetPasswordLink": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      },
+      "User-user.update.jsonMergePatch": {
+        "type": "object",
+        "description": "Change user password",
+        "properties": {
+          "password": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "oldPassword": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      },
+      "User.jsonhal": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "_links": {
+                "type": "object",
+                "properties": {
+                  "self": {
+                    "type": "object",
+                    "properties": {
+                      "href": {
+                        "type": "string",
+                        "format": "iri-reference"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/User"
+          }
+        ]
+      },
+      "User.jsonhal-user.empty": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "_links": {
+                "type": "object",
+                "properties": {
+                  "self": {
+                    "type": "object",
+                    "properties": {
+                      "href": {
+                        "type": "string",
+                        "format": "iri-reference"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/User-user.empty"
+          }
+        ],
+        "description": "Change user password"
+      },
+      "User.jsonhal-user.read": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "_links": {
+                "type": "object",
+                "properties": {
+                  "self": {
+                    "type": "object",
+                    "properties": {
+                      "href": {
+                        "type": "string",
+                        "format": "iri-reference"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/User-user.read"
+          }
+        ],
+        "description": "Create user"
+      },
+      "definition-definition.read": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uuid"
+          },
+          "slug": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "jsonSchema": {
+            "type": "object",
+            "format": "json-schema"
+          },
+          "parentEntity": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/entity-definition.read"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "isOwnedByCurrentUser": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "jsonSchema"
+        ]
+      },
+      "definition-definition.write": {
+        "type": "object",
+        "properties": {
+          "slug": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "jsonSchema": {
+            "type": "object",
+            "format": "json-schema"
+          },
+          "parentEntity": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "iri-reference",
+            "example": "https://example.com/"
+          }
+        },
+        "required": [
+          "jsonSchema"
+        ]
+      },
+      "definition-definition.write.jsonMergePatch": {
+        "type": "object",
+        "properties": {
+          "slug": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "jsonSchema": {
+            "type": "object",
+            "format": "json-schema"
+          },
+          "parentEntity": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "iri-reference",
+            "example": "https://example.com/"
+          }
+        }
+      },
+      "definition-entity.read_entity.read.parent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uuid"
+          },
+          "slug": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      },
+      "definition.jsonhal-definition.read": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "_links": {
+                "type": "object",
+                "properties": {
+                  "self": {
+                    "type": "object",
+                    "properties": {
+                      "href": {
+                        "type": "string",
+                        "format": "iri-reference"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/definition-definition.read"
+          }
+        ]
+      },
+      "entity-definition.read": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uuid"
+          },
+          "slug": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      },
+      "entity-entity.create": {
+        "type": "object",
+        "properties": {
+          "slug": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "data": {
+            "type": "object"
+          },
+          "definition": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "iri-reference",
+            "example": "https://example.com/"
+          },
+          "parent": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "iri-reference"
+          },
+          "private": {
+            "default": false,
+            "type": "boolean"
+          }
+        }
+      },
+      "entity-entity.read_entity.read.parent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uuid"
+          },
+          "slug": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "data": {
+            "type": "object"
+          },
+          "definition": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/definition-entity.read_entity.read.parent"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "parent": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "iri-reference"
+          },
+          "private": {
+            "default": false,
+            "type": "boolean"
+          },
+          "isOwnedByCurrentUser": {
+            "default": false,
+            "type": "boolean"
+          }
+        }
+      },
+      "entity-entity.update.jsonMergePatch": {
+        "type": "object",
+        "properties": {
+          "slug": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "data": {
+            "type": "object"
+          },
+          "parent": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "iri-reference"
+          },
+          "private": {
+            "default": false,
+            "type": "boolean"
+          }
+        }
+      },
+      "entity.jsonhal-entity.read_entity.read.parent": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "_links": {
+                "type": "object",
+                "properties": {
+                  "self": {
+                    "type": "object",
+                    "properties": {
+                      "href": {
+                        "type": "string",
+                        "format": "iri-reference"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/entity-entity.read_entity.read.parent"
+          }
+        ]
+      },
+      "personal.access.token-personal_access_token.read": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uuid"
+          },
+          "name": {
+            "maxLength": 64,
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "tokenPreview": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "expiresAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "createdAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          }
+        }
+      },
+      "personal.access.token-personal_access_token.read_personal_access_token.create.read": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "uuid"
+          },
+          "name": {
+            "maxLength": 64,
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "tokenPreview": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "token": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "expiresAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "createdAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          }
+        }
+      },
+      "personal.access.token-personal_access_token.write": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "maxLength": 64,
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "expiresAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          }
+        }
+      },
+      "personal.access.token-personal_access_token.write.jsonMergePatch": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "maxLength": 64,
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "expiresAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          }
+        }
+      },
+      "personal.access.token.jsonhal-personal_access_token.read": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "_links": {
+                "type": "object",
+                "properties": {
+                  "self": {
+                    "type": "object",
+                    "properties": {
+                      "href": {
+                        "type": "string",
+                        "format": "iri-reference"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/personal.access.token-personal_access_token.read"
+          }
+        ]
+      },
+      "personal.access.token.jsonhal-personal_access_token.read_personal_access_token.create.read": {
+        "allOf": [
+          {
+            "type": "object",
+            "properties": {
+              "_links": {
+                "type": "object",
+                "properties": {
+                  "self": {
+                    "type": "object",
+                    "properties": {
+                      "href": {
+                        "type": "string",
+                        "format": "iri-reference"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "$ref": "#/components/schemas/personal.access.token-personal_access_token.read_personal_access_token.create.read"
+          }
+        ]
+      }
+    },
+    "responses": {},
+    "parameters": {},
+    "examples": {},
+    "requestBodies": {},
+    "headers": {},
+    "securitySchemes": {
+      "access_token": {
+        "type": "http",
+        "description": "",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "security": [
+    {
+      "access_token": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "user",
+      "description": "Resource 'user' operations."
+    },
+    {
+      "name": "definition",
+      "description": "Resource 'definition' operations."
+    },
+    {
+      "name": "entity",
+      "description": "Resource 'entity' operations."
+    },
+    {
+      "name": "personal access token",
+      "description": "Resource 'personal access token' operations."
+    }
+  ],
+  "webhooks": {}
+}
