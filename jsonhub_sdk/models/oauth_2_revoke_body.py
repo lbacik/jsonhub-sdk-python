@@ -16,7 +16,7 @@ class Oauth2RevokeBody:
         token (str):
         client_id (str):
         client_secret (Union[Unset, str]):
-        audience (Union[Unset, str]):  Example: idea-forge-mcp.
+        audience (Union[Unset, str]):  Example: mcp-resource-server.
     """
 
     token: str

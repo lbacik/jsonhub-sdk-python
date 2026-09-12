@@ -20,7 +20,7 @@ class Oauth2TokenExchangeBody:
         subject_token_type (str):  Example: urn:ietf:params:oauth:token-type:access_token.
         audience (Oauth2TokenExchangeBodyAudience):  Example: jsonhub-api.
         client_secret (Union[Unset, str]):
-        subject_audience (Union[Unset, str]):  Example: idea-forge-mcp.
+        subject_audience (Union[Unset, str]):  Example: mcp-resource-server.
     """
 
     grant_type: str

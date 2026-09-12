@@ -19,34 +19,36 @@ T = TypeVar("T", bound="EntityEntityReadEntityReadParent")
 class EntityEntityReadEntityReadParent:
     """
     Attributes:
-        id (Union[None, UUID, Unset]):
+        id (UUID):
+        definition (Union['DefinitionEntityReadEntityReadParent', None]):
+        is_owned_by_current_user (bool):  Default: False.
         slug (Union[None, Unset, str]):
         data (Union[Unset, EntityEntityReadEntityReadParentData]):
-        definition (Union['DefinitionEntityReadEntityReadParent', None, Unset]):
         parent (Union[None, Unset, str]):
         private (Union[Unset, bool]):  Default: False.
-        is_owned_by_current_user (Union[Unset, bool]):  Default: False.
     """
 
-    id: Union[None, UUID, Unset] = UNSET
+    id: UUID
+    definition: Union["DefinitionEntityReadEntityReadParent", None]
+    is_owned_by_current_user: bool = False
     slug: Union[None, Unset, str] = UNSET
     data: Union[Unset, "EntityEntityReadEntityReadParentData"] = UNSET
-    definition: Union["DefinitionEntityReadEntityReadParent", None, Unset] = UNSET
     parent: Union[None, Unset, str] = UNSET
     private: Union[Unset, bool] = False
-    is_owned_by_current_user: Union[Unset, bool] = False
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.definition_entity_read_entity_read_parent import DefinitionEntityReadEntityReadParent
 
-        id: Union[None, Unset, str]
-        if isinstance(self.id, Unset):
-            id = UNSET
-        elif isinstance(self.id, UUID):
-            id = str(self.id)
+        id = str(self.id)
+
+        definition: Union[None, dict[str, Any]]
+        if isinstance(self.definition, DefinitionEntityReadEntityReadParent):
+            definition = self.definition.to_dict()
         else:
-            id = self.id
+            definition = self.definition
+
+        is_owned_by_current_user = self.is_owned_by_current_user
 
         slug: Union[None, Unset, str]
         if isinstance(self.slug, Unset):
@@ -58,14 +60,6 @@ class EntityEntityReadEntityReadParent:
         if not isinstance(self.data, Unset):
             data = self.data.to_dict()
 
-        definition: Union[None, Unset, dict[str, Any]]
-        if isinstance(self.definition, Unset):
-            definition = UNSET
-        elif isinstance(self.definition, DefinitionEntityReadEntityReadParent):
-            definition = self.definition.to_dict()
-        else:
-            definition = self.definition
-
         parent: Union[None, Unset, str]
         if isinstance(self.parent, Unset):
             parent = UNSET
@@ -74,25 +68,23 @@ class EntityEntityReadEntityReadParent:
 
         private = self.private
 
-        is_owned_by_current_user = self.is_owned_by_current_user
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if id is not UNSET:
-            field_dict["id"] = id
+        field_dict.update(
+            {
+                "id": id,
+                "definition": definition,
+                "isOwnedByCurrentUser": is_owned_by_current_user,
+            }
+        )
         if slug is not UNSET:
             field_dict["slug"] = slug
         if data is not UNSET:
             field_dict["data"] = data
-        if definition is not UNSET:
-            field_dict["definition"] = definition
         if parent is not UNSET:
             field_dict["parent"] = parent
         if private is not UNSET:
             field_dict["private"] = private
-        if is_owned_by_current_user is not UNSET:
-            field_dict["isOwnedByCurrentUser"] = is_owned_by_current_user
 
         return field_dict
 
@@ -102,23 +94,24 @@ class EntityEntityReadEntityReadParent:
         from ..models.entity_entity_read_entity_read_parent_data import EntityEntityReadEntityReadParentData
 
         d = dict(src_dict)
+        id = UUID(d.pop("id"))
 
-        def _parse_id(data: object) -> Union[None, UUID, Unset]:
+        def _parse_definition(data: object) -> Union["DefinitionEntityReadEntityReadParent", None]:
             if data is None:
                 return data
-            if isinstance(data, Unset):
-                return data
             try:
-                if not isinstance(data, str):
+                if not isinstance(data, dict):
                     raise TypeError()
-                id_type_0 = UUID(data)
+                definition_type_0 = DefinitionEntityReadEntityReadParent.from_dict(data)
 
-                return id_type_0
+                return definition_type_0
             except:  # noqa: E722
                 pass
-            return cast(Union[None, UUID, Unset], data)
+            return cast(Union["DefinitionEntityReadEntityReadParent", None], data)
 
-        id = _parse_id(d.pop("id", UNSET))
+        definition = _parse_definition(d.pop("definition"))
+
+        is_owned_by_current_user = d.pop("isOwnedByCurrentUser")
 
         def _parse_slug(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -136,23 +129,6 @@ class EntityEntityReadEntityReadParent:
         else:
             data = EntityEntityReadEntityReadParentData.from_dict(_data)
 
-        def _parse_definition(data: object) -> Union["DefinitionEntityReadEntityReadParent", None, Unset]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, dict):
-                    raise TypeError()
-                definition_type_0 = DefinitionEntityReadEntityReadParent.from_dict(data)
-
-                return definition_type_0
-            except:  # noqa: E722
-                pass
-            return cast(Union["DefinitionEntityReadEntityReadParent", None, Unset], data)
-
-        definition = _parse_definition(d.pop("definition", UNSET))
-
         def _parse_parent(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -164,16 +140,14 @@ class EntityEntityReadEntityReadParent:
 
         private = d.pop("private", UNSET)
 
-        is_owned_by_current_user = d.pop("isOwnedByCurrentUser", UNSET)
-
         entity_entity_read_entity_read_parent = cls(
             id=id,
+            definition=definition,
+            is_owned_by_current_user=is_owned_by_current_user,
             slug=slug,
             data=data,
-            definition=definition,
             parent=parent,
             private=private,
-            is_owned_by_current_user=is_owned_by_current_user,
         )
 
         entity_entity_read_entity_read_parent.additional_properties = d

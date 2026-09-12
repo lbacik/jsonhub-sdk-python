@@ -14,6 +14,7 @@ def _get_kwargs(
     qid: Union[Unset, str] = UNSET,
     private: Union[Unset, bool] = UNSET,
     owned: Union[Unset, bool] = UNSET,
+    root: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = 1,
     limit: Union[Unset, int] = 10,
     properties: Union[Unset, list[str]] = UNSET,
@@ -27,6 +28,8 @@ def _get_kwargs(
     params["private"] = private
 
     params["owned"] = owned
+
+    params["root"] = root
 
     params["page"] = page
 
@@ -84,6 +87,7 @@ def sync_detailed(
     qid: Union[Unset, str] = UNSET,
     private: Union[Unset, bool] = UNSET,
     owned: Union[Unset, bool] = UNSET,
+    root: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = 1,
     limit: Union[Unset, int] = 10,
     properties: Union[Unset, list[str]] = UNSET,
@@ -92,12 +96,13 @@ def sync_detailed(
 ) -> Response[ApiEntitiesGetCollectionResponse200]:
     """Retrieves the collection of entity resources.
 
-     Retrieves the collection of entity resources.
+     Results are ordered deterministically, oldest first.
 
     Args:
         qid (Union[Unset, str]):
         private (Union[Unset, bool]):
         owned (Union[Unset, bool]):
+        root (Union[Unset, bool]):
         page (Union[Unset, int]):  Default: 1.
         limit (Union[Unset, int]):  Default: 10.
         properties (Union[Unset, list[str]]):
@@ -116,6 +121,7 @@ def sync_detailed(
         qid=qid,
         private=private,
         owned=owned,
+        root=root,
         page=page,
         limit=limit,
         properties=properties,
@@ -136,6 +142,7 @@ def sync(
     qid: Union[Unset, str] = UNSET,
     private: Union[Unset, bool] = UNSET,
     owned: Union[Unset, bool] = UNSET,
+    root: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = 1,
     limit: Union[Unset, int] = 10,
     properties: Union[Unset, list[str]] = UNSET,
@@ -144,12 +151,13 @@ def sync(
 ) -> Optional[ApiEntitiesGetCollectionResponse200]:
     """Retrieves the collection of entity resources.
 
-     Retrieves the collection of entity resources.
+     Results are ordered deterministically, oldest first.
 
     Args:
         qid (Union[Unset, str]):
         private (Union[Unset, bool]):
         owned (Union[Unset, bool]):
+        root (Union[Unset, bool]):
         page (Union[Unset, int]):  Default: 1.
         limit (Union[Unset, int]):  Default: 10.
         properties (Union[Unset, list[str]]):
@@ -169,6 +177,7 @@ def sync(
         qid=qid,
         private=private,
         owned=owned,
+        root=root,
         page=page,
         limit=limit,
         properties=properties,
@@ -183,6 +192,7 @@ async def asyncio_detailed(
     qid: Union[Unset, str] = UNSET,
     private: Union[Unset, bool] = UNSET,
     owned: Union[Unset, bool] = UNSET,
+    root: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = 1,
     limit: Union[Unset, int] = 10,
     properties: Union[Unset, list[str]] = UNSET,
@@ -191,12 +201,13 @@ async def asyncio_detailed(
 ) -> Response[ApiEntitiesGetCollectionResponse200]:
     """Retrieves the collection of entity resources.
 
-     Retrieves the collection of entity resources.
+     Results are ordered deterministically, oldest first.
 
     Args:
         qid (Union[Unset, str]):
         private (Union[Unset, bool]):
         owned (Union[Unset, bool]):
+        root (Union[Unset, bool]):
         page (Union[Unset, int]):  Default: 1.
         limit (Union[Unset, int]):  Default: 10.
         properties (Union[Unset, list[str]]):
@@ -215,6 +226,7 @@ async def asyncio_detailed(
         qid=qid,
         private=private,
         owned=owned,
+        root=root,
         page=page,
         limit=limit,
         properties=properties,
@@ -233,6 +245,7 @@ async def asyncio(
     qid: Union[Unset, str] = UNSET,
     private: Union[Unset, bool] = UNSET,
     owned: Union[Unset, bool] = UNSET,
+    root: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = 1,
     limit: Union[Unset, int] = 10,
     properties: Union[Unset, list[str]] = UNSET,
@@ -241,12 +254,13 @@ async def asyncio(
 ) -> Optional[ApiEntitiesGetCollectionResponse200]:
     """Retrieves the collection of entity resources.
 
-     Retrieves the collection of entity resources.
+     Results are ordered deterministically, oldest first.
 
     Args:
         qid (Union[Unset, str]):
         private (Union[Unset, bool]):
         owned (Union[Unset, bool]):
+        root (Union[Unset, bool]):
         page (Union[Unset, int]):  Default: 1.
         limit (Union[Unset, int]):  Default: 10.
         properties (Union[Unset, list[str]]):
@@ -267,6 +281,7 @@ async def asyncio(
             qid=qid,
             private=private,
             owned=owned,
+            root=root,
             page=page,
             limit=limit,
             properties=properties,

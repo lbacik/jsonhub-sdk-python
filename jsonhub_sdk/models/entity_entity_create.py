@@ -17,21 +17,24 @@ T = TypeVar("T", bound="EntityEntityCreate")
 class EntityEntityCreate:
     """
     Attributes:
+        definition (Union[None, str]):  Example: https://example.com/.
         slug (Union[None, Unset, str]):
         data (Union[Unset, EntityEntityCreateData]):
-        definition (Union[None, Unset, str]):  Example: https://example.com/.
         parent (Union[None, Unset, str]):
         private (Union[Unset, bool]):  Default: False.
     """
 
+    definition: Union[None, str]
     slug: Union[None, Unset, str] = UNSET
     data: Union[Unset, "EntityEntityCreateData"] = UNSET
-    definition: Union[None, Unset, str] = UNSET
     parent: Union[None, Unset, str] = UNSET
     private: Union[Unset, bool] = False
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        definition: Union[None, str]
+        definition = self.definition
+
         slug: Union[None, Unset, str]
         if isinstance(self.slug, Unset):
             slug = UNSET
@@ -41,12 +44,6 @@ class EntityEntityCreate:
         data: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.data, Unset):
             data = self.data.to_dict()
-
-        definition: Union[None, Unset, str]
-        if isinstance(self.definition, Unset):
-            definition = UNSET
-        else:
-            definition = self.definition
 
         parent: Union[None, Unset, str]
         if isinstance(self.parent, Unset):
@@ -58,13 +55,15 @@ class EntityEntityCreate:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
+        field_dict.update(
+            {
+                "definition": definition,
+            }
+        )
         if slug is not UNSET:
             field_dict["slug"] = slug
         if data is not UNSET:
             field_dict["data"] = data
-        if definition is not UNSET:
-            field_dict["definition"] = definition
         if parent is not UNSET:
             field_dict["parent"] = parent
         if private is not UNSET:
@@ -77,6 +76,13 @@ class EntityEntityCreate:
         from ..models.entity_entity_create_data import EntityEntityCreateData
 
         d = dict(src_dict)
+
+        def _parse_definition(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        definition = _parse_definition(d.pop("definition"))
 
         def _parse_slug(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -94,15 +100,6 @@ class EntityEntityCreate:
         else:
             data = EntityEntityCreateData.from_dict(_data)
 
-        def _parse_definition(data: object) -> Union[None, Unset, str]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, str], data)
-
-        definition = _parse_definition(d.pop("definition", UNSET))
-
         def _parse_parent(data: object) -> Union[None, Unset, str]:
             if data is None:
                 return data
@@ -115,9 +112,9 @@ class EntityEntityCreate:
         private = d.pop("private", UNSET)
 
         entity_entity_create = cls(
+            definition=definition,
             slug=slug,
             data=data,
-            definition=definition,
             parent=parent,
             private=private,
         )

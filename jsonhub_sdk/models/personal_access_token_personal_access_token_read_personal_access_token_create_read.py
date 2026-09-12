@@ -16,48 +16,36 @@ T = TypeVar("T", bound="PersonalAccessTokenPersonalAccessTokenReadPersonalAccess
 class PersonalAccessTokenPersonalAccessTokenReadPersonalAccessTokenCreateRead:
     """
     Attributes:
-        id (Union[None, UUID, Unset]):
+        id (UUID):
+        token_preview (str):
+        token (str):
+        created_at (datetime.datetime):
         name (Union[None, Unset, str]):
-        token_preview (Union[None, Unset, str]):
-        token (Union[None, Unset, str]):
         expires_at (Union[None, Unset, datetime.datetime]):
-        created_at (Union[None, Unset, datetime.datetime]):
     """
 
-    id: Union[None, UUID, Unset] = UNSET
+    id: UUID
+    token_preview: str
+    token: str
+    created_at: datetime.datetime
     name: Union[None, Unset, str] = UNSET
-    token_preview: Union[None, Unset, str] = UNSET
-    token: Union[None, Unset, str] = UNSET
     expires_at: Union[None, Unset, datetime.datetime] = UNSET
-    created_at: Union[None, Unset, datetime.datetime] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id: Union[None, Unset, str]
-        if isinstance(self.id, Unset):
-            id = UNSET
-        elif isinstance(self.id, UUID):
-            id = str(self.id)
-        else:
-            id = self.id
+        id = str(self.id)
+
+        token_preview = self.token_preview
+
+        token = self.token
+
+        created_at = self.created_at.isoformat()
 
         name: Union[None, Unset, str]
         if isinstance(self.name, Unset):
             name = UNSET
         else:
             name = self.name
-
-        token_preview: Union[None, Unset, str]
-        if isinstance(self.token_preview, Unset):
-            token_preview = UNSET
-        else:
-            token_preview = self.token_preview
-
-        token: Union[None, Unset, str]
-        if isinstance(self.token, Unset):
-            token = UNSET
-        else:
-            token = self.token
 
         expires_at: Union[None, Unset, str]
         if isinstance(self.expires_at, Unset):
@@ -67,52 +55,33 @@ class PersonalAccessTokenPersonalAccessTokenReadPersonalAccessTokenCreateRead:
         else:
             expires_at = self.expires_at
 
-        created_at: Union[None, Unset, str]
-        if isinstance(self.created_at, Unset):
-            created_at = UNSET
-        elif isinstance(self.created_at, datetime.datetime):
-            created_at = self.created_at.isoformat()
-        else:
-            created_at = self.created_at
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if id is not UNSET:
-            field_dict["id"] = id
+        field_dict.update(
+            {
+                "id": id,
+                "tokenPreview": token_preview,
+                "token": token,
+                "createdAt": created_at,
+            }
+        )
         if name is not UNSET:
             field_dict["name"] = name
-        if token_preview is not UNSET:
-            field_dict["tokenPreview"] = token_preview
-        if token is not UNSET:
-            field_dict["token"] = token
         if expires_at is not UNSET:
             field_dict["expiresAt"] = expires_at
-        if created_at is not UNSET:
-            field_dict["createdAt"] = created_at
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
+        id = UUID(d.pop("id"))
 
-        def _parse_id(data: object) -> Union[None, UUID, Unset]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                id_type_0 = UUID(data)
+        token_preview = d.pop("tokenPreview")
 
-                return id_type_0
-            except:  # noqa: E722
-                pass
-            return cast(Union[None, UUID, Unset], data)
+        token = d.pop("token")
 
-        id = _parse_id(d.pop("id", UNSET))
+        created_at = isoparse(d.pop("createdAt"))
 
         def _parse_name(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -122,24 +91,6 @@ class PersonalAccessTokenPersonalAccessTokenReadPersonalAccessTokenCreateRead:
             return cast(Union[None, Unset, str], data)
 
         name = _parse_name(d.pop("name", UNSET))
-
-        def _parse_token_preview(data: object) -> Union[None, Unset, str]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, str], data)
-
-        token_preview = _parse_token_preview(d.pop("tokenPreview", UNSET))
-
-        def _parse_token(data: object) -> Union[None, Unset, str]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, str], data)
-
-        token = _parse_token(d.pop("token", UNSET))
 
         def _parse_expires_at(data: object) -> Union[None, Unset, datetime.datetime]:
             if data is None:
@@ -158,30 +109,13 @@ class PersonalAccessTokenPersonalAccessTokenReadPersonalAccessTokenCreateRead:
 
         expires_at = _parse_expires_at(d.pop("expiresAt", UNSET))
 
-        def _parse_created_at(data: object) -> Union[None, Unset, datetime.datetime]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                created_at_type_0 = isoparse(data)
-
-                return created_at_type_0
-            except:  # noqa: E722
-                pass
-            return cast(Union[None, Unset, datetime.datetime], data)
-
-        created_at = _parse_created_at(d.pop("createdAt", UNSET))
-
         personal_access_token_personal_access_token_read_personal_access_token_create_read = cls(
             id=id,
-            name=name,
             token_preview=token_preview,
             token=token,
-            expires_at=expires_at,
             created_at=created_at,
+            name=name,
+            expires_at=expires_at,
         )
 
         personal_access_token_personal_access_token_read_personal_access_token_create_read.additional_properties = d

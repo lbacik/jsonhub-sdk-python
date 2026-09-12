@@ -14,22 +14,16 @@ T = TypeVar("T", bound="EntityDefinitionRead")
 class EntityDefinitionRead:
     """
     Attributes:
-        id (Union[None, UUID, Unset]):
+        id (UUID):
         slug (Union[None, Unset, str]):
     """
 
-    id: Union[None, UUID, Unset] = UNSET
+    id: UUID
     slug: Union[None, Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        id: Union[None, Unset, str]
-        if isinstance(self.id, Unset):
-            id = UNSET
-        elif isinstance(self.id, UUID):
-            id = str(self.id)
-        else:
-            id = self.id
+        id = str(self.id)
 
         slug: Union[None, Unset, str]
         if isinstance(self.slug, Unset):
@@ -39,9 +33,11 @@ class EntityDefinitionRead:
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if id is not UNSET:
-            field_dict["id"] = id
+        field_dict.update(
+            {
+                "id": id,
+            }
+        )
         if slug is not UNSET:
             field_dict["slug"] = slug
 
@@ -50,23 +46,7 @@ class EntityDefinitionRead:
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-
-        def _parse_id(data: object) -> Union[None, UUID, Unset]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                id_type_0 = UUID(data)
-
-                return id_type_0
-            except:  # noqa: E722
-                pass
-            return cast(Union[None, UUID, Unset], data)
-
-        id = _parse_id(d.pop("id", UNSET))
+        id = UUID(d.pop("id"))
 
         def _parse_slug(data: object) -> Union[None, Unset, str]:
             if data is None:

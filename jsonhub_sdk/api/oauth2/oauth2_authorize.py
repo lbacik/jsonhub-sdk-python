@@ -98,13 +98,14 @@ def sync_detailed(
     Args:
         response_type (Oauth2AuthorizeResponseType):  Example: code.
         client_id (str):  Example: jh_client_id.
-        redirect_uri (str):  Example: https://chat.openai.com/aip/g-abc/oauth/callback.
-        scope (str):  Example: idea-forge-mcp.
+        redirect_uri (str):  Example: https://client.example.test/callback.
+        scope (str):  Example: jsonhub:entities:read jsonhub:entities:write
+            jsonhub:definitions:write.
         state (str):  Example: client-csrf-state.
         code_challenge (str):
         code_challenge_method (Oauth2AuthorizeCodeChallengeMethod):  Example: S256.
-        resource (Union[Unset, str]):  Example: idea-forge-mcp.
-        audience (Union[Unset, str]):  Example: idea-forge-mcp.
+        resource (Union[Unset, str]):  Example: jsonhub-api.
+        audience (Union[Unset, str]):  Example: jsonhub-api.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -154,13 +155,14 @@ async def asyncio_detailed(
     Args:
         response_type (Oauth2AuthorizeResponseType):  Example: code.
         client_id (str):  Example: jh_client_id.
-        redirect_uri (str):  Example: https://chat.openai.com/aip/g-abc/oauth/callback.
-        scope (str):  Example: idea-forge-mcp.
+        redirect_uri (str):  Example: https://client.example.test/callback.
+        scope (str):  Example: jsonhub:entities:read jsonhub:entities:write
+            jsonhub:definitions:write.
         state (str):  Example: client-csrf-state.
         code_challenge (str):
         code_challenge_method (Oauth2AuthorizeCodeChallengeMethod):  Example: S256.
-        resource (Union[Unset, str]):  Example: idea-forge-mcp.
-        audience (Union[Unset, str]):  Example: idea-forge-mcp.
+        resource (Union[Unset, str]):  Example: jsonhub-api.
+        audience (Union[Unset, str]):  Example: jsonhub-api.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

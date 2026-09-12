@@ -14,11 +14,11 @@ T = TypeVar("T", bound="Oauth2RegisterBody")
 class Oauth2RegisterBody:
     """
     Attributes:
-        redirect_uris (list[str]):  Example: ['https://chat.openai.com/aip/g-abc/oauth/callback'].
-        client_name (Union[Unset, str]):  Example: ChatGPT Idea Forge MCP.
+        redirect_uris (list[str]):  Example: ['https://client.example.test/callback'].
+        client_name (Union[Unset, str]):  Example: Generic MCP Client.
         grant_types (Union[Unset, list[str]]):  Example: ['authorization_code'].
         response_types (Union[Unset, list[str]]):  Example: ['code'].
-        scope (Union[Unset, str]):  Example: idea-forge-mcp.
+        scope (Union[Unset, str]):  Example: mcp jsonhub:entities:write.
         token_endpoint_auth_method (Union[Unset, Oauth2RegisterBodyTokenEndpointAuthMethod]):  Example: none.
     """
 

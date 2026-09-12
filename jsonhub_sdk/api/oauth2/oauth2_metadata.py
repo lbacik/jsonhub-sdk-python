@@ -49,7 +49,7 @@ def sync_detailed(
 ) -> Response[Oauth2MetadataResponse200]:
     """OAuth2 authorization server metadata
 
-     Discovery document for ChatGPT/MCP OAuth2 Authorization Code with PKCE, JWKS, revocation, and token
+     Discovery document for MCP OAuth2 Authorization Code with PKCE, JWKS, revocation, and token
     exchange.
 
     Raises:
@@ -75,7 +75,7 @@ def sync(
 ) -> Optional[Oauth2MetadataResponse200]:
     """OAuth2 authorization server metadata
 
-     Discovery document for ChatGPT/MCP OAuth2 Authorization Code with PKCE, JWKS, revocation, and token
+     Discovery document for MCP OAuth2 Authorization Code with PKCE, JWKS, revocation, and token
     exchange.
 
     Raises:
@@ -97,7 +97,7 @@ async def asyncio_detailed(
 ) -> Response[Oauth2MetadataResponse200]:
     """OAuth2 authorization server metadata
 
-     Discovery document for ChatGPT/MCP OAuth2 Authorization Code with PKCE, JWKS, revocation, and token
+     Discovery document for MCP OAuth2 Authorization Code with PKCE, JWKS, revocation, and token
     exchange.
 
     Raises:
@@ -121,7 +121,7 @@ async def asyncio(
 ) -> Optional[Oauth2MetadataResponse200]:
     """OAuth2 authorization server metadata
 
-     Discovery document for ChatGPT/MCP OAuth2 Authorization Code with PKCE, JWKS, revocation, and token
+     Discovery document for MCP OAuth2 Authorization Code with PKCE, JWKS, revocation, and token
     exchange.
 
     Raises:

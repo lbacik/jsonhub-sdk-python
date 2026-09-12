@@ -1,5 +1,6 @@
 from collections.abc import Mapping
 from typing import TYPE_CHECKING, Any, TypeVar
+from uuid import UUID
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
@@ -15,19 +16,29 @@ T = TypeVar("T", bound="ApiUsersmeGetResponse200")
 class ApiUsersmeGetResponse200:
     """
     Attributes:
+        id (UUID):
+        email (str):
         limits (CurrentUserLimits):
     """
 
+    id: UUID
+    email: str
     limits: "CurrentUserLimits"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        id = str(self.id)
+
+        email = self.email
+
         limits = self.limits.to_dict()
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
+                "id": id,
+                "email": email,
                 "limits": limits,
             }
         )
@@ -39,9 +50,15 @@ class ApiUsersmeGetResponse200:
         from ..models.current_user_limits import CurrentUserLimits
 
         d = dict(src_dict)
+        id = UUID(d.pop("id"))
+
+        email = d.pop("email")
+
         limits = CurrentUserLimits.from_dict(d.pop("limits"))
 
         api_usersme_get_response_200 = cls(
+            id=id,
+            email=email,
             limits=limits,
         )
 

@@ -24,7 +24,9 @@ class Oauth2MetadataResponse200:
         grant_types_supported (Union[Unset, list[str]]):  Example: ['authorization_code', 'urn:ietf:params:oauth:grant-
             type:token-exchange'].
         code_challenge_methods_supported (Union[Unset, list[str]]):  Example: ['S256'].
-        scopes_supported (Union[Unset, list[str]]):  Example: ['idea-forge-mcp'].
+        audiences_supported (Union[Unset, list[str]]):  Example: ['jsonhub-api'].
+        scopes_supported (Union[Unset, list[str]]):  Example: ['mcp', 'frontend', 'jsonhub:entities:read',
+            'jsonhub:entities:write', 'jsonhub:definitions:write'].
     """
 
     issuer: Union[Unset, str] = UNSET
@@ -37,6 +39,7 @@ class Oauth2MetadataResponse200:
     response_types_supported: Union[Unset, list[str]] = UNSET
     grant_types_supported: Union[Unset, list[str]] = UNSET
     code_challenge_methods_supported: Union[Unset, list[str]] = UNSET
+    audiences_supported: Union[Unset, list[str]] = UNSET
     scopes_supported: Union[Unset, list[str]] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -67,6 +70,10 @@ class Oauth2MetadataResponse200:
         if not isinstance(self.code_challenge_methods_supported, Unset):
             code_challenge_methods_supported = self.code_challenge_methods_supported
 
+        audiences_supported: Union[Unset, list[str]] = UNSET
+        if not isinstance(self.audiences_supported, Unset):
+            audiences_supported = self.audiences_supported
+
         scopes_supported: Union[Unset, list[str]] = UNSET
         if not isinstance(self.scopes_supported, Unset):
             scopes_supported = self.scopes_supported
@@ -94,6 +101,8 @@ class Oauth2MetadataResponse200:
             field_dict["grant_types_supported"] = grant_types_supported
         if code_challenge_methods_supported is not UNSET:
             field_dict["code_challenge_methods_supported"] = code_challenge_methods_supported
+        if audiences_supported is not UNSET:
+            field_dict["audiences_supported"] = audiences_supported
         if scopes_supported is not UNSET:
             field_dict["scopes_supported"] = scopes_supported
 
@@ -122,6 +131,8 @@ class Oauth2MetadataResponse200:
 
         code_challenge_methods_supported = cast(list[str], d.pop("code_challenge_methods_supported", UNSET))
 
+        audiences_supported = cast(list[str], d.pop("audiences_supported", UNSET))
+
         scopes_supported = cast(list[str], d.pop("scopes_supported", UNSET))
 
         oauth_2_metadata_response_200 = cls(
@@ -135,6 +146,7 @@ class Oauth2MetadataResponse200:
             response_types_supported=response_types_supported,
             grant_types_supported=grant_types_supported,
             code_challenge_methods_supported=code_challenge_methods_supported,
+            audiences_supported=audiences_supported,
             scopes_supported=scopes_supported,
         )
 

@@ -13,6 +13,7 @@ def _get_kwargs(
     *,
     qid: Union[Unset, str] = UNSET,
     owned: Union[Unset, bool] = UNSET,
+    root: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = 1,
     limit: Union[Unset, int] = 10,
     properties: Union[Unset, list[str]] = UNSET,
@@ -23,6 +24,8 @@ def _get_kwargs(
     params["qid"] = qid
 
     params["owned"] = owned
+
+    params["root"] = root
 
     params["page"] = page
 
@@ -77,6 +80,7 @@ def sync_detailed(
     client: Union[AuthenticatedClient, Client],
     qid: Union[Unset, str] = UNSET,
     owned: Union[Unset, bool] = UNSET,
+    root: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = 1,
     limit: Union[Unset, int] = 10,
     properties: Union[Unset, list[str]] = UNSET,
@@ -84,11 +88,12 @@ def sync_detailed(
 ) -> Response[ApiDefinitionsGetCollectionResponse200]:
     """Retrieves the collection of definition resources.
 
-     Retrieves the collection of definition resources.
+     Results are ordered deterministically, oldest first.
 
     Args:
         qid (Union[Unset, str]):
         owned (Union[Unset, bool]):
+        root (Union[Unset, bool]):
         page (Union[Unset, int]):  Default: 1.
         limit (Union[Unset, int]):  Default: 10.
         properties (Union[Unset, list[str]]):
@@ -105,6 +110,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         qid=qid,
         owned=owned,
+        root=root,
         page=page,
         limit=limit,
         properties=properties,
@@ -123,6 +129,7 @@ def sync(
     client: Union[AuthenticatedClient, Client],
     qid: Union[Unset, str] = UNSET,
     owned: Union[Unset, bool] = UNSET,
+    root: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = 1,
     limit: Union[Unset, int] = 10,
     properties: Union[Unset, list[str]] = UNSET,
@@ -130,11 +137,12 @@ def sync(
 ) -> Optional[ApiDefinitionsGetCollectionResponse200]:
     """Retrieves the collection of definition resources.
 
-     Retrieves the collection of definition resources.
+     Results are ordered deterministically, oldest first.
 
     Args:
         qid (Union[Unset, str]):
         owned (Union[Unset, bool]):
+        root (Union[Unset, bool]):
         page (Union[Unset, int]):  Default: 1.
         limit (Union[Unset, int]):  Default: 10.
         properties (Union[Unset, list[str]]):
@@ -152,6 +160,7 @@ def sync(
         client=client,
         qid=qid,
         owned=owned,
+        root=root,
         page=page,
         limit=limit,
         properties=properties,
@@ -164,6 +173,7 @@ async def asyncio_detailed(
     client: Union[AuthenticatedClient, Client],
     qid: Union[Unset, str] = UNSET,
     owned: Union[Unset, bool] = UNSET,
+    root: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = 1,
     limit: Union[Unset, int] = 10,
     properties: Union[Unset, list[str]] = UNSET,
@@ -171,11 +181,12 @@ async def asyncio_detailed(
 ) -> Response[ApiDefinitionsGetCollectionResponse200]:
     """Retrieves the collection of definition resources.
 
-     Retrieves the collection of definition resources.
+     Results are ordered deterministically, oldest first.
 
     Args:
         qid (Union[Unset, str]):
         owned (Union[Unset, bool]):
+        root (Union[Unset, bool]):
         page (Union[Unset, int]):  Default: 1.
         limit (Union[Unset, int]):  Default: 10.
         properties (Union[Unset, list[str]]):
@@ -192,6 +203,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         qid=qid,
         owned=owned,
+        root=root,
         page=page,
         limit=limit,
         properties=properties,
@@ -208,6 +220,7 @@ async def asyncio(
     client: Union[AuthenticatedClient, Client],
     qid: Union[Unset, str] = UNSET,
     owned: Union[Unset, bool] = UNSET,
+    root: Union[Unset, bool] = UNSET,
     page: Union[Unset, int] = 1,
     limit: Union[Unset, int] = 10,
     properties: Union[Unset, list[str]] = UNSET,
@@ -215,11 +228,12 @@ async def asyncio(
 ) -> Optional[ApiDefinitionsGetCollectionResponse200]:
     """Retrieves the collection of definition resources.
 
-     Retrieves the collection of definition resources.
+     Results are ordered deterministically, oldest first.
 
     Args:
         qid (Union[Unset, str]):
         owned (Union[Unset, bool]):
+        root (Union[Unset, bool]):
         page (Union[Unset, int]):  Default: 1.
         limit (Union[Unset, int]):  Default: 10.
         properties (Union[Unset, list[str]]):
@@ -238,6 +252,7 @@ async def asyncio(
             client=client,
             qid=qid,
             owned=owned,
+            root=root,
             page=page,
             limit=limit,
             properties=properties,

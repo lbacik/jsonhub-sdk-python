@@ -64,7 +64,9 @@ def sync_detailed(
 ) -> Response[Union[Any, ApiUsersmeGetResponse200, Error]]:
     """Get current user information
 
-     Returns quota usage and limits for the authenticated user.
+     Returns the authenticated user's account id, email, and quota usage and limits. `email` is returned
+    regardless of token scope for now; see #45, after which it will require a scope covering profile
+    access instead of being disclosed to every token holder.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -89,7 +91,9 @@ def sync(
 ) -> Optional[Union[Any, ApiUsersmeGetResponse200, Error]]:
     """Get current user information
 
-     Returns quota usage and limits for the authenticated user.
+     Returns the authenticated user's account id, email, and quota usage and limits. `email` is returned
+    regardless of token scope for now; see #45, after which it will require a scope covering profile
+    access instead of being disclosed to every token holder.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -110,7 +114,9 @@ async def asyncio_detailed(
 ) -> Response[Union[Any, ApiUsersmeGetResponse200, Error]]:
     """Get current user information
 
-     Returns quota usage and limits for the authenticated user.
+     Returns the authenticated user's account id, email, and quota usage and limits. `email` is returned
+    regardless of token scope for now; see #45, after which it will require a scope covering profile
+    access instead of being disclosed to every token holder.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -133,7 +139,9 @@ async def asyncio(
 ) -> Optional[Union[Any, ApiUsersmeGetResponse200, Error]]:
     """Get current user information
 
-     Returns quota usage and limits for the authenticated user.
+     Returns the authenticated user's account id, email, and quota usage and limits. `email` is returned
+    regardless of token scope for now; see #45, after which it will require a scope covering profile
+    access instead of being disclosed to every token holder.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

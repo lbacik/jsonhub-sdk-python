@@ -16,7 +16,7 @@ class Oauth2TokenResponse200:
         access_token (Union[Unset, str]):
         token_type (Union[Unset, str]):  Example: Bearer.
         expires_in (Union[Unset, int]):  Example: 900.
-        scope (Union[Unset, str]):  Example: idea-forge-mcp.
+        scope (Union[Unset, str]):  Example: mcp.
     """
 
     access_token: Union[Unset, str] = UNSET

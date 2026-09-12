@@ -19,27 +19,21 @@ class UserJsonhalUserRead:
     """Create user
 
     Attributes:
+        id (UUID):
         email (Union[None, str]):
-        id (Union[None, UUID, Unset]):
         field_links (Union[Unset, UserJsonhalUserReadLinks]):
     """
 
+    id: UUID
     email: Union[None, str]
-    id: Union[None, UUID, Unset] = UNSET
     field_links: Union[Unset, "UserJsonhalUserReadLinks"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        id = str(self.id)
+
         email: Union[None, str]
         email = self.email
-
-        id: Union[None, Unset, str]
-        if isinstance(self.id, Unset):
-            id = UNSET
-        elif isinstance(self.id, UUID):
-            id = str(self.id)
-        else:
-            id = self.id
 
         field_links: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.field_links, Unset):
@@ -49,11 +43,10 @@ class UserJsonhalUserRead:
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
+                "id": id,
                 "email": email,
             }
         )
-        if id is not UNSET:
-            field_dict["id"] = id
         if field_links is not UNSET:
             field_dict["_links"] = field_links
 
@@ -64,6 +57,7 @@ class UserJsonhalUserRead:
         from ..models.user_jsonhal_user_read_links import UserJsonhalUserReadLinks
 
         d = dict(src_dict)
+        id = UUID(d.pop("id"))
 
         def _parse_email(data: object) -> Union[None, str]:
             if data is None:
@@ -71,23 +65,6 @@ class UserJsonhalUserRead:
             return cast(Union[None, str], data)
 
         email = _parse_email(d.pop("email"))
-
-        def _parse_id(data: object) -> Union[None, UUID, Unset]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                id_type_0 = UUID(data)
-
-                return id_type_0
-            except:  # noqa: E722
-                pass
-            return cast(Union[None, UUID, Unset], data)
-
-        id = _parse_id(d.pop("id", UNSET))
 
         _field_links = d.pop("_links", UNSET)
         field_links: Union[Unset, UserJsonhalUserReadLinks]
@@ -97,8 +74,8 @@ class UserJsonhalUserRead:
             field_links = UserJsonhalUserReadLinks.from_dict(_field_links)
 
         user_jsonhal_user_read = cls(
-            email=email,
             id=id,
+            email=email,
             field_links=field_links,
         )
 

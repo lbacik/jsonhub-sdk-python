@@ -19,32 +19,28 @@ T = TypeVar("T", bound="DefinitionDefinitionRead")
 class DefinitionDefinitionRead:
     """
     Attributes:
+        id (UUID):
         json_schema (DefinitionDefinitionReadJsonSchema):
-        id (Union[None, UUID, Unset]):
+        is_owned_by_current_user (bool):  Default: False.
         slug (Union[None, Unset, str]):
         parent_entity (Union['EntityDefinitionRead', None, Unset]):
-        is_owned_by_current_user (Union[Unset, bool]):  Default: False.
     """
 
+    id: UUID
     json_schema: "DefinitionDefinitionReadJsonSchema"
-    id: Union[None, UUID, Unset] = UNSET
+    is_owned_by_current_user: bool = False
     slug: Union[None, Unset, str] = UNSET
     parent_entity: Union["EntityDefinitionRead", None, Unset] = UNSET
-    is_owned_by_current_user: Union[Unset, bool] = False
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         from ..models.entity_definition_read import EntityDefinitionRead
 
+        id = str(self.id)
+
         json_schema = self.json_schema.to_dict()
 
-        id: Union[None, Unset, str]
-        if isinstance(self.id, Unset):
-            id = UNSET
-        elif isinstance(self.id, UUID):
-            id = str(self.id)
-        else:
-            id = self.id
+        is_owned_by_current_user = self.is_owned_by_current_user
 
         slug: Union[None, Unset, str]
         if isinstance(self.slug, Unset):
@@ -60,23 +56,19 @@ class DefinitionDefinitionRead:
         else:
             parent_entity = self.parent_entity
 
-        is_owned_by_current_user = self.is_owned_by_current_user
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
+                "id": id,
                 "jsonSchema": json_schema,
+                "isOwnedByCurrentUser": is_owned_by_current_user,
             }
         )
-        if id is not UNSET:
-            field_dict["id"] = id
         if slug is not UNSET:
             field_dict["slug"] = slug
         if parent_entity is not UNSET:
             field_dict["parentEntity"] = parent_entity
-        if is_owned_by_current_user is not UNSET:
-            field_dict["isOwnedByCurrentUser"] = is_owned_by_current_user
 
         return field_dict
 
@@ -86,24 +78,11 @@ class DefinitionDefinitionRead:
         from ..models.entity_definition_read import EntityDefinitionRead
 
         d = dict(src_dict)
+        id = UUID(d.pop("id"))
+
         json_schema = DefinitionDefinitionReadJsonSchema.from_dict(d.pop("jsonSchema"))
 
-        def _parse_id(data: object) -> Union[None, UUID, Unset]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                id_type_0 = UUID(data)
-
-                return id_type_0
-            except:  # noqa: E722
-                pass
-            return cast(Union[None, UUID, Unset], data)
-
-        id = _parse_id(d.pop("id", UNSET))
+        is_owned_by_current_user = d.pop("isOwnedByCurrentUser")
 
         def _parse_slug(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -131,14 +110,12 @@ class DefinitionDefinitionRead:
 
         parent_entity = _parse_parent_entity(d.pop("parentEntity", UNSET))
 
-        is_owned_by_current_user = d.pop("isOwnedByCurrentUser", UNSET)
-
         definition_definition_read = cls(
-            json_schema=json_schema,
             id=id,
+            json_schema=json_schema,
+            is_owned_by_current_user=is_owned_by_current_user,
             slug=slug,
             parent_entity=parent_entity,
-            is_owned_by_current_user=is_owned_by_current_user,
         )
 
         definition_definition_read.additional_properties = d

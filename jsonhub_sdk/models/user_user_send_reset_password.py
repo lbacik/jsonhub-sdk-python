@@ -12,26 +12,20 @@ class UserUserSendResetPassword:
     """
     Attributes:
         email (Union[None, str]):
-        reset_password_link (Union[None, str]):
     """
 
     email: Union[None, str]
-    reset_password_link: Union[None, str]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         email: Union[None, str]
         email = self.email
 
-        reset_password_link: Union[None, str]
-        reset_password_link = self.reset_password_link
-
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
                 "email": email,
-                "resetPasswordLink": reset_password_link,
             }
         )
 
@@ -48,16 +42,8 @@ class UserUserSendResetPassword:
 
         email = _parse_email(d.pop("email"))
 
-        def _parse_reset_password_link(data: object) -> Union[None, str]:
-            if data is None:
-                return data
-            return cast(Union[None, str], data)
-
-        reset_password_link = _parse_reset_password_link(d.pop("resetPasswordLink"))
-
         user_user_send_reset_password = cls(
             email=email,
-            reset_password_link=reset_password_link,
         )
 
         user_user_send_reset_password.additional_properties = d

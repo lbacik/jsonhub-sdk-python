@@ -3,7 +3,7 @@
   "info": {
     "title": "JsonHub API",
     "description": "",
-    "version": "0.10.4"
+    "version": "0.11.0"
   },
   "servers": [
     {
@@ -49,7 +49,7 @@
           }
         },
         "summary": "Retrieves the collection of definition resources.",
-        "description": "Retrieves the collection of definition resources.",
+        "description": "Results are ordered deterministically, oldest first.",
         "parameters": [
           {
             "name": "qid",
@@ -67,6 +67,18 @@
             "name": "owned",
             "in": "query",
             "description": "Show only definitions owned by the current user",
+            "required": false,
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "root",
+            "in": "query",
+            "description": "Show only Root Definitions (definitions without a Parent Entity)",
             "required": false,
             "deprecated": false,
             "schema": {
@@ -98,7 +110,7 @@
               "type": "integer",
               "default": 10,
               "minimum": 0,
-              "maximum": 30
+              "maximum": 100
             },
             "style": "form",
             "explode": true
@@ -422,7 +434,7 @@
           }
         },
         "summary": "Retrieves the collection of entity resources.",
-        "description": "Retrieves the collection of entity resources.",
+        "description": "Results are ordered deterministically, oldest first.",
         "parameters": [
           {
             "name": "qid",
@@ -461,6 +473,18 @@
             "explode": true
           },
           {
+            "name": "root",
+            "in": "query",
+            "description": "Show only Root Entities (entities without a Parent Entity)",
+            "required": false,
+            "deprecated": false,
+            "schema": {
+              "type": "boolean"
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
             "name": "page",
             "in": "query",
             "description": "The collection page number",
@@ -483,7 +507,7 @@
               "type": "integer",
               "default": 10,
               "minimum": 0,
-              "maximum": 30
+              "maximum": 100
             },
             "style": "form",
             "explode": true
@@ -852,13 +876,26 @@
                         "S256"
                       ]
                     },
+                    "audiences_supported": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "example": [
+                        "jsonhub-api"
+                      ]
+                    },
                     "scopes_supported": {
                       "type": "array",
                       "items": {
                         "type": "string"
                       },
                       "example": [
-                        "idea-forge-mcp"
+                        "mcp",
+                        "frontend",
+                        "jsonhub:entities:read",
+                        "jsonhub:entities:write",
+                        "jsonhub:definitions:write"
                       ]
                     }
                   }
@@ -868,7 +905,7 @@
           }
         },
         "summary": "OAuth2 authorization server metadata",
-        "description": "Discovery document for ChatGPT/MCP OAuth2 Authorization Code with PKCE, JWKS, revocation, and token exchange.",
+        "description": "Discovery document for MCP OAuth2 Authorization Code with PKCE, JWKS, revocation, and token exchange.",
         "security": []
       }
     },
@@ -926,7 +963,7 @@
             "deprecated": false,
             "schema": {
               "type": "string",
-              "example": "https://chat.openai.com/aip/g-abc/oauth/callback"
+              "example": "https://client.example.test/callback"
             },
             "style": "form",
             "explode": true
@@ -934,12 +971,12 @@
           {
             "name": "scope",
             "in": "query",
-            "description": "Requested scopes. MVP supports idea-forge-mcp.",
+            "description": "Scopes registered for the client. MCP requests include mcp; direct API clients request JsonHub capability scopes.",
             "required": true,
             "deprecated": false,
             "schema": {
               "type": "string",
-              "example": "idea-forge-mcp"
+              "example": "jsonhub:entities:read jsonhub:entities:write jsonhub:definitions:write"
             },
             "style": "form",
             "explode": true
@@ -988,12 +1025,12 @@
           {
             "name": "resource",
             "in": "query",
-            "description": "Optional MCP resource/audience.",
+            "description": "Target Resource Server. Direct API clients use jsonhub-api.",
             "required": false,
             "deprecated": false,
             "schema": {
               "type": "string",
-              "example": "idea-forge-mcp"
+              "example": "jsonhub-api"
             },
             "style": "form",
             "explode": true
@@ -1006,7 +1043,7 @@
             "deprecated": false,
             "schema": {
               "type": "string",
-              "example": "idea-forge-mcp"
+              "example": "jsonhub-api"
             },
             "style": "form",
             "explode": true
@@ -1117,7 +1154,7 @@
                     },
                     "scope": {
                       "type": "string",
-                      "example": "idea-forge-mcp"
+                      "example": "mcp jsonhub:entities:write"
                     },
                     "token_endpoint_auth_method": {
                       "type": "string",
@@ -1166,7 +1203,7 @@
                 "properties": {
                   "client_name": {
                     "type": "string",
-                    "example": "ChatGPT Idea Forge MCP"
+                    "example": "Generic MCP Client"
                   },
                   "redirect_uris": {
                     "type": "array",
@@ -1174,7 +1211,7 @@
                       "type": "string"
                     },
                     "example": [
-                      "https://chat.openai.com/aip/g-abc/oauth/callback"
+                      "https://client.example.test/callback"
                     ]
                   },
                   "grant_types": {
@@ -1197,7 +1234,7 @@
                   },
                   "scope": {
                     "type": "string",
-                    "example": "idea-forge-mcp"
+                    "example": "mcp jsonhub:entities:write"
                   },
                   "token_endpoint_auth_method": {
                     "type": "string",
@@ -1259,7 +1296,7 @@
                   },
                   "audience": {
                     "type": "string",
-                    "example": "idea-forge-mcp"
+                    "example": "mcp-resource-server"
                   }
                 }
               }
@@ -1297,7 +1334,7 @@
                     },
                     "scope": {
                       "type": "string",
-                      "example": "idea-forge-mcp"
+                      "example": "mcp"
                     }
                   }
                 }
@@ -1545,7 +1582,7 @@
                   },
                   "subject_audience": {
                     "type": "string",
-                    "example": "idea-forge-mcp"
+                    "example": "mcp-resource-server"
                   }
                 }
               }
@@ -1910,17 +1947,27 @@
         ],
         "responses": {
           "200": {
-            "description": "Current user quota usage.",
+            "description": "Current user identity and quota usage.",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "email": {
+                      "type": "string",
+                      "format": "email"
+                    },
                     "limits": {
                       "$ref": "#/components/schemas/CurrentUserLimits"
                     }
                   },
                   "required": [
+                    "id",
+                    "email",
                     "limits"
                   ]
                 }
@@ -1954,7 +2001,7 @@
           }
         },
         "summary": "Get current user information",
-        "description": "Returns quota usage and limits for the authenticated user.",
+        "description": "Returns the authenticated user's account id, email, and quota usage and limits. `email` is returned regardless of token scope for now; see #45, after which it will require a scope covering profile access instead of being disclosed to every token holder.",
         "parameters": []
       }
     },
@@ -2523,12 +2570,13 @@
       },
       "User": {
         "type": "object",
+        "required": [
+          "id",
+          "email"
+        ],
         "properties": {
           "id": {
-            "type": [
-              "string",
-              "null"
-            ],
+            "type": "string",
             "format": "uuid"
           },
           "email": {
@@ -2558,23 +2606,8 @@
               "string",
               "null"
             ]
-          },
-          "resetPasswordLink": {
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "activationUrl": {
-            "type": [
-              "string",
-              "null"
-            ]
           }
-        },
-        "required": [
-          "email"
-        ]
+        }
       },
       "User-user.create": {
         "type": "object",
@@ -2599,12 +2632,6 @@
               "string",
               "null"
             ]
-          },
-          "activationUrl": {
-            "type": [
-              "string",
-              "null"
-            ]
           }
         }
       },
@@ -2615,12 +2642,13 @@
       "User-user.read": {
         "type": "object",
         "description": "Create user",
+        "required": [
+          "id",
+          "email"
+        ],
         "properties": {
           "id": {
-            "type": [
-              "string",
-              "null"
-            ],
+            "type": "string",
             "format": "uuid"
           },
           "email": {
@@ -2633,10 +2661,7 @@
               "null"
             ]
           }
-        },
-        "required": [
-          "email"
-        ]
+        }
       },
       "User-user.resend-activation": {
         "type": "object",
@@ -2649,12 +2674,6 @@
             "externalDocs": {
               "url": "https://schema.org/email"
             },
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "activationUrl": {
             "type": [
               "string",
               "null"
@@ -2686,8 +2705,7 @@
       "User-user.send-reset-password": {
         "type": "object",
         "required": [
-          "email",
-          "resetPasswordLink"
+          "email"
         ],
         "properties": {
           "email": {
@@ -2695,12 +2713,6 @@
             "externalDocs": {
               "url": "https://schema.org/email"
             },
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "resetPasswordLink": {
             "type": [
               "string",
               "null"
@@ -2808,12 +2820,14 @@
       },
       "definition-definition.read": {
         "type": "object",
+        "required": [
+          "id",
+          "jsonSchema",
+          "isOwnedByCurrentUser"
+        ],
         "properties": {
           "id": {
-            "type": [
-              "string",
-              "null"
-            ],
+            "type": "string",
             "format": "uuid"
           },
           "slug": {
@@ -2840,10 +2854,7 @@
             "default": false,
             "type": "boolean"
           }
-        },
-        "required": [
-          "jsonSchema"
-        ]
+        }
       },
       "definition-definition.write": {
         "type": "object",
@@ -2896,12 +2907,12 @@
       },
       "definition-entity.read_entity.read.parent": {
         "type": "object",
+        "required": [
+          "id"
+        ],
         "properties": {
           "id": {
-            "type": [
-              "string",
-              "null"
-            ],
+            "type": "string",
             "format": "uuid"
           },
           "slug": {
@@ -2940,12 +2951,12 @@
       },
       "entity-definition.read": {
         "type": "object",
+        "required": [
+          "id"
+        ],
         "properties": {
           "id": {
-            "type": [
-              "string",
-              "null"
-            ],
+            "type": "string",
             "format": "uuid"
           },
           "slug": {
@@ -2987,16 +2998,21 @@
             "default": false,
             "type": "boolean"
           }
-        }
+        },
+        "required": [
+          "definition"
+        ]
       },
       "entity-entity.read_entity.read.parent": {
         "type": "object",
+        "required": [
+          "id",
+          "definition",
+          "isOwnedByCurrentUser"
+        ],
         "properties": {
           "id": {
-            "type": [
-              "string",
-              "null"
-            ],
+            "type": "string",
             "format": "uuid"
           },
           "slug": {
@@ -3088,12 +3104,14 @@
       },
       "personal.access.token-personal_access_token.read": {
         "type": "object",
+        "required": [
+          "id",
+          "tokenPreview",
+          "createdAt"
+        ],
         "properties": {
           "id": {
-            "type": [
-              "string",
-              "null"
-            ],
+            "type": "string",
             "format": "uuid"
           },
           "name": {
@@ -3104,10 +3122,7 @@
             ]
           },
           "tokenPreview": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": "string"
           },
           "expiresAt": {
             "type": [
@@ -3117,22 +3132,22 @@
             "format": "date-time"
           },
           "createdAt": {
-            "type": [
-              "string",
-              "null"
-            ],
+            "type": "string",
             "format": "date-time"
           }
         }
       },
       "personal.access.token-personal_access_token.read_personal_access_token.create.read": {
         "type": "object",
+        "required": [
+          "id",
+          "tokenPreview",
+          "token",
+          "createdAt"
+        ],
         "properties": {
           "id": {
-            "type": [
-              "string",
-              "null"
-            ],
+            "type": "string",
             "format": "uuid"
           },
           "name": {
@@ -3143,16 +3158,10 @@
             ]
           },
           "tokenPreview": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": "string"
           },
           "token": {
-            "type": [
-              "string",
-              "null"
-            ]
+            "type": "string"
           },
           "expiresAt": {
             "type": [
@@ -3162,10 +3171,7 @@
             "format": "date-time"
           },
           "createdAt": {
-            "type": [
-              "string",
-              "null"
-            ],
+            "type": "string",
             "format": "date-time"
           }
         }

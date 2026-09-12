@@ -18,37 +18,27 @@ T = TypeVar("T", bound="UserJsonhal")
 class UserJsonhal:
     """
     Attributes:
+        id (UUID):
         email (Union[None, str]):
-        id (Union[None, UUID, Unset]):
         password (Union[None, Unset, str]):
         old_password (Union[None, Unset, str]):
         token (Union[None, Unset, str]):
-        reset_password_link (Union[None, Unset, str]):
-        activation_url (Union[None, Unset, str]):
         field_links (Union[Unset, UserJsonhalLinks]):
     """
 
+    id: UUID
     email: Union[None, str]
-    id: Union[None, UUID, Unset] = UNSET
     password: Union[None, Unset, str] = UNSET
     old_password: Union[None, Unset, str] = UNSET
     token: Union[None, Unset, str] = UNSET
-    reset_password_link: Union[None, Unset, str] = UNSET
-    activation_url: Union[None, Unset, str] = UNSET
     field_links: Union[Unset, "UserJsonhalLinks"] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
+        id = str(self.id)
+
         email: Union[None, str]
         email = self.email
-
-        id: Union[None, Unset, str]
-        if isinstance(self.id, Unset):
-            id = UNSET
-        elif isinstance(self.id, UUID):
-            id = str(self.id)
-        else:
-            id = self.id
 
         password: Union[None, Unset, str]
         if isinstance(self.password, Unset):
@@ -68,18 +58,6 @@ class UserJsonhal:
         else:
             token = self.token
 
-        reset_password_link: Union[None, Unset, str]
-        if isinstance(self.reset_password_link, Unset):
-            reset_password_link = UNSET
-        else:
-            reset_password_link = self.reset_password_link
-
-        activation_url: Union[None, Unset, str]
-        if isinstance(self.activation_url, Unset):
-            activation_url = UNSET
-        else:
-            activation_url = self.activation_url
-
         field_links: Union[Unset, dict[str, Any]] = UNSET
         if not isinstance(self.field_links, Unset):
             field_links = self.field_links.to_dict()
@@ -88,21 +66,16 @@ class UserJsonhal:
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
+                "id": id,
                 "email": email,
             }
         )
-        if id is not UNSET:
-            field_dict["id"] = id
         if password is not UNSET:
             field_dict["password"] = password
         if old_password is not UNSET:
             field_dict["oldPassword"] = old_password
         if token is not UNSET:
             field_dict["token"] = token
-        if reset_password_link is not UNSET:
-            field_dict["resetPasswordLink"] = reset_password_link
-        if activation_url is not UNSET:
-            field_dict["activationUrl"] = activation_url
         if field_links is not UNSET:
             field_dict["_links"] = field_links
 
@@ -113,6 +86,7 @@ class UserJsonhal:
         from ..models.user_jsonhal_links import UserJsonhalLinks
 
         d = dict(src_dict)
+        id = UUID(d.pop("id"))
 
         def _parse_email(data: object) -> Union[None, str]:
             if data is None:
@@ -120,23 +94,6 @@ class UserJsonhal:
             return cast(Union[None, str], data)
 
         email = _parse_email(d.pop("email"))
-
-        def _parse_id(data: object) -> Union[None, UUID, Unset]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            try:
-                if not isinstance(data, str):
-                    raise TypeError()
-                id_type_0 = UUID(data)
-
-                return id_type_0
-            except:  # noqa: E722
-                pass
-            return cast(Union[None, UUID, Unset], data)
-
-        id = _parse_id(d.pop("id", UNSET))
 
         def _parse_password(data: object) -> Union[None, Unset, str]:
             if data is None:
@@ -165,24 +122,6 @@ class UserJsonhal:
 
         token = _parse_token(d.pop("token", UNSET))
 
-        def _parse_reset_password_link(data: object) -> Union[None, Unset, str]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, str], data)
-
-        reset_password_link = _parse_reset_password_link(d.pop("resetPasswordLink", UNSET))
-
-        def _parse_activation_url(data: object) -> Union[None, Unset, str]:
-            if data is None:
-                return data
-            if isinstance(data, Unset):
-                return data
-            return cast(Union[None, Unset, str], data)
-
-        activation_url = _parse_activation_url(d.pop("activationUrl", UNSET))
-
         _field_links = d.pop("_links", UNSET)
         field_links: Union[Unset, UserJsonhalLinks]
         if isinstance(_field_links, Unset):
@@ -191,13 +130,11 @@ class UserJsonhal:
             field_links = UserJsonhalLinks.from_dict(_field_links)
 
         user_jsonhal = cls(
-            email=email,
             id=id,
+            email=email,
             password=password,
             old_password=old_password,
             token=token,
-            reset_password_link=reset_password_link,
-            activation_url=activation_url,
             field_links=field_links,
         )
 
