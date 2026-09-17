@@ -5,7 +5,7 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.definition_jsonhal_definition_read import DefinitionJsonhalDefinitionRead
+from ...models.definition_definition_read import DefinitionDefinitionRead
 from ...models.error import Error
 from ...types import Response
 
@@ -23,9 +23,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[DefinitionJsonhalDefinitionRead, Error]]:
+) -> Optional[Union[DefinitionDefinitionRead, Error]]:
     if response.status_code == 200:
-        response_200 = DefinitionJsonhalDefinitionRead.from_dict(response.json())
+        response_200 = DefinitionDefinitionRead.from_dict(response.json())
 
         return response_200
 
@@ -42,7 +42,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[DefinitionJsonhalDefinitionRead, Error]]:
+) -> Response[Union[DefinitionDefinitionRead, Error]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -55,7 +55,7 @@ def sync_detailed(
     id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[Union[DefinitionJsonhalDefinitionRead, Error]]:
+) -> Response[Union[DefinitionDefinitionRead, Error]]:
     """Retrieves a definition resource.
 
      Retrieves a definition resource.
@@ -68,7 +68,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[DefinitionJsonhalDefinitionRead, Error]]
+        Response[Union[DefinitionDefinitionRead, Error]]
     """
 
     kwargs = _get_kwargs(
@@ -86,7 +86,7 @@ def sync(
     id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Optional[Union[DefinitionJsonhalDefinitionRead, Error]]:
+) -> Optional[Union[DefinitionDefinitionRead, Error]]:
     """Retrieves a definition resource.
 
      Retrieves a definition resource.
@@ -99,7 +99,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[DefinitionJsonhalDefinitionRead, Error]
+        Union[DefinitionDefinitionRead, Error]
     """
 
     return sync_detailed(
@@ -112,7 +112,7 @@ async def asyncio_detailed(
     id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Response[Union[DefinitionJsonhalDefinitionRead, Error]]:
+) -> Response[Union[DefinitionDefinitionRead, Error]]:
     """Retrieves a definition resource.
 
      Retrieves a definition resource.
@@ -125,7 +125,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[DefinitionJsonhalDefinitionRead, Error]]
+        Response[Union[DefinitionDefinitionRead, Error]]
     """
 
     kwargs = _get_kwargs(
@@ -141,7 +141,7 @@ async def asyncio(
     id: str,
     *,
     client: Union[AuthenticatedClient, Client],
-) -> Optional[Union[DefinitionJsonhalDefinitionRead, Error]]:
+) -> Optional[Union[DefinitionDefinitionRead, Error]]:
     """Retrieves a definition resource.
 
      Retrieves a definition resource.
@@ -154,7 +154,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[DefinitionJsonhalDefinitionRead, Error]
+        Union[DefinitionDefinitionRead, Error]
     """
 
     return (

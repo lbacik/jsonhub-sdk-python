@@ -3,7 +3,7 @@
   "info": {
     "title": "JsonHub API",
     "description": "",
-    "version": "0.11.0"
+    "version": "0.11.1"
   },
   "servers": [
     {
@@ -221,9 +221,9 @@
           "200": {
             "description": "definition resource",
             "content": {
-              "application/hal+json": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/definition.jsonhal-definition.read"
+                  "$ref": "#/components/schemas/definition-definition.read"
                 }
               }
             }
@@ -630,9 +630,9 @@
           "200": {
             "description": "entity resource",
             "content": {
-              "application/hal+json": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/entity.jsonhal-entity.read_entity.read.parent"
+                  "$ref": "#/components/schemas/entity-entity.read_entity.read.parent"
                 }
               }
             }
