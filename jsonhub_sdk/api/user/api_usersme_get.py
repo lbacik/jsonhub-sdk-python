@@ -7,15 +7,23 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.api_usersme_get_response_200 import ApiUsersmeGetResponse200
 from ...models.error import Error
-from ...types import Response
+from ...types import Response, Unset
 
 
-def _get_kwargs() -> dict[str, Any]:
+def _get_kwargs(
+    *,
+    accept: Union[Unset, str] = "application/json",
+) -> dict[str, Any]:
+    headers: dict[str, Any] = {}
+    if not isinstance(accept, Unset):
+        headers["Accept"] = accept
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/api/users/me",
     }
 
+    _kwargs["headers"] = headers
     return _kwargs
 
 
@@ -61,12 +69,16 @@ def _build_response(
 def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
+    accept: Union[Unset, str] = "application/json",
 ) -> Response[Union[Any, ApiUsersmeGetResponse200, Error]]:
     """Get current user information
 
      Returns the authenticated user's account id, email, and quota usage and limits. `email` is returned
     regardless of token scope for now; see #45, after which it will require a scope covering profile
     access instead of being disclosed to every token holder.
+
+    Args:
+        accept (Union[Unset, str]):  Default: 'application/json'.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -76,7 +88,9 @@ def sync_detailed(
         Response[Union[Any, ApiUsersmeGetResponse200, Error]]
     """
 
-    kwargs = _get_kwargs()
+    kwargs = _get_kwargs(
+        accept=accept,
+    )
 
     response = client.get_httpx_client().request(
         **kwargs,
@@ -88,12 +102,16 @@ def sync_detailed(
 def sync(
     *,
     client: Union[AuthenticatedClient, Client],
+    accept: Union[Unset, str] = "application/json",
 ) -> Optional[Union[Any, ApiUsersmeGetResponse200, Error]]:
     """Get current user information
 
      Returns the authenticated user's account id, email, and quota usage and limits. `email` is returned
     regardless of token scope for now; see #45, after which it will require a scope covering profile
     access instead of being disclosed to every token holder.
+
+    Args:
+        accept (Union[Unset, str]):  Default: 'application/json'.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -105,18 +123,23 @@ def sync(
 
     return sync_detailed(
         client=client,
+        accept=accept,
     ).parsed
 
 
 async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
+    accept: Union[Unset, str] = "application/json",
 ) -> Response[Union[Any, ApiUsersmeGetResponse200, Error]]:
     """Get current user information
 
      Returns the authenticated user's account id, email, and quota usage and limits. `email` is returned
     regardless of token scope for now; see #45, after which it will require a scope covering profile
     access instead of being disclosed to every token holder.
+
+    Args:
+        accept (Union[Unset, str]):  Default: 'application/json'.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -126,7 +149,9 @@ async def asyncio_detailed(
         Response[Union[Any, ApiUsersmeGetResponse200, Error]]
     """
 
-    kwargs = _get_kwargs()
+    kwargs = _get_kwargs(
+        accept=accept,
+    )
 
     response = await client.get_async_httpx_client().request(**kwargs)
 
@@ -136,12 +161,16 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
+    accept: Union[Unset, str] = "application/json",
 ) -> Optional[Union[Any, ApiUsersmeGetResponse200, Error]]:
     """Get current user information
 
      Returns the authenticated user's account id, email, and quota usage and limits. `email` is returned
     regardless of token scope for now; see #45, after which it will require a scope covering profile
     access instead of being disclosed to every token holder.
+
+    Args:
+        accept (Union[Unset, str]):  Default: 'application/json'.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -154,5 +183,6 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
+            accept=accept,
         )
     ).parsed

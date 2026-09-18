@@ -9,14 +9,17 @@ from ...models.oauth_2_token_body import Oauth2TokenBody
 from ...models.oauth_2_token_response_200 import Oauth2TokenResponse200
 from ...models.oauth_2_token_response_400 import Oauth2TokenResponse400
 from ...models.oauth_2_token_response_401 import Oauth2TokenResponse401
-from ...types import Response
+from ...types import Response, Unset
 
 
 def _get_kwargs(
     *,
     body: Oauth2TokenBody,
+    accept: Union[Unset, str] = "application/json",
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
+    if not isinstance(accept, Unset):
+        headers["Accept"] = accept
 
     _kwargs: dict[str, Any] = {
         "method": "post",
@@ -70,6 +73,7 @@ def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
     body: Oauth2TokenBody,
+    accept: Union[Unset, str] = "application/json",
 ) -> Response[Union[Oauth2TokenResponse200, Oauth2TokenResponse400, Oauth2TokenResponse401]]:
     """Exchange authorization code
 
@@ -77,6 +81,7 @@ def sync_detailed(
     must provide the PKCE verifier.
 
     Args:
+        accept (Union[Unset, str]):  Default: 'application/json'.
         body (Oauth2TokenBody):
 
     Raises:
@@ -89,6 +94,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         body=body,
+        accept=accept,
     )
 
     response = client.get_httpx_client().request(
@@ -102,6 +108,7 @@ def sync(
     *,
     client: Union[AuthenticatedClient, Client],
     body: Oauth2TokenBody,
+    accept: Union[Unset, str] = "application/json",
 ) -> Optional[Union[Oauth2TokenResponse200, Oauth2TokenResponse400, Oauth2TokenResponse401]]:
     """Exchange authorization code
 
@@ -109,6 +116,7 @@ def sync(
     must provide the PKCE verifier.
 
     Args:
+        accept (Union[Unset, str]):  Default: 'application/json'.
         body (Oauth2TokenBody):
 
     Raises:
@@ -122,6 +130,7 @@ def sync(
     return sync_detailed(
         client=client,
         body=body,
+        accept=accept,
     ).parsed
 
 
@@ -129,6 +138,7 @@ async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
     body: Oauth2TokenBody,
+    accept: Union[Unset, str] = "application/json",
 ) -> Response[Union[Oauth2TokenResponse200, Oauth2TokenResponse400, Oauth2TokenResponse401]]:
     """Exchange authorization code
 
@@ -136,6 +146,7 @@ async def asyncio_detailed(
     must provide the PKCE verifier.
 
     Args:
+        accept (Union[Unset, str]):  Default: 'application/json'.
         body (Oauth2TokenBody):
 
     Raises:
@@ -148,6 +159,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         body=body,
+        accept=accept,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -159,6 +171,7 @@ async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
     body: Oauth2TokenBody,
+    accept: Union[Unset, str] = "application/json",
 ) -> Optional[Union[Oauth2TokenResponse200, Oauth2TokenResponse400, Oauth2TokenResponse401]]:
     """Exchange authorization code
 
@@ -166,6 +179,7 @@ async def asyncio(
     must provide the PKCE verifier.
 
     Args:
+        accept (Union[Unset, str]):  Default: 'application/json'.
         body (Oauth2TokenBody):
 
     Raises:
@@ -180,5 +194,6 @@ async def asyncio(
         await asyncio_detailed(
             client=client,
             body=body,
+            accept=accept,
         )
     ).parsed

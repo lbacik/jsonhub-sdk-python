@@ -11,14 +11,17 @@ from ...models.personal_access_token_jsonhal_personal_access_token_read_personal
     PersonalAccessTokenJsonhalPersonalAccessTokenReadPersonalAccessTokenCreateRead,
 )
 from ...models.personal_access_token_personal_access_token_write import PersonalAccessTokenPersonalAccessTokenWrite
-from ...types import Response
+from ...types import Response, Unset
 
 
 def _get_kwargs(
     *,
     body: PersonalAccessTokenPersonalAccessTokenWrite,
+    accept: Union[Unset, str] = "application/hal+json",
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
+    if not isinstance(accept, Unset):
+        headers["Accept"] = accept
 
     _kwargs: dict[str, Any] = {
         "method": "post",
@@ -83,6 +86,7 @@ def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
     body: PersonalAccessTokenPersonalAccessTokenWrite,
+    accept: Union[Unset, str] = "application/hal+json",
 ) -> Response[
     Union[ConstraintViolation, Error, PersonalAccessTokenJsonhalPersonalAccessTokenReadPersonalAccessTokenCreateRead]
 ]:
@@ -91,6 +95,7 @@ def sync_detailed(
      Creates a personal access token resource.
 
     Args:
+        accept (Union[Unset, str]):  Default: 'application/hal+json'.
         body (PersonalAccessTokenPersonalAccessTokenWrite):
 
     Raises:
@@ -103,6 +108,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         body=body,
+        accept=accept,
     )
 
     response = client.get_httpx_client().request(
@@ -116,6 +122,7 @@ def sync(
     *,
     client: Union[AuthenticatedClient, Client],
     body: PersonalAccessTokenPersonalAccessTokenWrite,
+    accept: Union[Unset, str] = "application/hal+json",
 ) -> Optional[
     Union[ConstraintViolation, Error, PersonalAccessTokenJsonhalPersonalAccessTokenReadPersonalAccessTokenCreateRead]
 ]:
@@ -124,6 +131,7 @@ def sync(
      Creates a personal access token resource.
 
     Args:
+        accept (Union[Unset, str]):  Default: 'application/hal+json'.
         body (PersonalAccessTokenPersonalAccessTokenWrite):
 
     Raises:
@@ -137,6 +145,7 @@ def sync(
     return sync_detailed(
         client=client,
         body=body,
+        accept=accept,
     ).parsed
 
 
@@ -144,6 +153,7 @@ async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
     body: PersonalAccessTokenPersonalAccessTokenWrite,
+    accept: Union[Unset, str] = "application/hal+json",
 ) -> Response[
     Union[ConstraintViolation, Error, PersonalAccessTokenJsonhalPersonalAccessTokenReadPersonalAccessTokenCreateRead]
 ]:
@@ -152,6 +162,7 @@ async def asyncio_detailed(
      Creates a personal access token resource.
 
     Args:
+        accept (Union[Unset, str]):  Default: 'application/hal+json'.
         body (PersonalAccessTokenPersonalAccessTokenWrite):
 
     Raises:
@@ -164,6 +175,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         body=body,
+        accept=accept,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -175,6 +187,7 @@ async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
     body: PersonalAccessTokenPersonalAccessTokenWrite,
+    accept: Union[Unset, str] = "application/hal+json",
 ) -> Optional[
     Union[ConstraintViolation, Error, PersonalAccessTokenJsonhalPersonalAccessTokenReadPersonalAccessTokenCreateRead]
 ]:
@@ -183,6 +196,7 @@ async def asyncio(
      Creates a personal access token resource.
 
     Args:
+        accept (Union[Unset, str]):  Default: 'application/hal+json'.
         body (PersonalAccessTokenPersonalAccessTokenWrite):
 
     Raises:
@@ -197,5 +211,6 @@ async def asyncio(
         await asyncio_detailed(
             client=client,
             body=body,
+            accept=accept,
         )
     ).parsed

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "jsonhub-sdk"
-version = "1.0.1"
+version = "1.0.2"
 description = "A client library for accessing JsonHub API"
 authors = [ "Łukasz Bacik <mail@luka.sh>" ]
 readme = "README.md"

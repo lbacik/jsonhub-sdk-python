@@ -9,15 +9,18 @@ from ...models.constraint_violation import ConstraintViolation
 from ...models.definition_definition_write_json_merge_patch import DefinitionDefinitionWriteJsonMergePatch
 from ...models.definition_jsonhal_definition_read import DefinitionJsonhalDefinitionRead
 from ...models.error import Error
-from ...types import Response
+from ...types import Response, Unset
 
 
 def _get_kwargs(
     id: str,
     *,
     body: DefinitionDefinitionWriteJsonMergePatch,
+    accept: Union[Unset, str] = "application/hal+json",
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
+    if not isinstance(accept, Unset):
+        headers["Accept"] = accept
 
     _kwargs: dict[str, Any] = {
         "method": "patch",
@@ -82,6 +85,7 @@ def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
     body: DefinitionDefinitionWriteJsonMergePatch,
+    accept: Union[Unset, str] = "application/hal+json",
 ) -> Response[Union[ConstraintViolation, DefinitionJsonhalDefinitionRead, Error]]:
     """Updates the definition resource.
 
@@ -89,6 +93,7 @@ def sync_detailed(
 
     Args:
         id (str):
+        accept (Union[Unset, str]):  Default: 'application/hal+json'.
         body (DefinitionDefinitionWriteJsonMergePatch):
 
     Raises:
@@ -102,6 +107,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         id=id,
         body=body,
+        accept=accept,
     )
 
     response = client.get_httpx_client().request(
@@ -116,6 +122,7 @@ def sync(
     *,
     client: Union[AuthenticatedClient, Client],
     body: DefinitionDefinitionWriteJsonMergePatch,
+    accept: Union[Unset, str] = "application/hal+json",
 ) -> Optional[Union[ConstraintViolation, DefinitionJsonhalDefinitionRead, Error]]:
     """Updates the definition resource.
 
@@ -123,6 +130,7 @@ def sync(
 
     Args:
         id (str):
+        accept (Union[Unset, str]):  Default: 'application/hal+json'.
         body (DefinitionDefinitionWriteJsonMergePatch):
 
     Raises:
@@ -137,6 +145,7 @@ def sync(
         id=id,
         client=client,
         body=body,
+        accept=accept,
     ).parsed
 
 
@@ -145,6 +154,7 @@ async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
     body: DefinitionDefinitionWriteJsonMergePatch,
+    accept: Union[Unset, str] = "application/hal+json",
 ) -> Response[Union[ConstraintViolation, DefinitionJsonhalDefinitionRead, Error]]:
     """Updates the definition resource.
 
@@ -152,6 +162,7 @@ async def asyncio_detailed(
 
     Args:
         id (str):
+        accept (Union[Unset, str]):  Default: 'application/hal+json'.
         body (DefinitionDefinitionWriteJsonMergePatch):
 
     Raises:
@@ -165,6 +176,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         id=id,
         body=body,
+        accept=accept,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -177,6 +189,7 @@ async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
     body: DefinitionDefinitionWriteJsonMergePatch,
+    accept: Union[Unset, str] = "application/hal+json",
 ) -> Optional[Union[ConstraintViolation, DefinitionJsonhalDefinitionRead, Error]]:
     """Updates the definition resource.
 
@@ -184,6 +197,7 @@ async def asyncio(
 
     Args:
         id (str):
+        accept (Union[Unset, str]):  Default: 'application/hal+json'.
         body (DefinitionDefinitionWriteJsonMergePatch):
 
     Raises:
@@ -199,5 +213,6 @@ async def asyncio(
             id=id,
             client=client,
             body=body,
+            accept=accept,
         )
     ).parsed

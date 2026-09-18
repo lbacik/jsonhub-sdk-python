@@ -6,15 +6,23 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.oauth_2_jwks_response_200 import Oauth2JwksResponse200
-from ...types import Response
+from ...types import Response, Unset
 
 
-def _get_kwargs() -> dict[str, Any]:
+def _get_kwargs(
+    *,
+    accept: Union[Unset, str] = "application/json",
+) -> dict[str, Any]:
+    headers: dict[str, Any] = {}
+    if not isinstance(accept, Unset):
+        headers["Accept"] = accept
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": "/oauth2/jwks",
     }
 
+    _kwargs["headers"] = headers
     return _kwargs
 
 
@@ -46,10 +54,14 @@ def _build_response(
 def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
+    accept: Union[Unset, str] = "application/json",
 ) -> Response[Oauth2JwksResponse200]:
     """Get OAuth signing keys
 
      Publishes public RSA keys for local JWT validation by MCP and other resource servers.
+
+    Args:
+        accept (Union[Unset, str]):  Default: 'application/json'.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -59,7 +71,9 @@ def sync_detailed(
         Response[Oauth2JwksResponse200]
     """
 
-    kwargs = _get_kwargs()
+    kwargs = _get_kwargs(
+        accept=accept,
+    )
 
     response = client.get_httpx_client().request(
         **kwargs,
@@ -71,10 +85,14 @@ def sync_detailed(
 def sync(
     *,
     client: Union[AuthenticatedClient, Client],
+    accept: Union[Unset, str] = "application/json",
 ) -> Optional[Oauth2JwksResponse200]:
     """Get OAuth signing keys
 
      Publishes public RSA keys for local JWT validation by MCP and other resource servers.
+
+    Args:
+        accept (Union[Unset, str]):  Default: 'application/json'.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -86,16 +104,21 @@ def sync(
 
     return sync_detailed(
         client=client,
+        accept=accept,
     ).parsed
 
 
 async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
+    accept: Union[Unset, str] = "application/json",
 ) -> Response[Oauth2JwksResponse200]:
     """Get OAuth signing keys
 
      Publishes public RSA keys for local JWT validation by MCP and other resource servers.
+
+    Args:
+        accept (Union[Unset, str]):  Default: 'application/json'.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -105,7 +128,9 @@ async def asyncio_detailed(
         Response[Oauth2JwksResponse200]
     """
 
-    kwargs = _get_kwargs()
+    kwargs = _get_kwargs(
+        accept=accept,
+    )
 
     response = await client.get_async_httpx_client().request(**kwargs)
 
@@ -115,10 +140,14 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
+    accept: Union[Unset, str] = "application/json",
 ) -> Optional[Oauth2JwksResponse200]:
     """Get OAuth signing keys
 
      Publishes public RSA keys for local JWT validation by MCP and other resource servers.
+
+    Args:
+        accept (Union[Unset, str]):  Default: 'application/json'.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -131,5 +160,6 @@ async def asyncio(
     return (
         await asyncio_detailed(
             client=client,
+            accept=accept,
         )
     ).parsed

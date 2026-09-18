@@ -13,15 +13,18 @@ from ...models.personal_access_token_jsonhal_personal_access_token_read import (
 from ...models.personal_access_token_personal_access_token_write_json_merge_patch import (
     PersonalAccessTokenPersonalAccessTokenWriteJsonMergePatch,
 )
-from ...types import Response
+from ...types import Response, Unset
 
 
 def _get_kwargs(
     id: str,
     *,
     body: PersonalAccessTokenPersonalAccessTokenWriteJsonMergePatch,
+    accept: Union[Unset, str] = "application/hal+json",
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
+    if not isinstance(accept, Unset):
+        headers["Accept"] = accept
 
     _kwargs: dict[str, Any] = {
         "method": "patch",
@@ -86,6 +89,7 @@ def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
     body: PersonalAccessTokenPersonalAccessTokenWriteJsonMergePatch,
+    accept: Union[Unset, str] = "application/hal+json",
 ) -> Response[Union[ConstraintViolation, Error, PersonalAccessTokenJsonhalPersonalAccessTokenRead]]:
     """Updates the personal access token resource.
 
@@ -93,6 +97,7 @@ def sync_detailed(
 
     Args:
         id (str):
+        accept (Union[Unset, str]):  Default: 'application/hal+json'.
         body (PersonalAccessTokenPersonalAccessTokenWriteJsonMergePatch):
 
     Raises:
@@ -106,6 +111,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         id=id,
         body=body,
+        accept=accept,
     )
 
     response = client.get_httpx_client().request(
@@ -120,6 +126,7 @@ def sync(
     *,
     client: Union[AuthenticatedClient, Client],
     body: PersonalAccessTokenPersonalAccessTokenWriteJsonMergePatch,
+    accept: Union[Unset, str] = "application/hal+json",
 ) -> Optional[Union[ConstraintViolation, Error, PersonalAccessTokenJsonhalPersonalAccessTokenRead]]:
     """Updates the personal access token resource.
 
@@ -127,6 +134,7 @@ def sync(
 
     Args:
         id (str):
+        accept (Union[Unset, str]):  Default: 'application/hal+json'.
         body (PersonalAccessTokenPersonalAccessTokenWriteJsonMergePatch):
 
     Raises:
@@ -141,6 +149,7 @@ def sync(
         id=id,
         client=client,
         body=body,
+        accept=accept,
     ).parsed
 
 
@@ -149,6 +158,7 @@ async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
     body: PersonalAccessTokenPersonalAccessTokenWriteJsonMergePatch,
+    accept: Union[Unset, str] = "application/hal+json",
 ) -> Response[Union[ConstraintViolation, Error, PersonalAccessTokenJsonhalPersonalAccessTokenRead]]:
     """Updates the personal access token resource.
 
@@ -156,6 +166,7 @@ async def asyncio_detailed(
 
     Args:
         id (str):
+        accept (Union[Unset, str]):  Default: 'application/hal+json'.
         body (PersonalAccessTokenPersonalAccessTokenWriteJsonMergePatch):
 
     Raises:
@@ -169,6 +180,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         id=id,
         body=body,
+        accept=accept,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -181,6 +193,7 @@ async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
     body: PersonalAccessTokenPersonalAccessTokenWriteJsonMergePatch,
+    accept: Union[Unset, str] = "application/hal+json",
 ) -> Optional[Union[ConstraintViolation, Error, PersonalAccessTokenJsonhalPersonalAccessTokenRead]]:
     """Updates the personal access token resource.
 
@@ -188,6 +201,7 @@ async def asyncio(
 
     Args:
         id (str):
+        accept (Union[Unset, str]):  Default: 'application/hal+json'.
         body (PersonalAccessTokenPersonalAccessTokenWriteJsonMergePatch):
 
     Raises:
@@ -203,5 +217,6 @@ async def asyncio(
             id=id,
             client=client,
             body=body,
+            accept=accept,
         )
     ).parsed

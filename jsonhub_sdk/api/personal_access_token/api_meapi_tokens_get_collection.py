@@ -14,7 +14,12 @@ def _get_kwargs(
     *,
     page: Union[Unset, int] = 1,
     limit: Union[Unset, int] = 30,
+    accept: Union[Unset, str] = "application/hal+json",
 ) -> dict[str, Any]:
+    headers: dict[str, Any] = {}
+    if not isinstance(accept, Unset):
+        headers["Accept"] = accept
+
     params: dict[str, Any] = {}
 
     params["page"] = page
@@ -29,6 +34,7 @@ def _get_kwargs(
         "params": params,
     }
 
+    _kwargs["headers"] = headers
     return _kwargs
 
 
@@ -67,6 +73,7 @@ def sync_detailed(
     client: Union[AuthenticatedClient, Client],
     page: Union[Unset, int] = 1,
     limit: Union[Unset, int] = 30,
+    accept: Union[Unset, str] = "application/hal+json",
 ) -> Response[Union[ApiMeapiTokensGetCollectionResponse200, Error]]:
     """Retrieves the collection of personal access token resources.
 
@@ -75,6 +82,7 @@ def sync_detailed(
     Args:
         page (Union[Unset, int]):  Default: 1.
         limit (Union[Unset, int]):  Default: 30.
+        accept (Union[Unset, str]):  Default: 'application/hal+json'.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -87,6 +95,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         page=page,
         limit=limit,
+        accept=accept,
     )
 
     response = client.get_httpx_client().request(
@@ -101,6 +110,7 @@ def sync(
     client: Union[AuthenticatedClient, Client],
     page: Union[Unset, int] = 1,
     limit: Union[Unset, int] = 30,
+    accept: Union[Unset, str] = "application/hal+json",
 ) -> Optional[Union[ApiMeapiTokensGetCollectionResponse200, Error]]:
     """Retrieves the collection of personal access token resources.
 
@@ -109,6 +119,7 @@ def sync(
     Args:
         page (Union[Unset, int]):  Default: 1.
         limit (Union[Unset, int]):  Default: 30.
+        accept (Union[Unset, str]):  Default: 'application/hal+json'.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -122,6 +133,7 @@ def sync(
         client=client,
         page=page,
         limit=limit,
+        accept=accept,
     ).parsed
 
 
@@ -130,6 +142,7 @@ async def asyncio_detailed(
     client: Union[AuthenticatedClient, Client],
     page: Union[Unset, int] = 1,
     limit: Union[Unset, int] = 30,
+    accept: Union[Unset, str] = "application/hal+json",
 ) -> Response[Union[ApiMeapiTokensGetCollectionResponse200, Error]]:
     """Retrieves the collection of personal access token resources.
 
@@ -138,6 +151,7 @@ async def asyncio_detailed(
     Args:
         page (Union[Unset, int]):  Default: 1.
         limit (Union[Unset, int]):  Default: 30.
+        accept (Union[Unset, str]):  Default: 'application/hal+json'.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -150,6 +164,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         page=page,
         limit=limit,
+        accept=accept,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -162,6 +177,7 @@ async def asyncio(
     client: Union[AuthenticatedClient, Client],
     page: Union[Unset, int] = 1,
     limit: Union[Unset, int] = 30,
+    accept: Union[Unset, str] = "application/hal+json",
 ) -> Optional[Union[ApiMeapiTokensGetCollectionResponse200, Error]]:
     """Retrieves the collection of personal access token resources.
 
@@ -170,6 +186,7 @@ async def asyncio(
     Args:
         page (Union[Unset, int]):  Default: 1.
         limit (Union[Unset, int]):  Default: 30.
+        accept (Union[Unset, str]):  Default: 'application/hal+json'.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -184,5 +201,6 @@ async def asyncio(
             client=client,
             page=page,
             limit=limit,
+            accept=accept,
         )
     ).parsed

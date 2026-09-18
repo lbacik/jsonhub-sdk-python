@@ -7,14 +7,17 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.oauth_2_revoke_body import Oauth2RevokeBody
 from ...models.oauth_2_revoke_response_200 import Oauth2RevokeResponse200
-from ...types import Response
+from ...types import Response, Unset
 
 
 def _get_kwargs(
     *,
     body: Oauth2RevokeBody,
+    accept: Union[Unset, str] = "application/json",
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
+    if not isinstance(accept, Unset):
+        headers["Accept"] = accept
 
     _kwargs: dict[str, Any] = {
         "method": "post",
@@ -58,6 +61,7 @@ def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
     body: Oauth2RevokeBody,
+    accept: Union[Unset, str] = "application/json",
 ) -> Response[Oauth2RevokeResponse200]:
     """Revoke OAuth consent
 
@@ -65,6 +69,7 @@ def sync_detailed(
     remain valid until expiry.
 
     Args:
+        accept (Union[Unset, str]):  Default: 'application/json'.
         body (Oauth2RevokeBody):
 
     Raises:
@@ -77,6 +82,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         body=body,
+        accept=accept,
     )
 
     response = client.get_httpx_client().request(
@@ -90,6 +96,7 @@ def sync(
     *,
     client: Union[AuthenticatedClient, Client],
     body: Oauth2RevokeBody,
+    accept: Union[Unset, str] = "application/json",
 ) -> Optional[Oauth2RevokeResponse200]:
     """Revoke OAuth consent
 
@@ -97,6 +104,7 @@ def sync(
     remain valid until expiry.
 
     Args:
+        accept (Union[Unset, str]):  Default: 'application/json'.
         body (Oauth2RevokeBody):
 
     Raises:
@@ -110,6 +118,7 @@ def sync(
     return sync_detailed(
         client=client,
         body=body,
+        accept=accept,
     ).parsed
 
 
@@ -117,6 +126,7 @@ async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
     body: Oauth2RevokeBody,
+    accept: Union[Unset, str] = "application/json",
 ) -> Response[Oauth2RevokeResponse200]:
     """Revoke OAuth consent
 
@@ -124,6 +134,7 @@ async def asyncio_detailed(
     remain valid until expiry.
 
     Args:
+        accept (Union[Unset, str]):  Default: 'application/json'.
         body (Oauth2RevokeBody):
 
     Raises:
@@ -136,6 +147,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         body=body,
+        accept=accept,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -147,6 +159,7 @@ async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
     body: Oauth2RevokeBody,
+    accept: Union[Unset, str] = "application/json",
 ) -> Optional[Oauth2RevokeResponse200]:
     """Revoke OAuth consent
 
@@ -154,6 +167,7 @@ async def asyncio(
     remain valid until expiry.
 
     Args:
+        accept (Union[Unset, str]):  Default: 'application/json'.
         body (Oauth2RevokeBody):
 
     Raises:
@@ -168,5 +182,6 @@ async def asyncio(
         await asyncio_detailed(
             client=client,
             body=body,
+            accept=accept,
         )
     ).parsed

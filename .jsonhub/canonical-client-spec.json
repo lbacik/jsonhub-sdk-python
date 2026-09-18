@@ -141,6 +141,15 @@
             },
             "style": "form",
             "explode": false
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "application/hal+json"
+            }
           }
         ]
       },
@@ -197,7 +206,17 @@
         },
         "summary": "Creates a definition resource.",
         "description": "Creates a definition resource.",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "application/hal+json"
+            }
+          }
+        ],
         "requestBody": {
           "description": "The new definition resource",
           "content": {
@@ -254,6 +273,15 @@
             },
             "style": "simple",
             "explode": false
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "application/json"
+            }
           }
         ]
       },
@@ -382,6 +410,15 @@
             },
             "style": "simple",
             "explode": false
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "application/hal+json"
+            }
           }
         ],
         "requestBody": {
@@ -550,6 +587,15 @@
             },
             "style": "form",
             "explode": false
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "application/hal+json"
+            }
           }
         ]
       },
@@ -606,7 +652,17 @@
         },
         "summary": "Creates a entity resource.",
         "description": "Creates a entity resource.",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "application/hal+json"
+            }
+          }
+        ],
         "requestBody": {
           "description": "The new entity resource",
           "content": {
@@ -663,6 +719,15 @@
             },
             "style": "simple",
             "explode": false
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "application/json"
+            }
           }
         ]
       },
@@ -791,6 +856,15 @@
             },
             "style": "simple",
             "explode": false
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "application/hal+json"
+            }
           }
         ],
         "requestBody": {
@@ -906,7 +980,18 @@
         },
         "summary": "OAuth2 authorization server metadata",
         "description": "Discovery document for MCP OAuth2 Authorization Code with PKCE, JWKS, revocation, and token exchange.",
-        "security": []
+        "security": [],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "application/json"
+            }
+          }
+        ]
       }
     },
     "/oauth2/authorize": {
@@ -1103,7 +1188,18 @@
         },
         "summary": "Get OAuth signing keys",
         "description": "Publishes public RSA keys for local JWT validation by MCP and other resource servers.",
-        "security": []
+        "security": [],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "application/json"
+            }
+          }
+        ]
       }
     },
     "/oauth2/register": {
@@ -1251,7 +1347,18 @@
           },
           "required": true
         },
-        "security": []
+        "security": [],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "application/json"
+            }
+          }
+        ]
       }
     },
     "/oauth2/revoke": {
@@ -1304,7 +1411,18 @@
           },
           "required": true
         },
-        "security": []
+        "security": [],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "application/json"
+            }
+          }
+        ]
       }
     },
     "/oauth2/token": {
@@ -1429,7 +1547,18 @@
           },
           "required": true
         },
-        "security": []
+        "security": [],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "application/json"
+            }
+          }
+        ]
       }
     },
     "/oauth2/token-exchange": {
@@ -1590,7 +1719,18 @@
           },
           "required": true
         },
-        "security": []
+        "security": [],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "application/json"
+            }
+          }
+        ]
       }
     },
     "/api/me/api-tokens": {
@@ -1670,6 +1810,15 @@
             },
             "style": "form",
             "explode": true
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "application/hal+json"
+            }
           }
         ]
       },
@@ -1726,7 +1875,17 @@
         },
         "summary": "Creates a personal access token resource.",
         "description": "Creates a personal access token resource.",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "application/hal+json"
+            }
+          }
+        ],
         "requestBody": {
           "description": "The new personal access token resource",
           "content": {
@@ -1866,6 +2025,15 @@
             },
             "style": "simple",
             "explode": false
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "application/hal+json"
+            }
           }
         ],
         "requestBody": {
@@ -1924,7 +2092,17 @@
         },
         "summary": "Creates a user resource.",
         "description": "Creates a user resource.",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "application/hal+json"
+            }
+          }
+        ],
         "requestBody": {
           "description": "The new user resource",
           "content": {
@@ -2002,7 +2180,17 @@
         },
         "summary": "Get current user information",
         "description": "Returns the authenticated user's account id, email, and quota usage and limits. `email` is returned regardless of token scope for now; see #45, after which it will require a scope covering profile access instead of being disclosed to every token holder.",
-        "parameters": []
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "application/json"
+            }
+          }
+        ]
       }
     },
     "/api/users/resend-activation": {
@@ -2048,7 +2236,17 @@
         },
         "summary": "Resend activation email",
         "description": "This endpoint resends the activation email to the user.",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "application/hal+json"
+            }
+          }
+        ],
         "requestBody": {
           "description": "The new user resource",
           "content": {
@@ -2106,7 +2304,17 @@
         },
         "summary": "Reset password (with token)",
         "description": "This endpoint resets the password of the user using the token sent by email.",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "application/hal+json"
+            }
+          }
+        ],
         "requestBody": {
           "description": "The new user resource",
           "content": {
@@ -2164,7 +2372,17 @@
         },
         "summary": "Send reset password email",
         "description": "This endpoint sends a reset password email to the user.",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "application/hal+json"
+            }
+          }
+        ],
         "requestBody": {
           "description": "The new user resource",
           "content": {
@@ -2305,6 +2523,15 @@
             },
             "style": "simple",
             "explode": false
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "application/hal+json"
+            }
           }
         ],
         "requestBody": {

@@ -18,7 +18,12 @@ def _get_kwargs(
     limit: Union[Unset, int] = 10,
     properties: Union[Unset, list[str]] = UNSET,
     parent_entity: Union[Unset, str] = UNSET,
+    accept: Union[Unset, str] = "application/hal+json",
 ) -> dict[str, Any]:
+    headers: dict[str, Any] = {}
+    if not isinstance(accept, Unset):
+        headers["Accept"] = accept
+
     params: dict[str, Any] = {}
 
     params["qid"] = qid
@@ -47,6 +52,7 @@ def _get_kwargs(
         "params": params,
     }
 
+    _kwargs["headers"] = headers
     return _kwargs
 
 
@@ -85,6 +91,7 @@ def sync_detailed(
     limit: Union[Unset, int] = 10,
     properties: Union[Unset, list[str]] = UNSET,
     parent_entity: Union[Unset, str] = UNSET,
+    accept: Union[Unset, str] = "application/hal+json",
 ) -> Response[ApiDefinitionsGetCollectionResponse200]:
     """Retrieves the collection of definition resources.
 
@@ -98,6 +105,7 @@ def sync_detailed(
         limit (Union[Unset, int]):  Default: 10.
         properties (Union[Unset, list[str]]):
         parent_entity (Union[Unset, str]):
+        accept (Union[Unset, str]):  Default: 'application/hal+json'.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -115,6 +123,7 @@ def sync_detailed(
         limit=limit,
         properties=properties,
         parent_entity=parent_entity,
+        accept=accept,
     )
 
     response = client.get_httpx_client().request(
@@ -134,6 +143,7 @@ def sync(
     limit: Union[Unset, int] = 10,
     properties: Union[Unset, list[str]] = UNSET,
     parent_entity: Union[Unset, str] = UNSET,
+    accept: Union[Unset, str] = "application/hal+json",
 ) -> Optional[ApiDefinitionsGetCollectionResponse200]:
     """Retrieves the collection of definition resources.
 
@@ -147,6 +157,7 @@ def sync(
         limit (Union[Unset, int]):  Default: 10.
         properties (Union[Unset, list[str]]):
         parent_entity (Union[Unset, str]):
+        accept (Union[Unset, str]):  Default: 'application/hal+json'.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -165,6 +176,7 @@ def sync(
         limit=limit,
         properties=properties,
         parent_entity=parent_entity,
+        accept=accept,
     ).parsed
 
 
@@ -178,6 +190,7 @@ async def asyncio_detailed(
     limit: Union[Unset, int] = 10,
     properties: Union[Unset, list[str]] = UNSET,
     parent_entity: Union[Unset, str] = UNSET,
+    accept: Union[Unset, str] = "application/hal+json",
 ) -> Response[ApiDefinitionsGetCollectionResponse200]:
     """Retrieves the collection of definition resources.
 
@@ -191,6 +204,7 @@ async def asyncio_detailed(
         limit (Union[Unset, int]):  Default: 10.
         properties (Union[Unset, list[str]]):
         parent_entity (Union[Unset, str]):
+        accept (Union[Unset, str]):  Default: 'application/hal+json'.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -208,6 +222,7 @@ async def asyncio_detailed(
         limit=limit,
         properties=properties,
         parent_entity=parent_entity,
+        accept=accept,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -225,6 +240,7 @@ async def asyncio(
     limit: Union[Unset, int] = 10,
     properties: Union[Unset, list[str]] = UNSET,
     parent_entity: Union[Unset, str] = UNSET,
+    accept: Union[Unset, str] = "application/hal+json",
 ) -> Optional[ApiDefinitionsGetCollectionResponse200]:
     """Retrieves the collection of definition resources.
 
@@ -238,6 +254,7 @@ async def asyncio(
         limit (Union[Unset, int]):  Default: 10.
         properties (Union[Unset, list[str]]):
         parent_entity (Union[Unset, str]):
+        accept (Union[Unset, str]):  Default: 'application/hal+json'.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -257,5 +274,6 @@ async def asyncio(
             limit=limit,
             properties=properties,
             parent_entity=parent_entity,
+            accept=accept,
         )
     ).parsed

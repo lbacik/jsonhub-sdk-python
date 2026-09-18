@@ -8,14 +8,17 @@ from ...client import AuthenticatedClient, Client
 from ...models.oauth_2_register_body import Oauth2RegisterBody
 from ...models.oauth_2_register_response_201 import Oauth2RegisterResponse201
 from ...models.oauth_2_register_response_400 import Oauth2RegisterResponse400
-from ...types import Response
+from ...types import Response, Unset
 
 
 def _get_kwargs(
     *,
     body: Oauth2RegisterBody,
+    accept: Union[Unset, str] = "application/json",
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
+    if not isinstance(accept, Unset):
+        headers["Accept"] = accept
 
     _kwargs: dict[str, Any] = {
         "method": "post",
@@ -64,6 +67,7 @@ def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
     body: Oauth2RegisterBody,
+    accept: Union[Unset, str] = "application/json",
 ) -> Response[Union[Oauth2RegisterResponse201, Oauth2RegisterResponse400]]:
     """Register OAuth client
 
@@ -71,6 +75,7 @@ def sync_detailed(
     for development.
 
     Args:
+        accept (Union[Unset, str]):  Default: 'application/json'.
         body (Oauth2RegisterBody):
 
     Raises:
@@ -83,6 +88,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         body=body,
+        accept=accept,
     )
 
     response = client.get_httpx_client().request(
@@ -96,6 +102,7 @@ def sync(
     *,
     client: Union[AuthenticatedClient, Client],
     body: Oauth2RegisterBody,
+    accept: Union[Unset, str] = "application/json",
 ) -> Optional[Union[Oauth2RegisterResponse201, Oauth2RegisterResponse400]]:
     """Register OAuth client
 
@@ -103,6 +110,7 @@ def sync(
     for development.
 
     Args:
+        accept (Union[Unset, str]):  Default: 'application/json'.
         body (Oauth2RegisterBody):
 
     Raises:
@@ -116,6 +124,7 @@ def sync(
     return sync_detailed(
         client=client,
         body=body,
+        accept=accept,
     ).parsed
 
 
@@ -123,6 +132,7 @@ async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
     body: Oauth2RegisterBody,
+    accept: Union[Unset, str] = "application/json",
 ) -> Response[Union[Oauth2RegisterResponse201, Oauth2RegisterResponse400]]:
     """Register OAuth client
 
@@ -130,6 +140,7 @@ async def asyncio_detailed(
     for development.
 
     Args:
+        accept (Union[Unset, str]):  Default: 'application/json'.
         body (Oauth2RegisterBody):
 
     Raises:
@@ -142,6 +153,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         body=body,
+        accept=accept,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -153,6 +165,7 @@ async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
     body: Oauth2RegisterBody,
+    accept: Union[Unset, str] = "application/json",
 ) -> Optional[Union[Oauth2RegisterResponse201, Oauth2RegisterResponse400]]:
     """Register OAuth client
 
@@ -160,6 +173,7 @@ async def asyncio(
     for development.
 
     Args:
+        accept (Union[Unset, str]):  Default: 'application/json'.
         body (Oauth2RegisterBody):
 
     Raises:
@@ -174,5 +188,6 @@ async def asyncio(
         await asyncio_detailed(
             client=client,
             body=body,
+            accept=accept,
         )
     ).parsed

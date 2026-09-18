@@ -9,14 +9,17 @@ from ...models.constraint_violation import ConstraintViolation
 from ...models.definition_definition_write import DefinitionDefinitionWrite
 from ...models.definition_jsonhal_definition_read import DefinitionJsonhalDefinitionRead
 from ...models.error import Error
-from ...types import Response
+from ...types import Response, Unset
 
 
 def _get_kwargs(
     *,
     body: DefinitionDefinitionWrite,
+    accept: Union[Unset, str] = "application/hal+json",
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
+    if not isinstance(accept, Unset):
+        headers["Accept"] = accept
 
     _kwargs: dict[str, Any] = {
         "method": "post",
@@ -75,12 +78,14 @@ def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
     body: DefinitionDefinitionWrite,
+    accept: Union[Unset, str] = "application/hal+json",
 ) -> Response[Union[ConstraintViolation, DefinitionJsonhalDefinitionRead, Error]]:
     """Creates a definition resource.
 
      Creates a definition resource.
 
     Args:
+        accept (Union[Unset, str]):  Default: 'application/hal+json'.
         body (DefinitionDefinitionWrite):
 
     Raises:
@@ -93,6 +98,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         body=body,
+        accept=accept,
     )
 
     response = client.get_httpx_client().request(
@@ -106,12 +112,14 @@ def sync(
     *,
     client: Union[AuthenticatedClient, Client],
     body: DefinitionDefinitionWrite,
+    accept: Union[Unset, str] = "application/hal+json",
 ) -> Optional[Union[ConstraintViolation, DefinitionJsonhalDefinitionRead, Error]]:
     """Creates a definition resource.
 
      Creates a definition resource.
 
     Args:
+        accept (Union[Unset, str]):  Default: 'application/hal+json'.
         body (DefinitionDefinitionWrite):
 
     Raises:
@@ -125,6 +133,7 @@ def sync(
     return sync_detailed(
         client=client,
         body=body,
+        accept=accept,
     ).parsed
 
 
@@ -132,12 +141,14 @@ async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
     body: DefinitionDefinitionWrite,
+    accept: Union[Unset, str] = "application/hal+json",
 ) -> Response[Union[ConstraintViolation, DefinitionJsonhalDefinitionRead, Error]]:
     """Creates a definition resource.
 
      Creates a definition resource.
 
     Args:
+        accept (Union[Unset, str]):  Default: 'application/hal+json'.
         body (DefinitionDefinitionWrite):
 
     Raises:
@@ -150,6 +161,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         body=body,
+        accept=accept,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -161,12 +173,14 @@ async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
     body: DefinitionDefinitionWrite,
+    accept: Union[Unset, str] = "application/hal+json",
 ) -> Optional[Union[ConstraintViolation, DefinitionJsonhalDefinitionRead, Error]]:
     """Creates a definition resource.
 
      Creates a definition resource.
 
     Args:
+        accept (Union[Unset, str]):  Default: 'application/hal+json'.
         body (DefinitionDefinitionWrite):
 
     Raises:
@@ -181,5 +195,6 @@ async def asyncio(
         await asyncio_detailed(
             client=client,
             body=body,
+            accept=accept,
         )
     ).parsed

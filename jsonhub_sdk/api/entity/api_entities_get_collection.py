@@ -20,7 +20,12 @@ def _get_kwargs(
     properties: Union[Unset, list[str]] = UNSET,
     definition: Union[Unset, str] = UNSET,
     parent: Union[Unset, str] = UNSET,
+    accept: Union[Unset, str] = "application/hal+json",
 ) -> dict[str, Any]:
+    headers: dict[str, Any] = {}
+    if not isinstance(accept, Unset):
+        headers["Accept"] = accept
+
     params: dict[str, Any] = {}
 
     params["qid"] = qid
@@ -53,6 +58,7 @@ def _get_kwargs(
         "params": params,
     }
 
+    _kwargs["headers"] = headers
     return _kwargs
 
 
@@ -93,6 +99,7 @@ def sync_detailed(
     properties: Union[Unset, list[str]] = UNSET,
     definition: Union[Unset, str] = UNSET,
     parent: Union[Unset, str] = UNSET,
+    accept: Union[Unset, str] = "application/hal+json",
 ) -> Response[ApiEntitiesGetCollectionResponse200]:
     """Retrieves the collection of entity resources.
 
@@ -108,6 +115,7 @@ def sync_detailed(
         properties (Union[Unset, list[str]]):
         definition (Union[Unset, str]):
         parent (Union[Unset, str]):
+        accept (Union[Unset, str]):  Default: 'application/hal+json'.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -127,6 +135,7 @@ def sync_detailed(
         properties=properties,
         definition=definition,
         parent=parent,
+        accept=accept,
     )
 
     response = client.get_httpx_client().request(
@@ -148,6 +157,7 @@ def sync(
     properties: Union[Unset, list[str]] = UNSET,
     definition: Union[Unset, str] = UNSET,
     parent: Union[Unset, str] = UNSET,
+    accept: Union[Unset, str] = "application/hal+json",
 ) -> Optional[ApiEntitiesGetCollectionResponse200]:
     """Retrieves the collection of entity resources.
 
@@ -163,6 +173,7 @@ def sync(
         properties (Union[Unset, list[str]]):
         definition (Union[Unset, str]):
         parent (Union[Unset, str]):
+        accept (Union[Unset, str]):  Default: 'application/hal+json'.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -183,6 +194,7 @@ def sync(
         properties=properties,
         definition=definition,
         parent=parent,
+        accept=accept,
     ).parsed
 
 
@@ -198,6 +210,7 @@ async def asyncio_detailed(
     properties: Union[Unset, list[str]] = UNSET,
     definition: Union[Unset, str] = UNSET,
     parent: Union[Unset, str] = UNSET,
+    accept: Union[Unset, str] = "application/hal+json",
 ) -> Response[ApiEntitiesGetCollectionResponse200]:
     """Retrieves the collection of entity resources.
 
@@ -213,6 +226,7 @@ async def asyncio_detailed(
         properties (Union[Unset, list[str]]):
         definition (Union[Unset, str]):
         parent (Union[Unset, str]):
+        accept (Union[Unset, str]):  Default: 'application/hal+json'.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -232,6 +246,7 @@ async def asyncio_detailed(
         properties=properties,
         definition=definition,
         parent=parent,
+        accept=accept,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -251,6 +266,7 @@ async def asyncio(
     properties: Union[Unset, list[str]] = UNSET,
     definition: Union[Unset, str] = UNSET,
     parent: Union[Unset, str] = UNSET,
+    accept: Union[Unset, str] = "application/hal+json",
 ) -> Optional[ApiEntitiesGetCollectionResponse200]:
     """Retrieves the collection of entity resources.
 
@@ -266,6 +282,7 @@ async def asyncio(
         properties (Union[Unset, list[str]]):
         definition (Union[Unset, str]):
         parent (Union[Unset, str]):
+        accept (Union[Unset, str]):  Default: 'application/hal+json'.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -287,5 +304,6 @@ async def asyncio(
             properties=properties,
             definition=definition,
             parent=parent,
+            accept=accept,
         )
     ).parsed

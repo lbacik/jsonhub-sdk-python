@@ -10,14 +10,17 @@ from ...models.oauth_2_token_exchange_response_200 import Oauth2TokenExchangeRes
 from ...models.oauth_2_token_exchange_response_400 import Oauth2TokenExchangeResponse400
 from ...models.oauth_2_token_exchange_response_401 import Oauth2TokenExchangeResponse401
 from ...models.oauth_2_token_exchange_response_403 import Oauth2TokenExchangeResponse403
-from ...types import Response
+from ...types import Response, Unset
 
 
 def _get_kwargs(
     *,
     body: Oauth2TokenExchangeBody,
+    accept: Union[Unset, str] = "application/json",
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
+    if not isinstance(accept, Unset):
+        headers["Accept"] = accept
 
     _kwargs: dict[str, Any] = {
         "method": "post",
@@ -90,6 +93,7 @@ def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
     body: Oauth2TokenExchangeBody,
+    accept: Union[Unset, str] = "application/json",
 ) -> Response[
     Union[
         Oauth2TokenExchangeResponse200,
@@ -104,6 +108,7 @@ def sync_detailed(
     exchanges an MCP-audience subject token for a short-lived downstream token with aud=jsonhub-api.
 
     Args:
+        accept (Union[Unset, str]):  Default: 'application/json'.
         body (Oauth2TokenExchangeBody):
 
     Raises:
@@ -116,6 +121,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         body=body,
+        accept=accept,
     )
 
     response = client.get_httpx_client().request(
@@ -129,6 +135,7 @@ def sync(
     *,
     client: Union[AuthenticatedClient, Client],
     body: Oauth2TokenExchangeBody,
+    accept: Union[Unset, str] = "application/json",
 ) -> Optional[
     Union[
         Oauth2TokenExchangeResponse200,
@@ -143,6 +150,7 @@ def sync(
     exchanges an MCP-audience subject token for a short-lived downstream token with aud=jsonhub-api.
 
     Args:
+        accept (Union[Unset, str]):  Default: 'application/json'.
         body (Oauth2TokenExchangeBody):
 
     Raises:
@@ -156,6 +164,7 @@ def sync(
     return sync_detailed(
         client=client,
         body=body,
+        accept=accept,
     ).parsed
 
 
@@ -163,6 +172,7 @@ async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
     body: Oauth2TokenExchangeBody,
+    accept: Union[Unset, str] = "application/json",
 ) -> Response[
     Union[
         Oauth2TokenExchangeResponse200,
@@ -177,6 +187,7 @@ async def asyncio_detailed(
     exchanges an MCP-audience subject token for a short-lived downstream token with aud=jsonhub-api.
 
     Args:
+        accept (Union[Unset, str]):  Default: 'application/json'.
         body (Oauth2TokenExchangeBody):
 
     Raises:
@@ -189,6 +200,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         body=body,
+        accept=accept,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -200,6 +212,7 @@ async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
     body: Oauth2TokenExchangeBody,
+    accept: Union[Unset, str] = "application/json",
 ) -> Optional[
     Union[
         Oauth2TokenExchangeResponse200,
@@ -214,6 +227,7 @@ async def asyncio(
     exchanges an MCP-audience subject token for a short-lived downstream token with aud=jsonhub-api.
 
     Args:
+        accept (Union[Unset, str]):  Default: 'application/json'.
         body (Oauth2TokenExchangeBody):
 
     Raises:
@@ -228,5 +242,6 @@ async def asyncio(
         await asyncio_detailed(
             client=client,
             body=body,
+            accept=accept,
         )
     ).parsed

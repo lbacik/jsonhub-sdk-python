@@ -7,17 +7,24 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.entity_entity_read_entity_read_parent import EntityEntityReadEntityReadParent
 from ...models.error import Error
-from ...types import Response
+from ...types import Response, Unset
 
 
 def _get_kwargs(
     id: str,
+    *,
+    accept: Union[Unset, str] = "application/json",
 ) -> dict[str, Any]:
+    headers: dict[str, Any] = {}
+    if not isinstance(accept, Unset):
+        headers["Accept"] = accept
+
     _kwargs: dict[str, Any] = {
         "method": "get",
         "url": f"/api/entities/{id}",
     }
 
+    _kwargs["headers"] = headers
     return _kwargs
 
 
@@ -55,6 +62,7 @@ def sync_detailed(
     id: str,
     *,
     client: Union[AuthenticatedClient, Client],
+    accept: Union[Unset, str] = "application/json",
 ) -> Response[Union[EntityEntityReadEntityReadParent, Error]]:
     """Retrieves a entity resource.
 
@@ -62,6 +70,7 @@ def sync_detailed(
 
     Args:
         id (str):
+        accept (Union[Unset, str]):  Default: 'application/json'.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -73,6 +82,7 @@ def sync_detailed(
 
     kwargs = _get_kwargs(
         id=id,
+        accept=accept,
     )
 
     response = client.get_httpx_client().request(
@@ -86,6 +96,7 @@ def sync(
     id: str,
     *,
     client: Union[AuthenticatedClient, Client],
+    accept: Union[Unset, str] = "application/json",
 ) -> Optional[Union[EntityEntityReadEntityReadParent, Error]]:
     """Retrieves a entity resource.
 
@@ -93,6 +104,7 @@ def sync(
 
     Args:
         id (str):
+        accept (Union[Unset, str]):  Default: 'application/json'.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -105,6 +117,7 @@ def sync(
     return sync_detailed(
         id=id,
         client=client,
+        accept=accept,
     ).parsed
 
 
@@ -112,6 +125,7 @@ async def asyncio_detailed(
     id: str,
     *,
     client: Union[AuthenticatedClient, Client],
+    accept: Union[Unset, str] = "application/json",
 ) -> Response[Union[EntityEntityReadEntityReadParent, Error]]:
     """Retrieves a entity resource.
 
@@ -119,6 +133,7 @@ async def asyncio_detailed(
 
     Args:
         id (str):
+        accept (Union[Unset, str]):  Default: 'application/json'.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -130,6 +145,7 @@ async def asyncio_detailed(
 
     kwargs = _get_kwargs(
         id=id,
+        accept=accept,
     )
 
     response = await client.get_async_httpx_client().request(**kwargs)
@@ -141,6 +157,7 @@ async def asyncio(
     id: str,
     *,
     client: Union[AuthenticatedClient, Client],
+    accept: Union[Unset, str] = "application/json",
 ) -> Optional[Union[EntityEntityReadEntityReadParent, Error]]:
     """Retrieves a entity resource.
 
@@ -148,6 +165,7 @@ async def asyncio(
 
     Args:
         id (str):
+        accept (Union[Unset, str]):  Default: 'application/json'.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -161,5 +179,6 @@ async def asyncio(
         await asyncio_detailed(
             id=id,
             client=client,
+            accept=accept,
         )
     ).parsed
