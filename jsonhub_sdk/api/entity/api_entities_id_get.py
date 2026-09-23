@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any, Optional, Union, cast
 
 import httpx
 
@@ -30,11 +30,15 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[EntityEntityReadEntityReadParent, Error]]:
+) -> Optional[Union[Any, EntityEntityReadEntityReadParent, Error]]:
     if response.status_code == 200:
         response_200 = EntityEntityReadEntityReadParent.from_dict(response.json())
 
         return response_200
+
+    if response.status_code == 403:
+        response_403 = cast(Any, None)
+        return response_403
 
     if response.status_code == 404:
         response_404 = Error.from_dict(response.json())
@@ -49,7 +53,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[EntityEntityReadEntityReadParent, Error]]:
+) -> Response[Union[Any, EntityEntityReadEntityReadParent, Error]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -63,7 +67,7 @@ def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
     accept: Union[Unset, str] = "application/json",
-) -> Response[Union[EntityEntityReadEntityReadParent, Error]]:
+) -> Response[Union[Any, EntityEntityReadEntityReadParent, Error]]:
     """Retrieves a entity resource.
 
      Retrieves a entity resource.
@@ -77,7 +81,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[EntityEntityReadEntityReadParent, Error]]
+        Response[Union[Any, EntityEntityReadEntityReadParent, Error]]
     """
 
     kwargs = _get_kwargs(
@@ -97,7 +101,7 @@ def sync(
     *,
     client: Union[AuthenticatedClient, Client],
     accept: Union[Unset, str] = "application/json",
-) -> Optional[Union[EntityEntityReadEntityReadParent, Error]]:
+) -> Optional[Union[Any, EntityEntityReadEntityReadParent, Error]]:
     """Retrieves a entity resource.
 
      Retrieves a entity resource.
@@ -111,7 +115,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[EntityEntityReadEntityReadParent, Error]
+        Union[Any, EntityEntityReadEntityReadParent, Error]
     """
 
     return sync_detailed(
@@ -126,7 +130,7 @@ async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
     accept: Union[Unset, str] = "application/json",
-) -> Response[Union[EntityEntityReadEntityReadParent, Error]]:
+) -> Response[Union[Any, EntityEntityReadEntityReadParent, Error]]:
     """Retrieves a entity resource.
 
      Retrieves a entity resource.
@@ -140,7 +144,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[EntityEntityReadEntityReadParent, Error]]
+        Response[Union[Any, EntityEntityReadEntityReadParent, Error]]
     """
 
     kwargs = _get_kwargs(
@@ -158,7 +162,7 @@ async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
     accept: Union[Unset, str] = "application/json",
-) -> Optional[Union[EntityEntityReadEntityReadParent, Error]]:
+) -> Optional[Union[Any, EntityEntityReadEntityReadParent, Error]]:
     """Retrieves a entity resource.
 
      Retrieves a entity resource.
@@ -172,7 +176,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[EntityEntityReadEntityReadParent, Error]
+        Union[Any, EntityEntityReadEntityReadParent, Error]
     """
 
     return (

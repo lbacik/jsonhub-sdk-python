@@ -16,17 +16,21 @@ class CurrentUserLimits:
     """
     Attributes:
         entities (CurrentUserLimitUsage):
+        root_entities (CurrentUserLimitUsage):
         private_entities (CurrentUserLimitUsage):
         definitions (CurrentUserLimitUsage):
     """
 
     entities: "CurrentUserLimitUsage"
+    root_entities: "CurrentUserLimitUsage"
     private_entities: "CurrentUserLimitUsage"
     definitions: "CurrentUserLimitUsage"
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         entities = self.entities.to_dict()
+
+        root_entities = self.root_entities.to_dict()
 
         private_entities = self.private_entities.to_dict()
 
@@ -37,6 +41,7 @@ class CurrentUserLimits:
         field_dict.update(
             {
                 "entities": entities,
+                "rootEntities": root_entities,
                 "privateEntities": private_entities,
                 "definitions": definitions,
             }
@@ -51,12 +56,15 @@ class CurrentUserLimits:
         d = dict(src_dict)
         entities = CurrentUserLimitUsage.from_dict(d.pop("entities"))
 
+        root_entities = CurrentUserLimitUsage.from_dict(d.pop("rootEntities"))
+
         private_entities = CurrentUserLimitUsage.from_dict(d.pop("privateEntities"))
 
         definitions = CurrentUserLimitUsage.from_dict(d.pop("definitions"))
 
         current_user_limits = cls(
             entities=entities,
+            root_entities=root_entities,
             private_entities=private_entities,
             definitions=definitions,
         )

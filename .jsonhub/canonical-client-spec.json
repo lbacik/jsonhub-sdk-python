@@ -3,7 +3,7 @@
   "info": {
     "title": "JsonHub API",
     "description": "",
-    "version": "0.11.1"
+    "version": "0.12.0"
   },
   "servers": [
     {
@@ -46,6 +46,12 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "The filter query is invalid."
+          },
+          "401": {
+            "description": "Authentication is required."
           }
         },
         "summary": "Retrieves the collection of definition resources.",
@@ -181,6 +187,9 @@
             },
             "links": {}
           },
+          "401": {
+            "description": "Authentication is required."
+          },
           "403": {
             "description": "Forbidden",
             "content": {
@@ -191,6 +200,9 @@
               }
             },
             "links": {}
+          },
+          "409": {
+            "description": "The request conflicts with existing state."
           },
           "422": {
             "description": "An error occurred",
@@ -315,6 +327,9 @@
               }
             },
             "links": {}
+          },
+          "409": {
+            "description": "The request conflicts with existing state."
           }
         },
         "summary": "Removes the definition resource.",
@@ -383,6 +398,9 @@
               }
             },
             "links": {}
+          },
+          "409": {
+            "description": "The request conflicts with existing state."
           },
           "422": {
             "description": "An error occurred",
@@ -468,6 +486,12 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "The filter query is invalid."
+          },
+          "401": {
+            "description": "Authentication is required."
           }
         },
         "summary": "Retrieves the collection of entity resources.",
@@ -638,6 +662,9 @@
             },
             "links": {}
           },
+          "409": {
+            "description": "The request conflicts with existing state."
+          },
           "422": {
             "description": "An error occurred",
             "content": {
@@ -692,6 +719,9 @@
                 }
               }
             }
+          },
+          "403": {
+            "description": "The current user is not permitted to view this entity."
           },
           "404": {
             "description": "Not found",
@@ -761,6 +791,9 @@
               }
             },
             "links": {}
+          },
+          "409": {
+            "description": "The request conflicts with existing state."
           }
         },
         "summary": "Removes the entity resource.",
@@ -938,6 +971,7 @@
                       },
                       "example": [
                         "authorization_code",
+                        "refresh_token",
                         "urn:ietf:params:oauth:grant-type:token-exchange"
                       ]
                     },
@@ -967,6 +1001,7 @@
                       "example": [
                         "mcp",
                         "frontend",
+                        "offline_access",
                         "jsonhub:entities:read",
                         "jsonhub:entities:write",
                         "jsonhub:definitions:write"
@@ -1236,7 +1271,8 @@
                         "type": "string"
                       },
                       "example": [
-                        "authorization_code"
+                        "authorization_code",
+                        "refresh_token"
                       ]
                     },
                     "response_types": {
@@ -1316,7 +1352,8 @@
                       "type": "string"
                     },
                     "example": [
-                      "authorization_code"
+                      "authorization_code",
+                      "refresh_token"
                     ]
                   },
                   "response_types": {
@@ -1404,6 +1441,13 @@
                   "audience": {
                     "type": "string",
                     "example": "mcp-resource-server"
+                  },
+                  "token_type_hint": {
+                    "type": "string",
+                    "enum": [
+                      "access_token",
+                      "refresh_token"
+                    ]
                   }
                 }
               }
@@ -1453,6 +1497,10 @@
                     "scope": {
                       "type": "string",
                       "example": "mcp"
+                    },
+                    "refresh_token": {
+                      "type": "string",
+                      "description": "Present when offline_access was granted."
                     }
                   }
                 }
@@ -1506,42 +1554,73 @@
             }
           }
         },
-        "summary": "Exchange authorization code",
-        "description": "Exchanges a single-use authorization code for a short-lived RS256 JWT access token. Public clients must provide the PKCE verifier.",
+        "summary": "Exchange authorization code or refresh token",
+        "description": "Exchanges a single-use authorization code for a short-lived RS256 JWT access token, or rotates a refresh token. Public clients must provide the PKCE verifier for authorization-code exchange.",
         "requestBody": {
           "description": "Authorization code token request",
           "content": {
             "application/x-www-form-urlencoded": {
               "schema": {
-                "type": "object",
-                "required": [
-                  "grant_type",
-                  "code",
-                  "redirect_uri",
-                  "client_id",
-                  "code_verifier"
-                ],
-                "properties": {
-                  "grant_type": {
-                    "type": "string",
-                    "enum": [
-                      "authorization_code"
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "required": [
+                      "grant_type",
+                      "code",
+                      "redirect_uri",
+                      "client_id",
+                      "code_verifier"
                     ],
-                    "example": "authorization_code"
+                    "properties": {
+                      "grant_type": {
+                        "type": "string",
+                        "enum": [
+                          "authorization_code"
+                        ],
+                        "example": "authorization_code"
+                      },
+                      "code": {
+                        "type": "string"
+                      },
+                      "redirect_uri": {
+                        "type": "string"
+                      },
+                      "client_id": {
+                        "type": "string"
+                      },
+                      "code_verifier": {
+                        "type": "string"
+                      }
+                    }
                   },
-                  "code": {
-                    "type": "string"
-                  },
-                  "redirect_uri": {
-                    "type": "string"
-                  },
-                  "client_id": {
-                    "type": "string"
-                  },
-                  "code_verifier": {
-                    "type": "string"
+                  {
+                    "type": "object",
+                    "required": [
+                      "grant_type",
+                      "refresh_token",
+                      "client_id"
+                    ],
+                    "properties": {
+                      "grant_type": {
+                        "type": "string",
+                        "enum": [
+                          "refresh_token"
+                        ],
+                        "example": "refresh_token"
+                      },
+                      "refresh_token": {
+                        "type": "string"
+                      },
+                      "client_id": {
+                        "type": "string"
+                      },
+                      "scope": {
+                        "type": "string",
+                        "description": "Optional subset of the original grant."
+                      }
+                    }
                   }
-                }
+                ]
               }
             }
           },
@@ -1589,6 +1668,10 @@
                     "scope": {
                       "type": "string",
                       "example": "jsonhub:entities:write jsonhub:definitions:write"
+                    },
+                    "refresh_token": {
+                      "type": "string",
+                      "description": "Present when offline_access was granted."
                     },
                     "issued_token_type": {
                       "type": "string",
@@ -1768,6 +1851,9 @@
               }
             }
           },
+          "401": {
+            "description": "Authentication is required."
+          },
           "403": {
             "description": "Forbidden",
             "content": {
@@ -1860,6 +1946,9 @@
               }
             },
             "links": {}
+          },
+          "409": {
+            "description": "The request conflicts with existing state."
           },
           "422": {
             "description": "An error occurred",
@@ -2078,6 +2167,9 @@
             },
             "links": {}
           },
+          "409": {
+            "description": "The request conflicts with existing state."
+          },
           "422": {
             "description": "An error occurred",
             "content": {
@@ -2290,6 +2382,12 @@
             },
             "links": {}
           },
+          "404": {
+            "description": "No matching password-reset token was found."
+          },
+          "410": {
+            "description": "The password-reset token has expired."
+          },
           "422": {
             "description": "Unprocessable entity",
             "content": {
@@ -2464,6 +2562,9 @@
             },
             "links": {}
           },
+          "204": {
+            "description": "No content."
+          },
           "400": {
             "description": "Invalid input",
             "content": {
@@ -2636,11 +2737,15 @@
         "type": "object",
         "required": [
           "entities",
+          "rootEntities",
           "privateEntities",
           "definitions"
         ],
         "properties": {
           "entities": {
+            "$ref": "#/components/schemas/CurrentUserLimitUsage"
+          },
+          "rootEntities": {
             "$ref": "#/components/schemas/CurrentUserLimitUsage"
           },
           "privateEntities": {

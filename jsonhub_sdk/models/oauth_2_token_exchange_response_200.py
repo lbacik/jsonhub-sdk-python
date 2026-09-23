@@ -17,6 +17,7 @@ class Oauth2TokenExchangeResponse200:
         token_type (Union[Unset, str]):  Example: Bearer.
         expires_in (Union[Unset, int]):  Example: 300.
         scope (Union[Unset, str]):  Example: jsonhub:entities:write jsonhub:definitions:write.
+        refresh_token (Union[Unset, str]): Present when offline_access was granted.
         issued_token_type (Union[Unset, str]):  Example: urn:ietf:params:oauth:token-type:access_token.
     """
 
@@ -24,6 +25,7 @@ class Oauth2TokenExchangeResponse200:
     token_type: Union[Unset, str] = UNSET
     expires_in: Union[Unset, int] = UNSET
     scope: Union[Unset, str] = UNSET
+    refresh_token: Union[Unset, str] = UNSET
     issued_token_type: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -35,6 +37,8 @@ class Oauth2TokenExchangeResponse200:
         expires_in = self.expires_in
 
         scope = self.scope
+
+        refresh_token = self.refresh_token
 
         issued_token_type = self.issued_token_type
 
@@ -49,6 +53,8 @@ class Oauth2TokenExchangeResponse200:
             field_dict["expires_in"] = expires_in
         if scope is not UNSET:
             field_dict["scope"] = scope
+        if refresh_token is not UNSET:
+            field_dict["refresh_token"] = refresh_token
         if issued_token_type is not UNSET:
             field_dict["issued_token_type"] = issued_token_type
 
@@ -65,6 +71,8 @@ class Oauth2TokenExchangeResponse200:
 
         scope = d.pop("scope", UNSET)
 
+        refresh_token = d.pop("refresh_token", UNSET)
+
         issued_token_type = d.pop("issued_token_type", UNSET)
 
         oauth_2_token_exchange_response_200 = cls(
@@ -72,6 +80,7 @@ class Oauth2TokenExchangeResponse200:
             token_type=token_type,
             expires_in=expires_in,
             scope=scope,
+            refresh_token=refresh_token,
             issued_token_type=issued_token_type,
         )
 

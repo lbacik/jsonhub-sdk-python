@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any, Optional, Union, cast
 
 import httpx
 
@@ -58,11 +58,19 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[ApiDefinitionsGetCollectionResponse200]:
+) -> Optional[Union[Any, ApiDefinitionsGetCollectionResponse200]]:
     if response.status_code == 200:
         response_200 = ApiDefinitionsGetCollectionResponse200.from_dict(response.json())
 
         return response_200
+
+    if response.status_code == 400:
+        response_400 = cast(Any, None)
+        return response_400
+
+    if response.status_code == 401:
+        response_401 = cast(Any, None)
+        return response_401
 
     if client.raise_on_unexpected_status:
         raise errors.UnexpectedStatus(response.status_code, response.content)
@@ -72,7 +80,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[ApiDefinitionsGetCollectionResponse200]:
+) -> Response[Union[Any, ApiDefinitionsGetCollectionResponse200]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -92,7 +100,7 @@ def sync_detailed(
     properties: Union[Unset, list[str]] = UNSET,
     parent_entity: Union[Unset, str] = UNSET,
     accept: Union[Unset, str] = "application/hal+json",
-) -> Response[ApiDefinitionsGetCollectionResponse200]:
+) -> Response[Union[Any, ApiDefinitionsGetCollectionResponse200]]:
     """Retrieves the collection of definition resources.
 
      Results are ordered deterministically, oldest first.
@@ -112,7 +120,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ApiDefinitionsGetCollectionResponse200]
+        Response[Union[Any, ApiDefinitionsGetCollectionResponse200]]
     """
 
     kwargs = _get_kwargs(
@@ -144,7 +152,7 @@ def sync(
     properties: Union[Unset, list[str]] = UNSET,
     parent_entity: Union[Unset, str] = UNSET,
     accept: Union[Unset, str] = "application/hal+json",
-) -> Optional[ApiDefinitionsGetCollectionResponse200]:
+) -> Optional[Union[Any, ApiDefinitionsGetCollectionResponse200]]:
     """Retrieves the collection of definition resources.
 
      Results are ordered deterministically, oldest first.
@@ -164,7 +172,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ApiDefinitionsGetCollectionResponse200
+        Union[Any, ApiDefinitionsGetCollectionResponse200]
     """
 
     return sync_detailed(
@@ -191,7 +199,7 @@ async def asyncio_detailed(
     properties: Union[Unset, list[str]] = UNSET,
     parent_entity: Union[Unset, str] = UNSET,
     accept: Union[Unset, str] = "application/hal+json",
-) -> Response[ApiDefinitionsGetCollectionResponse200]:
+) -> Response[Union[Any, ApiDefinitionsGetCollectionResponse200]]:
     """Retrieves the collection of definition resources.
 
      Results are ordered deterministically, oldest first.
@@ -211,7 +219,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ApiDefinitionsGetCollectionResponse200]
+        Response[Union[Any, ApiDefinitionsGetCollectionResponse200]]
     """
 
     kwargs = _get_kwargs(
@@ -241,7 +249,7 @@ async def asyncio(
     properties: Union[Unset, list[str]] = UNSET,
     parent_entity: Union[Unset, str] = UNSET,
     accept: Union[Unset, str] = "application/hal+json",
-) -> Optional[ApiDefinitionsGetCollectionResponse200]:
+) -> Optional[Union[Any, ApiDefinitionsGetCollectionResponse200]]:
     """Retrieves the collection of definition resources.
 
      Results are ordered deterministically, oldest first.
@@ -261,7 +269,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ApiDefinitionsGetCollectionResponse200
+        Union[Any, ApiDefinitionsGetCollectionResponse200]
     """
 
     return (

@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any, Optional, Union, cast
 
 import httpx
 
@@ -37,11 +37,15 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ConstraintViolation, Error, UserJsonhalUserEmpty]]:
+) -> Optional[Union[Any, ConstraintViolation, Error, UserJsonhalUserEmpty]]:
     if response.status_code == 200:
         response_200 = UserJsonhalUserEmpty.from_dict(response.json())
 
         return response_200
+
+    if response.status_code == 204:
+        response_204 = cast(Any, None)
+        return response_204
 
     if response.status_code == 400:
         response_400 = Error.from_dict(response.json())
@@ -71,7 +75,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ConstraintViolation, Error, UserJsonhalUserEmpty]]:
+) -> Response[Union[Any, ConstraintViolation, Error, UserJsonhalUserEmpty]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -86,7 +90,7 @@ def sync_detailed(
     client: Union[AuthenticatedClient, Client],
     body: UserUserUpdateJsonMergePatch,
     accept: Union[Unset, str] = "application/hal+json",
-) -> Response[Union[ConstraintViolation, Error, UserJsonhalUserEmpty]]:
+) -> Response[Union[Any, ConstraintViolation, Error, UserJsonhalUserEmpty]]:
     """Updates the user resource.
 
      Updates the user resource.
@@ -101,7 +105,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ConstraintViolation, Error, UserJsonhalUserEmpty]]
+        Response[Union[Any, ConstraintViolation, Error, UserJsonhalUserEmpty]]
     """
 
     kwargs = _get_kwargs(
@@ -123,7 +127,7 @@ def sync(
     client: Union[AuthenticatedClient, Client],
     body: UserUserUpdateJsonMergePatch,
     accept: Union[Unset, str] = "application/hal+json",
-) -> Optional[Union[ConstraintViolation, Error, UserJsonhalUserEmpty]]:
+) -> Optional[Union[Any, ConstraintViolation, Error, UserJsonhalUserEmpty]]:
     """Updates the user resource.
 
      Updates the user resource.
@@ -138,7 +142,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ConstraintViolation, Error, UserJsonhalUserEmpty]
+        Union[Any, ConstraintViolation, Error, UserJsonhalUserEmpty]
     """
 
     return sync_detailed(
@@ -155,7 +159,7 @@ async def asyncio_detailed(
     client: Union[AuthenticatedClient, Client],
     body: UserUserUpdateJsonMergePatch,
     accept: Union[Unset, str] = "application/hal+json",
-) -> Response[Union[ConstraintViolation, Error, UserJsonhalUserEmpty]]:
+) -> Response[Union[Any, ConstraintViolation, Error, UserJsonhalUserEmpty]]:
     """Updates the user resource.
 
      Updates the user resource.
@@ -170,7 +174,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ConstraintViolation, Error, UserJsonhalUserEmpty]]
+        Response[Union[Any, ConstraintViolation, Error, UserJsonhalUserEmpty]]
     """
 
     kwargs = _get_kwargs(
@@ -190,7 +194,7 @@ async def asyncio(
     client: Union[AuthenticatedClient, Client],
     body: UserUserUpdateJsonMergePatch,
     accept: Union[Unset, str] = "application/hal+json",
-) -> Optional[Union[ConstraintViolation, Error, UserJsonhalUserEmpty]]:
+) -> Optional[Union[Any, ConstraintViolation, Error, UserJsonhalUserEmpty]]:
     """Updates the user resource.
 
      Updates the user resource.
@@ -205,7 +209,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ConstraintViolation, Error, UserJsonhalUserEmpty]
+        Union[Any, ConstraintViolation, Error, UserJsonhalUserEmpty]
     """
 
     return (

@@ -5,7 +5,8 @@ import httpx
 
 from ... import errors
 from ...client import AuthenticatedClient, Client
-from ...models.oauth_2_token_body import Oauth2TokenBody
+from ...models.oauth_2_token_body_type_0 import Oauth2TokenBodyType0
+from ...models.oauth_2_token_body_type_1 import Oauth2TokenBodyType1
 from ...models.oauth_2_token_response_200 import Oauth2TokenResponse200
 from ...models.oauth_2_token_response_400 import Oauth2TokenResponse400
 from ...models.oauth_2_token_response_401 import Oauth2TokenResponse401
@@ -14,7 +15,7 @@ from ...types import Response, Unset
 
 def _get_kwargs(
     *,
-    body: Oauth2TokenBody,
+    body: Union["Oauth2TokenBodyType0", "Oauth2TokenBodyType1"],
     accept: Union[Unset, str] = "application/json",
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
@@ -72,17 +73,17 @@ def _build_response(
 def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: Oauth2TokenBody,
+    body: Union["Oauth2TokenBodyType0", "Oauth2TokenBodyType1"],
     accept: Union[Unset, str] = "application/json",
 ) -> Response[Union[Oauth2TokenResponse200, Oauth2TokenResponse400, Oauth2TokenResponse401]]:
-    """Exchange authorization code
+    """Exchange authorization code or refresh token
 
-     Exchanges a single-use authorization code for a short-lived RS256 JWT access token. Public clients
-    must provide the PKCE verifier.
+     Exchanges a single-use authorization code for a short-lived RS256 JWT access token, or rotates a
+    refresh token. Public clients must provide the PKCE verifier for authorization-code exchange.
 
     Args:
         accept (Union[Unset, str]):  Default: 'application/json'.
-        body (Oauth2TokenBody):
+        body (Union['Oauth2TokenBodyType0', 'Oauth2TokenBodyType1']):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -107,17 +108,17 @@ def sync_detailed(
 def sync(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: Oauth2TokenBody,
+    body: Union["Oauth2TokenBodyType0", "Oauth2TokenBodyType1"],
     accept: Union[Unset, str] = "application/json",
 ) -> Optional[Union[Oauth2TokenResponse200, Oauth2TokenResponse400, Oauth2TokenResponse401]]:
-    """Exchange authorization code
+    """Exchange authorization code or refresh token
 
-     Exchanges a single-use authorization code for a short-lived RS256 JWT access token. Public clients
-    must provide the PKCE verifier.
+     Exchanges a single-use authorization code for a short-lived RS256 JWT access token, or rotates a
+    refresh token. Public clients must provide the PKCE verifier for authorization-code exchange.
 
     Args:
         accept (Union[Unset, str]):  Default: 'application/json'.
-        body (Oauth2TokenBody):
+        body (Union['Oauth2TokenBodyType0', 'Oauth2TokenBodyType1']):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -137,17 +138,17 @@ def sync(
 async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: Oauth2TokenBody,
+    body: Union["Oauth2TokenBodyType0", "Oauth2TokenBodyType1"],
     accept: Union[Unset, str] = "application/json",
 ) -> Response[Union[Oauth2TokenResponse200, Oauth2TokenResponse400, Oauth2TokenResponse401]]:
-    """Exchange authorization code
+    """Exchange authorization code or refresh token
 
-     Exchanges a single-use authorization code for a short-lived RS256 JWT access token. Public clients
-    must provide the PKCE verifier.
+     Exchanges a single-use authorization code for a short-lived RS256 JWT access token, or rotates a
+    refresh token. Public clients must provide the PKCE verifier for authorization-code exchange.
 
     Args:
         accept (Union[Unset, str]):  Default: 'application/json'.
-        body (Oauth2TokenBody):
+        body (Union['Oauth2TokenBodyType0', 'Oauth2TokenBodyType1']):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -170,17 +171,17 @@ async def asyncio_detailed(
 async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
-    body: Oauth2TokenBody,
+    body: Union["Oauth2TokenBodyType0", "Oauth2TokenBodyType1"],
     accept: Union[Unset, str] = "application/json",
 ) -> Optional[Union[Oauth2TokenResponse200, Oauth2TokenResponse400, Oauth2TokenResponse401]]:
-    """Exchange authorization code
+    """Exchange authorization code or refresh token
 
-     Exchanges a single-use authorization code for a short-lived RS256 JWT access token. Public clients
-    must provide the PKCE verifier.
+     Exchanges a single-use authorization code for a short-lived RS256 JWT access token, or rotates a
+    refresh token. Public clients must provide the PKCE verifier for authorization-code exchange.
 
     Args:
         accept (Union[Unset, str]):  Default: 'application/json'.
-        body (Oauth2TokenBody):
+        body (Union['Oauth2TokenBodyType0', 'Oauth2TokenBodyType1']):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

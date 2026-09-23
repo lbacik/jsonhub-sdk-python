@@ -51,9 +51,12 @@ from .oauth_2_register_body_token_endpoint_auth_method import Oauth2RegisterBody
 from .oauth_2_register_response_201 import Oauth2RegisterResponse201
 from .oauth_2_register_response_400 import Oauth2RegisterResponse400
 from .oauth_2_revoke_body import Oauth2RevokeBody
+from .oauth_2_revoke_body_token_type_hint import Oauth2RevokeBodyTokenTypeHint
 from .oauth_2_revoke_response_200 import Oauth2RevokeResponse200
-from .oauth_2_token_body import Oauth2TokenBody
-from .oauth_2_token_body_grant_type import Oauth2TokenBodyGrantType
+from .oauth_2_token_body_type_0 import Oauth2TokenBodyType0
+from .oauth_2_token_body_type_0_grant_type import Oauth2TokenBodyType0GrantType
+from .oauth_2_token_body_type_1 import Oauth2TokenBodyType1
+from .oauth_2_token_body_type_1_grant_type import Oauth2TokenBodyType1GrantType
 from .oauth_2_token_exchange_body import Oauth2TokenExchangeBody
 from .oauth_2_token_exchange_body_audience import Oauth2TokenExchangeBodyAudience
 from .oauth_2_token_exchange_response_200 import Oauth2TokenExchangeResponse200
@@ -157,9 +160,12 @@ __all__ = (
     "Oauth2RegisterResponse201",
     "Oauth2RegisterResponse400",
     "Oauth2RevokeBody",
+    "Oauth2RevokeBodyTokenTypeHint",
     "Oauth2RevokeResponse200",
-    "Oauth2TokenBody",
-    "Oauth2TokenBodyGrantType",
+    "Oauth2TokenBodyType0",
+    "Oauth2TokenBodyType0GrantType",
+    "Oauth2TokenBodyType1",
+    "Oauth2TokenBodyType1GrantType",
     "Oauth2TokenExchangeBody",
     "Oauth2TokenExchangeBodyAudience",
     "Oauth2TokenExchangeResponse200",

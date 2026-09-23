@@ -21,12 +21,12 @@ class Oauth2MetadataResponse200:
         revocation_endpoint (Union[Unset, str]):  Example: https://jsonhub.example/oauth2/revoke.
         token_exchange_endpoint (Union[Unset, str]):  Example: https://jsonhub.example/oauth2/token-exchange.
         response_types_supported (Union[Unset, list[str]]):  Example: ['code'].
-        grant_types_supported (Union[Unset, list[str]]):  Example: ['authorization_code', 'urn:ietf:params:oauth:grant-
-            type:token-exchange'].
+        grant_types_supported (Union[Unset, list[str]]):  Example: ['authorization_code', 'refresh_token',
+            'urn:ietf:params:oauth:grant-type:token-exchange'].
         code_challenge_methods_supported (Union[Unset, list[str]]):  Example: ['S256'].
         audiences_supported (Union[Unset, list[str]]):  Example: ['jsonhub-api'].
-        scopes_supported (Union[Unset, list[str]]):  Example: ['mcp', 'frontend', 'jsonhub:entities:read',
-            'jsonhub:entities:write', 'jsonhub:definitions:write'].
+        scopes_supported (Union[Unset, list[str]]):  Example: ['mcp', 'frontend', 'offline_access',
+            'jsonhub:entities:read', 'jsonhub:entities:write', 'jsonhub:definitions:write'].
     """
 
     issuer: Union[Unset, str] = UNSET

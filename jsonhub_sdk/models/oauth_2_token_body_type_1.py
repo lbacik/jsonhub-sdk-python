@@ -1,80 +1,74 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Union
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.oauth_2_token_body_grant_type import Oauth2TokenBodyGrantType
+from ..models.oauth_2_token_body_type_1_grant_type import Oauth2TokenBodyType1GrantType
+from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="Oauth2TokenBody")
+T = TypeVar("T", bound="Oauth2TokenBodyType1")
 
 
 @_attrs_define
-class Oauth2TokenBody:
+class Oauth2TokenBodyType1:
     """
     Attributes:
-        grant_type (Oauth2TokenBodyGrantType):  Example: authorization_code.
-        code (str):
-        redirect_uri (str):
+        grant_type (Oauth2TokenBodyType1GrantType):  Example: refresh_token.
+        refresh_token (str):
         client_id (str):
-        code_verifier (str):
+        scope (Union[Unset, str]): Optional subset of the original grant.
     """
 
-    grant_type: Oauth2TokenBodyGrantType
-    code: str
-    redirect_uri: str
+    grant_type: Oauth2TokenBodyType1GrantType
+    refresh_token: str
     client_id: str
-    code_verifier: str
+    scope: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         grant_type = self.grant_type.value
 
-        code = self.code
-
-        redirect_uri = self.redirect_uri
+        refresh_token = self.refresh_token
 
         client_id = self.client_id
 
-        code_verifier = self.code_verifier
+        scope = self.scope
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
                 "grant_type": grant_type,
-                "code": code,
-                "redirect_uri": redirect_uri,
+                "refresh_token": refresh_token,
                 "client_id": client_id,
-                "code_verifier": code_verifier,
             }
         )
+        if scope is not UNSET:
+            field_dict["scope"] = scope
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        grant_type = Oauth2TokenBodyGrantType(d.pop("grant_type"))
+        grant_type = Oauth2TokenBodyType1GrantType(d.pop("grant_type"))
 
-        code = d.pop("code")
-
-        redirect_uri = d.pop("redirect_uri")
+        refresh_token = d.pop("refresh_token")
 
         client_id = d.pop("client_id")
 
-        code_verifier = d.pop("code_verifier")
+        scope = d.pop("scope", UNSET)
 
-        oauth_2_token_body = cls(
+        oauth_2_token_body_type_1 = cls(
             grant_type=grant_type,
-            code=code,
-            redirect_uri=redirect_uri,
+            refresh_token=refresh_token,
             client_id=client_id,
-            code_verifier=code_verifier,
+            scope=scope,
         )
 
-        oauth_2_token_body.additional_properties = d
-        return oauth_2_token_body
+        oauth_2_token_body_type_1.additional_properties = d
+        return oauth_2_token_body_type_1
 
     @property
     def additional_keys(self) -> list[str]:

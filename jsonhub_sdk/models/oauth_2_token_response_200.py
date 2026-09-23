@@ -17,12 +17,14 @@ class Oauth2TokenResponse200:
         token_type (Union[Unset, str]):  Example: Bearer.
         expires_in (Union[Unset, int]):  Example: 900.
         scope (Union[Unset, str]):  Example: mcp.
+        refresh_token (Union[Unset, str]): Present when offline_access was granted.
     """
 
     access_token: Union[Unset, str] = UNSET
     token_type: Union[Unset, str] = UNSET
     expires_in: Union[Unset, int] = UNSET
     scope: Union[Unset, str] = UNSET
+    refresh_token: Union[Unset, str] = UNSET
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
@@ -33,6 +35,8 @@ class Oauth2TokenResponse200:
         expires_in = self.expires_in
 
         scope = self.scope
+
+        refresh_token = self.refresh_token
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -45,6 +49,8 @@ class Oauth2TokenResponse200:
             field_dict["expires_in"] = expires_in
         if scope is not UNSET:
             field_dict["scope"] = scope
+        if refresh_token is not UNSET:
+            field_dict["refresh_token"] = refresh_token
 
         return field_dict
 
@@ -59,11 +65,14 @@ class Oauth2TokenResponse200:
 
         scope = d.pop("scope", UNSET)
 
+        refresh_token = d.pop("refresh_token", UNSET)
+
         oauth_2_token_response_200 = cls(
             access_token=access_token,
             token_type=token_type,
             expires_in=expires_in,
             scope=scope,
+            refresh_token=refresh_token,
         )
 
         oauth_2_token_response_200.additional_properties = d

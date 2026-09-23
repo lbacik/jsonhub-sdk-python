@@ -16,7 +16,7 @@ class Oauth2RegisterResponse201:
         client_id (Union[Unset, str]):  Example: jh_client_id.
         client_secret (Union[Unset, str]): Only returned for confidential clients.
         redirect_uris (Union[Unset, list[str]]):
-        grant_types (Union[Unset, list[str]]):  Example: ['authorization_code'].
+        grant_types (Union[Unset, list[str]]):  Example: ['authorization_code', 'refresh_token'].
         response_types (Union[Unset, list[str]]):  Example: ['code'].
         scope (Union[Unset, str]):  Example: mcp jsonhub:entities:write.
         token_endpoint_auth_method (Union[Unset, str]):  Example: none.

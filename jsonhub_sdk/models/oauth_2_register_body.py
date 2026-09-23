@@ -16,7 +16,7 @@ class Oauth2RegisterBody:
     Attributes:
         redirect_uris (list[str]):  Example: ['https://client.example.test/callback'].
         client_name (Union[Unset, str]):  Example: Generic MCP Client.
-        grant_types (Union[Unset, list[str]]):  Example: ['authorization_code'].
+        grant_types (Union[Unset, list[str]]):  Example: ['authorization_code', 'refresh_token'].
         response_types (Union[Unset, list[str]]):  Example: ['code'].
         scope (Union[Unset, str]):  Example: mcp jsonhub:entities:write.
         token_endpoint_auth_method (Union[Unset, Oauth2RegisterBodyTokenEndpointAuthMethod]):  Example: none.

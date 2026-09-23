@@ -1,5 +1,5 @@
 from http import HTTPStatus
-from typing import Any, Optional, Union
+from typing import Any, Optional, Union, cast
 
 import httpx
 
@@ -40,11 +40,15 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ApiMeapiTokensGetCollectionResponse200, Error]]:
+) -> Optional[Union[Any, ApiMeapiTokensGetCollectionResponse200, Error]]:
     if response.status_code == 200:
         response_200 = ApiMeapiTokensGetCollectionResponse200.from_dict(response.json())
 
         return response_200
+
+    if response.status_code == 401:
+        response_401 = cast(Any, None)
+        return response_401
 
     if response.status_code == 403:
         response_403 = Error.from_dict(response.json())
@@ -59,7 +63,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ApiMeapiTokensGetCollectionResponse200, Error]]:
+) -> Response[Union[Any, ApiMeapiTokensGetCollectionResponse200, Error]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -74,7 +78,7 @@ def sync_detailed(
     page: Union[Unset, int] = 1,
     limit: Union[Unset, int] = 30,
     accept: Union[Unset, str] = "application/hal+json",
-) -> Response[Union[ApiMeapiTokensGetCollectionResponse200, Error]]:
+) -> Response[Union[Any, ApiMeapiTokensGetCollectionResponse200, Error]]:
     """Retrieves the collection of personal access token resources.
 
      Retrieves the collection of personal access token resources.
@@ -89,7 +93,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ApiMeapiTokensGetCollectionResponse200, Error]]
+        Response[Union[Any, ApiMeapiTokensGetCollectionResponse200, Error]]
     """
 
     kwargs = _get_kwargs(
@@ -111,7 +115,7 @@ def sync(
     page: Union[Unset, int] = 1,
     limit: Union[Unset, int] = 30,
     accept: Union[Unset, str] = "application/hal+json",
-) -> Optional[Union[ApiMeapiTokensGetCollectionResponse200, Error]]:
+) -> Optional[Union[Any, ApiMeapiTokensGetCollectionResponse200, Error]]:
     """Retrieves the collection of personal access token resources.
 
      Retrieves the collection of personal access token resources.
@@ -126,7 +130,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ApiMeapiTokensGetCollectionResponse200, Error]
+        Union[Any, ApiMeapiTokensGetCollectionResponse200, Error]
     """
 
     return sync_detailed(
@@ -143,7 +147,7 @@ async def asyncio_detailed(
     page: Union[Unset, int] = 1,
     limit: Union[Unset, int] = 30,
     accept: Union[Unset, str] = "application/hal+json",
-) -> Response[Union[ApiMeapiTokensGetCollectionResponse200, Error]]:
+) -> Response[Union[Any, ApiMeapiTokensGetCollectionResponse200, Error]]:
     """Retrieves the collection of personal access token resources.
 
      Retrieves the collection of personal access token resources.
@@ -158,7 +162,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ApiMeapiTokensGetCollectionResponse200, Error]]
+        Response[Union[Any, ApiMeapiTokensGetCollectionResponse200, Error]]
     """
 
     kwargs = _get_kwargs(
@@ -178,7 +182,7 @@ async def asyncio(
     page: Union[Unset, int] = 1,
     limit: Union[Unset, int] = 30,
     accept: Union[Unset, str] = "application/hal+json",
-) -> Optional[Union[ApiMeapiTokensGetCollectionResponse200, Error]]:
+) -> Optional[Union[Any, ApiMeapiTokensGetCollectionResponse200, Error]]:
     """Retrieves the collection of personal access token resources.
 
      Retrieves the collection of personal access token resources.
@@ -193,7 +197,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ApiMeapiTokensGetCollectionResponse200, Error]
+        Union[Any, ApiMeapiTokensGetCollectionResponse200, Error]
     """
 
     return (
