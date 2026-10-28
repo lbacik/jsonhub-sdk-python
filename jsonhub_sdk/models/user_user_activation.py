@@ -1,46 +1,53 @@
 from collections.abc import Mapping
-from typing import Any, TypeVar, Union
+from typing import Any, TypeVar, Union, cast
 
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..types import UNSET, Unset
-
-T = TypeVar("T", bound="UserJsonhalUserReadLinksSelf")
+T = TypeVar("T", bound="UserUserActivation")
 
 
 @_attrs_define
-class UserJsonhalUserReadLinksSelf:
+class UserUserActivation:
     """
     Attributes:
-        href (Union[Unset, str]):
+        token (Union[None, str]):
     """
 
-    href: Union[Unset, str] = UNSET
+    token: Union[None, str]
     additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
-        href = self.href
+        token: Union[None, str]
+        token = self.token
 
         field_dict: dict[str, Any] = {}
         field_dict.update(self.additional_properties)
-        field_dict.update({})
-        if href is not UNSET:
-            field_dict["href"] = href
+        field_dict.update(
+            {
+                "token": token,
+            }
+        )
 
         return field_dict
 
     @classmethod
     def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
         d = dict(src_dict)
-        href = d.pop("href", UNSET)
 
-        user_jsonhal_user_read_links_self = cls(
-            href=href,
+        def _parse_token(data: object) -> Union[None, str]:
+            if data is None:
+                return data
+            return cast(Union[None, str], data)
+
+        token = _parse_token(d.pop("token"))
+
+        user_user_activation = cls(
+            token=token,
         )
 
-        user_jsonhal_user_read_links_self.additional_properties = d
-        return user_jsonhal_user_read_links_self
+        user_user_activation.additional_properties = d
+        return user_user_activation
 
     @property
     def additional_keys(self) -> list[str]:

@@ -7,15 +7,15 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.constraint_violation import ConstraintViolation
 from ...models.error import Error
-from ...models.user_jsonhal_user_read import UserJsonhalUserRead
 from ...models.user_user_create import UserUserCreate
+from ...models.user_user_read import UserUserRead
 from ...types import Response, Unset
 
 
 def _get_kwargs(
     *,
     body: UserUserCreate,
-    accept: Union[Unset, str] = "application/hal+json",
+    accept: Union[Unset, str] = "application/json",
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
     if not isinstance(accept, Unset):
@@ -36,9 +36,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[Any, ConstraintViolation, Error, UserJsonhalUserRead]]:
+) -> Optional[Union[Any, ConstraintViolation, Error, UserUserRead]]:
     if response.status_code == 201:
-        response_201 = UserJsonhalUserRead.from_dict(response.json())
+        response_201 = UserUserRead.from_dict(response.json())
 
         return response_201
 
@@ -64,7 +64,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[Any, ConstraintViolation, Error, UserJsonhalUserRead]]:
+) -> Response[Union[Any, ConstraintViolation, Error, UserUserRead]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -77,14 +77,14 @@ def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
     body: UserUserCreate,
-    accept: Union[Unset, str] = "application/hal+json",
-) -> Response[Union[Any, ConstraintViolation, Error, UserJsonhalUserRead]]:
+    accept: Union[Unset, str] = "application/json",
+) -> Response[Union[Any, ConstraintViolation, Error, UserUserRead]]:
     """Creates a user resource.
 
      Creates a user resource.
 
     Args:
-        accept (Union[Unset, str]):  Default: 'application/hal+json'.
+        accept (Union[Unset, str]):  Default: 'application/json'.
         body (UserUserCreate): Create user
 
     Raises:
@@ -92,7 +92,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[Any, ConstraintViolation, Error, UserJsonhalUserRead]]
+        Response[Union[Any, ConstraintViolation, Error, UserUserRead]]
     """
 
     kwargs = _get_kwargs(
@@ -111,14 +111,14 @@ def sync(
     *,
     client: Union[AuthenticatedClient, Client],
     body: UserUserCreate,
-    accept: Union[Unset, str] = "application/hal+json",
-) -> Optional[Union[Any, ConstraintViolation, Error, UserJsonhalUserRead]]:
+    accept: Union[Unset, str] = "application/json",
+) -> Optional[Union[Any, ConstraintViolation, Error, UserUserRead]]:
     """Creates a user resource.
 
      Creates a user resource.
 
     Args:
-        accept (Union[Unset, str]):  Default: 'application/hal+json'.
+        accept (Union[Unset, str]):  Default: 'application/json'.
         body (UserUserCreate): Create user
 
     Raises:
@@ -126,7 +126,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[Any, ConstraintViolation, Error, UserJsonhalUserRead]
+        Union[Any, ConstraintViolation, Error, UserUserRead]
     """
 
     return sync_detailed(
@@ -140,14 +140,14 @@ async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
     body: UserUserCreate,
-    accept: Union[Unset, str] = "application/hal+json",
-) -> Response[Union[Any, ConstraintViolation, Error, UserJsonhalUserRead]]:
+    accept: Union[Unset, str] = "application/json",
+) -> Response[Union[Any, ConstraintViolation, Error, UserUserRead]]:
     """Creates a user resource.
 
      Creates a user resource.
 
     Args:
-        accept (Union[Unset, str]):  Default: 'application/hal+json'.
+        accept (Union[Unset, str]):  Default: 'application/json'.
         body (UserUserCreate): Create user
 
     Raises:
@@ -155,7 +155,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[Any, ConstraintViolation, Error, UserJsonhalUserRead]]
+        Response[Union[Any, ConstraintViolation, Error, UserUserRead]]
     """
 
     kwargs = _get_kwargs(
@@ -172,14 +172,14 @@ async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
     body: UserUserCreate,
-    accept: Union[Unset, str] = "application/hal+json",
-) -> Optional[Union[Any, ConstraintViolation, Error, UserJsonhalUserRead]]:
+    accept: Union[Unset, str] = "application/json",
+) -> Optional[Union[Any, ConstraintViolation, Error, UserUserRead]]:
     """Creates a user resource.
 
      Creates a user resource.
 
     Args:
-        accept (Union[Unset, str]):  Default: 'application/hal+json'.
+        accept (Union[Unset, str]):  Default: 'application/json'.
         body (UserUserCreate): Create user
 
     Raises:
@@ -187,7 +187,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[Any, ConstraintViolation, Error, UserJsonhalUserRead]
+        Union[Any, ConstraintViolation, Error, UserUserRead]
     """
 
     return (

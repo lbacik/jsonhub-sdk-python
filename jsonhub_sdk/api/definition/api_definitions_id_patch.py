@@ -6,8 +6,8 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.constraint_violation import ConstraintViolation
+from ...models.definition_definition_read import DefinitionDefinitionRead
 from ...models.definition_definition_write_json_merge_patch import DefinitionDefinitionWriteJsonMergePatch
-from ...models.definition_jsonhal_definition_read import DefinitionJsonhalDefinitionRead
 from ...models.error import Error
 from ...types import Response, Unset
 
@@ -16,7 +16,7 @@ def _get_kwargs(
     id: str,
     *,
     body: DefinitionDefinitionWriteJsonMergePatch,
-    accept: Union[Unset, str] = "application/hal+json",
+    accept: Union[Unset, str] = "application/json",
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
     if not isinstance(accept, Unset):
@@ -37,9 +37,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[Any, ConstraintViolation, DefinitionJsonhalDefinitionRead, Error]]:
+) -> Optional[Union[Any, ConstraintViolation, DefinitionDefinitionRead, Error]]:
     if response.status_code == 200:
-        response_200 = DefinitionJsonhalDefinitionRead.from_dict(response.json())
+        response_200 = DefinitionDefinitionRead.from_dict(response.json())
 
         return response_200
 
@@ -75,7 +75,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[Any, ConstraintViolation, DefinitionJsonhalDefinitionRead, Error]]:
+) -> Response[Union[Any, ConstraintViolation, DefinitionDefinitionRead, Error]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -89,15 +89,15 @@ def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
     body: DefinitionDefinitionWriteJsonMergePatch,
-    accept: Union[Unset, str] = "application/hal+json",
-) -> Response[Union[Any, ConstraintViolation, DefinitionJsonhalDefinitionRead, Error]]:
+    accept: Union[Unset, str] = "application/json",
+) -> Response[Union[Any, ConstraintViolation, DefinitionDefinitionRead, Error]]:
     """Updates the definition resource.
 
      Updates the definition resource.
 
     Args:
         id (str):
-        accept (Union[Unset, str]):  Default: 'application/hal+json'.
+        accept (Union[Unset, str]):  Default: 'application/json'.
         body (DefinitionDefinitionWriteJsonMergePatch):
 
     Raises:
@@ -105,7 +105,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[Any, ConstraintViolation, DefinitionJsonhalDefinitionRead, Error]]
+        Response[Union[Any, ConstraintViolation, DefinitionDefinitionRead, Error]]
     """
 
     kwargs = _get_kwargs(
@@ -126,15 +126,15 @@ def sync(
     *,
     client: Union[AuthenticatedClient, Client],
     body: DefinitionDefinitionWriteJsonMergePatch,
-    accept: Union[Unset, str] = "application/hal+json",
-) -> Optional[Union[Any, ConstraintViolation, DefinitionJsonhalDefinitionRead, Error]]:
+    accept: Union[Unset, str] = "application/json",
+) -> Optional[Union[Any, ConstraintViolation, DefinitionDefinitionRead, Error]]:
     """Updates the definition resource.
 
      Updates the definition resource.
 
     Args:
         id (str):
-        accept (Union[Unset, str]):  Default: 'application/hal+json'.
+        accept (Union[Unset, str]):  Default: 'application/json'.
         body (DefinitionDefinitionWriteJsonMergePatch):
 
     Raises:
@@ -142,7 +142,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[Any, ConstraintViolation, DefinitionJsonhalDefinitionRead, Error]
+        Union[Any, ConstraintViolation, DefinitionDefinitionRead, Error]
     """
 
     return sync_detailed(
@@ -158,15 +158,15 @@ async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
     body: DefinitionDefinitionWriteJsonMergePatch,
-    accept: Union[Unset, str] = "application/hal+json",
-) -> Response[Union[Any, ConstraintViolation, DefinitionJsonhalDefinitionRead, Error]]:
+    accept: Union[Unset, str] = "application/json",
+) -> Response[Union[Any, ConstraintViolation, DefinitionDefinitionRead, Error]]:
     """Updates the definition resource.
 
      Updates the definition resource.
 
     Args:
         id (str):
-        accept (Union[Unset, str]):  Default: 'application/hal+json'.
+        accept (Union[Unset, str]):  Default: 'application/json'.
         body (DefinitionDefinitionWriteJsonMergePatch):
 
     Raises:
@@ -174,7 +174,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[Any, ConstraintViolation, DefinitionJsonhalDefinitionRead, Error]]
+        Response[Union[Any, ConstraintViolation, DefinitionDefinitionRead, Error]]
     """
 
     kwargs = _get_kwargs(
@@ -193,15 +193,15 @@ async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
     body: DefinitionDefinitionWriteJsonMergePatch,
-    accept: Union[Unset, str] = "application/hal+json",
-) -> Optional[Union[Any, ConstraintViolation, DefinitionJsonhalDefinitionRead, Error]]:
+    accept: Union[Unset, str] = "application/json",
+) -> Optional[Union[Any, ConstraintViolation, DefinitionDefinitionRead, Error]]:
     """Updates the definition resource.
 
      Updates the definition resource.
 
     Args:
         id (str):
-        accept (Union[Unset, str]):  Default: 'application/hal+json'.
+        accept (Union[Unset, str]):  Default: 'application/json'.
         body (DefinitionDefinitionWriteJsonMergePatch):
 
     Raises:
@@ -209,7 +209,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[Any, ConstraintViolation, DefinitionJsonhalDefinitionRead, Error]
+        Union[Any, ConstraintViolation, DefinitionDefinitionRead, Error]
     """
 
     return (

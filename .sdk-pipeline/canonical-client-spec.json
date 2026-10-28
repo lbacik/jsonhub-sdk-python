@@ -3,7 +3,7 @@
   "info": {
     "title": "JsonHub API",
     "description": "",
-    "version": "0.12.1"
+    "version": "0.14.3"
   },
   "servers": [
     {
@@ -168,9 +168,9 @@
           "201": {
             "description": "definition resource created",
             "content": {
-              "application/hal+json": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/definition.jsonhal-definition.read"
+                  "$ref": "#/components/schemas/definition-definition.read"
                 }
               }
             },
@@ -225,7 +225,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "default": "application/hal+json"
+              "default": "application/json"
             }
           }
         ],
@@ -358,9 +358,9 @@
           "200": {
             "description": "definition resource updated",
             "content": {
-              "application/hal+json": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/definition.jsonhal-definition.read"
+                  "$ref": "#/components/schemas/definition-definition.read"
                 }
               }
             },
@@ -435,7 +435,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "default": "application/hal+json"
+              "default": "application/json"
             }
           }
         ],
@@ -632,9 +632,9 @@
           "201": {
             "description": "entity resource created",
             "content": {
-              "application/hal+json": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/entity.jsonhal-entity.read_entity.read.parent"
+                  "$ref": "#/components/schemas/entity-entity.read_entity.read.parent"
                 }
               }
             },
@@ -686,7 +686,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "default": "application/hal+json"
+              "default": "application/json"
             }
           }
         ],
@@ -822,9 +822,9 @@
           "200": {
             "description": "entity resource updated",
             "content": {
-              "application/hal+json": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/entity.jsonhal-entity.read_entity.read.parent"
+                  "$ref": "#/components/schemas/entity-entity.read_entity.read.parent"
                 }
               }
             },
@@ -896,7 +896,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "default": "application/hal+json"
+              "default": "application/json"
             }
           }
         ],
@@ -1917,9 +1917,9 @@
           "201": {
             "description": "personal access token resource created",
             "content": {
-              "application/hal+json": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/personal.access.token.jsonhal-personal_access_token.read_personal_access_token.create.read"
+                  "$ref": "#/components/schemas/personal.access.token-personal_access_token.read_personal_access_token.create.read"
                 }
               }
             },
@@ -1971,7 +1971,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "default": "application/hal+json"
+              "default": "application/json"
             }
           }
         ],
@@ -2047,9 +2047,9 @@
           "200": {
             "description": "personal access token resource updated",
             "content": {
-              "application/hal+json": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/personal.access.token.jsonhal-personal_access_token.read"
+                  "$ref": "#/components/schemas/personal.access.token-personal_access_token.read"
                 }
               }
             },
@@ -2121,7 +2121,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "default": "application/hal+json"
+              "default": "application/json"
             }
           }
         ],
@@ -2148,9 +2148,9 @@
           "201": {
             "description": "user resource created",
             "content": {
-              "application/hal+json": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/User.jsonhal-user.read"
+                  "$ref": "#/components/schemas/User-user.read"
                 }
               }
             },
@@ -2191,7 +2191,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "default": "application/hal+json"
+              "default": "application/json"
             }
           }
         ],
@@ -2201,6 +2201,80 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/User-user.create"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": []
+      }
+    },
+    "/api/users/activation": {
+      "post": {
+        "operationId": "api_usersactivation_post",
+        "tags": [
+          "user"
+        ],
+        "responses": {
+          "204": {
+            "description": "No content.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            },
+            "links": {}
+          },
+          "400": {
+            "description": "Invalid input",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "links": {}
+          },
+          "404": {
+            "description": "Activation token not found"
+          },
+          "410": {
+            "description": "Activation token expired"
+          },
+          "422": {
+            "description": "Unprocessable entity",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConstraintViolation"
+                }
+              }
+            },
+            "links": {}
+          }
+        },
+        "summary": "Activate a user",
+        "description": "This endpoint activates the user account using the token sent by email.",
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "application/json"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "The new user resource",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User-user.activation"
               }
             }
           },
@@ -2295,9 +2369,9 @@
           "204": {
             "description": "No content.",
             "content": {
-              "application/hal+json": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/User.jsonhal"
+                  "$ref": "#/components/schemas/User"
                 }
               }
             },
@@ -2335,7 +2409,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "default": "application/hal+json"
+              "default": "application/json"
             }
           }
         ],
@@ -2363,9 +2437,9 @@
           "204": {
             "description": "No content.",
             "content": {
-              "application/hal+json": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/User.jsonhal-user.empty"
+                  "$ref": "#/components/schemas/User-user.empty"
                 }
               }
             },
@@ -2409,7 +2483,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "default": "application/hal+json"
+              "default": "application/json"
             }
           }
         ],
@@ -2437,9 +2511,9 @@
           "204": {
             "description": "No content.",
             "content": {
-              "application/hal+json": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/User.jsonhal"
+                  "$ref": "#/components/schemas/User"
                 }
               }
             },
@@ -2477,7 +2551,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "default": "application/hal+json"
+              "default": "application/json"
             }
           }
         ],
@@ -2554,9 +2628,9 @@
           "200": {
             "description": "user resource updated",
             "content": {
-              "application/hal+json": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/User.jsonhal-user.empty"
+                  "$ref": "#/components/schemas/User-user.empty"
                 }
               }
             },
@@ -2631,7 +2705,7 @@
             "required": false,
             "schema": {
               "type": "string",
-              "default": "application/hal+json"
+              "default": "application/json"
             }
           }
         ],
@@ -2941,6 +3015,20 @@
           }
         }
       },
+      "User-user.activation": {
+        "type": "object",
+        "required": [
+          "token"
+        ],
+        "properties": {
+          "token": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      },
       "User-user.create": {
         "type": "object",
         "description": "Create user",
@@ -3069,86 +3157,6 @@
             ]
           }
         }
-      },
-      "User.jsonhal": {
-        "allOf": [
-          {
-            "type": "object",
-            "properties": {
-              "_links": {
-                "type": "object",
-                "properties": {
-                  "self": {
-                    "type": "object",
-                    "properties": {
-                      "href": {
-                        "type": "string",
-                        "format": "iri-reference"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          {
-            "$ref": "#/components/schemas/User"
-          }
-        ]
-      },
-      "User.jsonhal-user.empty": {
-        "allOf": [
-          {
-            "type": "object",
-            "properties": {
-              "_links": {
-                "type": "object",
-                "properties": {
-                  "self": {
-                    "type": "object",
-                    "properties": {
-                      "href": {
-                        "type": "string",
-                        "format": "iri-reference"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          {
-            "$ref": "#/components/schemas/User-user.empty"
-          }
-        ],
-        "description": "Change user password"
-      },
-      "User.jsonhal-user.read": {
-        "allOf": [
-          {
-            "type": "object",
-            "properties": {
-              "_links": {
-                "type": "object",
-                "properties": {
-                  "self": {
-                    "type": "object",
-                    "properties": {
-                      "href": {
-                        "type": "string",
-                        "format": "iri-reference"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          {
-            "$ref": "#/components/schemas/User-user.read"
-          }
-        ],
-        "description": "Create user"
       },
       "definition-definition.read": {
         "type": "object",
@@ -3569,32 +3577,6 @@
           },
           {
             "$ref": "#/components/schemas/personal.access.token-personal_access_token.read"
-          }
-        ]
-      },
-      "personal.access.token.jsonhal-personal_access_token.read_personal_access_token.create.read": {
-        "allOf": [
-          {
-            "type": "object",
-            "properties": {
-              "_links": {
-                "type": "object",
-                "properties": {
-                  "self": {
-                    "type": "object",
-                    "properties": {
-                      "href": {
-                        "type": "string",
-                        "format": "iri-reference"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          {
-            "$ref": "#/components/schemas/personal.access.token-personal_access_token.read_personal_access_token.create.read"
           }
         ]
       }

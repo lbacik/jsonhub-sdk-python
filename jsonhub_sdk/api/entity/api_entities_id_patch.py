@@ -6,8 +6,8 @@ import httpx
 from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.constraint_violation import ConstraintViolation
+from ...models.entity_entity_read_entity_read_parent import EntityEntityReadEntityReadParent
 from ...models.entity_entity_update_json_merge_patch import EntityEntityUpdateJsonMergePatch
-from ...models.entity_jsonhal_entity_read_entity_read_parent import EntityJsonhalEntityReadEntityReadParent
 from ...models.error import Error
 from ...types import Response, Unset
 
@@ -16,7 +16,7 @@ def _get_kwargs(
     id: str,
     *,
     body: EntityEntityUpdateJsonMergePatch,
-    accept: Union[Unset, str] = "application/hal+json",
+    accept: Union[Unset, str] = "application/json",
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
     if not isinstance(accept, Unset):
@@ -37,9 +37,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ConstraintViolation, EntityJsonhalEntityReadEntityReadParent, Error]]:
+) -> Optional[Union[ConstraintViolation, EntityEntityReadEntityReadParent, Error]]:
     if response.status_code == 200:
-        response_200 = EntityJsonhalEntityReadEntityReadParent.from_dict(response.json())
+        response_200 = EntityEntityReadEntityReadParent.from_dict(response.json())
 
         return response_200
 
@@ -71,7 +71,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ConstraintViolation, EntityJsonhalEntityReadEntityReadParent, Error]]:
+) -> Response[Union[ConstraintViolation, EntityEntityReadEntityReadParent, Error]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -85,15 +85,15 @@ def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
     body: EntityEntityUpdateJsonMergePatch,
-    accept: Union[Unset, str] = "application/hal+json",
-) -> Response[Union[ConstraintViolation, EntityJsonhalEntityReadEntityReadParent, Error]]:
+    accept: Union[Unset, str] = "application/json",
+) -> Response[Union[ConstraintViolation, EntityEntityReadEntityReadParent, Error]]:
     """Updates the entity resource.
 
      Updates the entity resource.
 
     Args:
         id (str):
-        accept (Union[Unset, str]):  Default: 'application/hal+json'.
+        accept (Union[Unset, str]):  Default: 'application/json'.
         body (EntityEntityUpdateJsonMergePatch):
 
     Raises:
@@ -101,7 +101,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ConstraintViolation, EntityJsonhalEntityReadEntityReadParent, Error]]
+        Response[Union[ConstraintViolation, EntityEntityReadEntityReadParent, Error]]
     """
 
     kwargs = _get_kwargs(
@@ -122,15 +122,15 @@ def sync(
     *,
     client: Union[AuthenticatedClient, Client],
     body: EntityEntityUpdateJsonMergePatch,
-    accept: Union[Unset, str] = "application/hal+json",
-) -> Optional[Union[ConstraintViolation, EntityJsonhalEntityReadEntityReadParent, Error]]:
+    accept: Union[Unset, str] = "application/json",
+) -> Optional[Union[ConstraintViolation, EntityEntityReadEntityReadParent, Error]]:
     """Updates the entity resource.
 
      Updates the entity resource.
 
     Args:
         id (str):
-        accept (Union[Unset, str]):  Default: 'application/hal+json'.
+        accept (Union[Unset, str]):  Default: 'application/json'.
         body (EntityEntityUpdateJsonMergePatch):
 
     Raises:
@@ -138,7 +138,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ConstraintViolation, EntityJsonhalEntityReadEntityReadParent, Error]
+        Union[ConstraintViolation, EntityEntityReadEntityReadParent, Error]
     """
 
     return sync_detailed(
@@ -154,15 +154,15 @@ async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
     body: EntityEntityUpdateJsonMergePatch,
-    accept: Union[Unset, str] = "application/hal+json",
-) -> Response[Union[ConstraintViolation, EntityJsonhalEntityReadEntityReadParent, Error]]:
+    accept: Union[Unset, str] = "application/json",
+) -> Response[Union[ConstraintViolation, EntityEntityReadEntityReadParent, Error]]:
     """Updates the entity resource.
 
      Updates the entity resource.
 
     Args:
         id (str):
-        accept (Union[Unset, str]):  Default: 'application/hal+json'.
+        accept (Union[Unset, str]):  Default: 'application/json'.
         body (EntityEntityUpdateJsonMergePatch):
 
     Raises:
@@ -170,7 +170,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ConstraintViolation, EntityJsonhalEntityReadEntityReadParent, Error]]
+        Response[Union[ConstraintViolation, EntityEntityReadEntityReadParent, Error]]
     """
 
     kwargs = _get_kwargs(
@@ -189,15 +189,15 @@ async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
     body: EntityEntityUpdateJsonMergePatch,
-    accept: Union[Unset, str] = "application/hal+json",
-) -> Optional[Union[ConstraintViolation, EntityJsonhalEntityReadEntityReadParent, Error]]:
+    accept: Union[Unset, str] = "application/json",
+) -> Optional[Union[ConstraintViolation, EntityEntityReadEntityReadParent, Error]]:
     """Updates the entity resource.
 
      Updates the entity resource.
 
     Args:
         id (str):
-        accept (Union[Unset, str]):  Default: 'application/hal+json'.
+        accept (Union[Unset, str]):  Default: 'application/json'.
         body (EntityEntityUpdateJsonMergePatch):
 
     Raises:
@@ -205,7 +205,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ConstraintViolation, EntityJsonhalEntityReadEntityReadParent, Error]
+        Union[ConstraintViolation, EntityEntityReadEntityReadParent, Error]
     """
 
     return (

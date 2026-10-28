@@ -73,15 +73,6 @@ from .personal_access_token_jsonhal_personal_access_token_read_links import (
 from .personal_access_token_jsonhal_personal_access_token_read_links_self import (
     PersonalAccessTokenJsonhalPersonalAccessTokenReadLinksSelf,
 )
-from .personal_access_token_jsonhal_personal_access_token_read_personal_access_token_create_read import (
-    PersonalAccessTokenJsonhalPersonalAccessTokenReadPersonalAccessTokenCreateRead,
-)
-from .personal_access_token_jsonhal_personal_access_token_read_personal_access_token_create_read_links import (
-    PersonalAccessTokenJsonhalPersonalAccessTokenReadPersonalAccessTokenCreateReadLinks,
-)
-from .personal_access_token_jsonhal_personal_access_token_read_personal_access_token_create_read_links_self import (
-    PersonalAccessTokenJsonhalPersonalAccessTokenReadPersonalAccessTokenCreateReadLinksSelf,
-)
 from .personal_access_token_personal_access_token_read import PersonalAccessTokenPersonalAccessTokenRead
 from .personal_access_token_personal_access_token_read_personal_access_token_create_read import (
     PersonalAccessTokenPersonalAccessTokenReadPersonalAccessTokenCreateRead,
@@ -91,15 +82,7 @@ from .personal_access_token_personal_access_token_write_json_merge_patch import 
     PersonalAccessTokenPersonalAccessTokenWriteJsonMergePatch,
 )
 from .user import User
-from .user_jsonhal import UserJsonhal
-from .user_jsonhal_links import UserJsonhalLinks
-from .user_jsonhal_links_self import UserJsonhalLinksSelf
-from .user_jsonhal_user_empty import UserJsonhalUserEmpty
-from .user_jsonhal_user_empty_links import UserJsonhalUserEmptyLinks
-from .user_jsonhal_user_empty_links_self import UserJsonhalUserEmptyLinksSelf
-from .user_jsonhal_user_read import UserJsonhalUserRead
-from .user_jsonhal_user_read_links import UserJsonhalUserReadLinks
-from .user_jsonhal_user_read_links_self import UserJsonhalUserReadLinksSelf
+from .user_user_activation import UserUserActivation
 from .user_user_create import UserUserCreate
 from .user_user_empty import UserUserEmpty
 from .user_user_read import UserUserRead
@@ -178,23 +161,12 @@ __all__ = (
     "PersonalAccessTokenJsonhalPersonalAccessTokenRead",
     "PersonalAccessTokenJsonhalPersonalAccessTokenReadLinks",
     "PersonalAccessTokenJsonhalPersonalAccessTokenReadLinksSelf",
-    "PersonalAccessTokenJsonhalPersonalAccessTokenReadPersonalAccessTokenCreateRead",
-    "PersonalAccessTokenJsonhalPersonalAccessTokenReadPersonalAccessTokenCreateReadLinks",
-    "PersonalAccessTokenJsonhalPersonalAccessTokenReadPersonalAccessTokenCreateReadLinksSelf",
     "PersonalAccessTokenPersonalAccessTokenRead",
     "PersonalAccessTokenPersonalAccessTokenReadPersonalAccessTokenCreateRead",
     "PersonalAccessTokenPersonalAccessTokenWrite",
     "PersonalAccessTokenPersonalAccessTokenWriteJsonMergePatch",
     "User",
-    "UserJsonhal",
-    "UserJsonhalLinks",
-    "UserJsonhalLinksSelf",
-    "UserJsonhalUserEmpty",
-    "UserJsonhalUserEmptyLinks",
-    "UserJsonhalUserEmptyLinksSelf",
-    "UserJsonhalUserRead",
-    "UserJsonhalUserReadLinks",
-    "UserJsonhalUserReadLinksSelf",
+    "UserUserActivation",
     "UserUserCreate",
     "UserUserEmpty",
     "UserUserRead",

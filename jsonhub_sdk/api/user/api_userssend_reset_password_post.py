@@ -7,7 +7,7 @@ from ... import errors
 from ...client import AuthenticatedClient, Client
 from ...models.constraint_violation import ConstraintViolation
 from ...models.error import Error
-from ...models.user_jsonhal import UserJsonhal
+from ...models.user import User
 from ...models.user_user_send_reset_password import UserUserSendResetPassword
 from ...types import Response, Unset
 
@@ -15,7 +15,7 @@ from ...types import Response, Unset
 def _get_kwargs(
     *,
     body: UserUserSendResetPassword,
-    accept: Union[Unset, str] = "application/hal+json",
+    accept: Union[Unset, str] = "application/json",
 ) -> dict[str, Any]:
     headers: dict[str, Any] = {}
     if not isinstance(accept, Unset):
@@ -36,9 +36,9 @@ def _get_kwargs(
 
 def _parse_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Optional[Union[ConstraintViolation, Error, UserJsonhal]]:
+) -> Optional[Union[ConstraintViolation, Error, User]]:
     if response.status_code == 204:
-        response_204 = UserJsonhal.from_dict(response.json())
+        response_204 = User.from_dict(response.json())
 
         return response_204
 
@@ -60,7 +60,7 @@ def _parse_response(
 
 def _build_response(
     *, client: Union[AuthenticatedClient, Client], response: httpx.Response
-) -> Response[Union[ConstraintViolation, Error, UserJsonhal]]:
+) -> Response[Union[ConstraintViolation, Error, User]]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -73,14 +73,14 @@ def sync_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
     body: UserUserSendResetPassword,
-    accept: Union[Unset, str] = "application/hal+json",
-) -> Response[Union[ConstraintViolation, Error, UserJsonhal]]:
+    accept: Union[Unset, str] = "application/json",
+) -> Response[Union[ConstraintViolation, Error, User]]:
     """Send reset password email
 
      This endpoint sends a reset password email to the user.
 
     Args:
-        accept (Union[Unset, str]):  Default: 'application/hal+json'.
+        accept (Union[Unset, str]):  Default: 'application/json'.
         body (UserUserSendResetPassword):
 
     Raises:
@@ -88,7 +88,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ConstraintViolation, Error, UserJsonhal]]
+        Response[Union[ConstraintViolation, Error, User]]
     """
 
     kwargs = _get_kwargs(
@@ -107,14 +107,14 @@ def sync(
     *,
     client: Union[AuthenticatedClient, Client],
     body: UserUserSendResetPassword,
-    accept: Union[Unset, str] = "application/hal+json",
-) -> Optional[Union[ConstraintViolation, Error, UserJsonhal]]:
+    accept: Union[Unset, str] = "application/json",
+) -> Optional[Union[ConstraintViolation, Error, User]]:
     """Send reset password email
 
      This endpoint sends a reset password email to the user.
 
     Args:
-        accept (Union[Unset, str]):  Default: 'application/hal+json'.
+        accept (Union[Unset, str]):  Default: 'application/json'.
         body (UserUserSendResetPassword):
 
     Raises:
@@ -122,7 +122,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ConstraintViolation, Error, UserJsonhal]
+        Union[ConstraintViolation, Error, User]
     """
 
     return sync_detailed(
@@ -136,14 +136,14 @@ async def asyncio_detailed(
     *,
     client: Union[AuthenticatedClient, Client],
     body: UserUserSendResetPassword,
-    accept: Union[Unset, str] = "application/hal+json",
-) -> Response[Union[ConstraintViolation, Error, UserJsonhal]]:
+    accept: Union[Unset, str] = "application/json",
+) -> Response[Union[ConstraintViolation, Error, User]]:
     """Send reset password email
 
      This endpoint sends a reset password email to the user.
 
     Args:
-        accept (Union[Unset, str]):  Default: 'application/hal+json'.
+        accept (Union[Unset, str]):  Default: 'application/json'.
         body (UserUserSendResetPassword):
 
     Raises:
@@ -151,7 +151,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[Union[ConstraintViolation, Error, UserJsonhal]]
+        Response[Union[ConstraintViolation, Error, User]]
     """
 
     kwargs = _get_kwargs(
@@ -168,14 +168,14 @@ async def asyncio(
     *,
     client: Union[AuthenticatedClient, Client],
     body: UserUserSendResetPassword,
-    accept: Union[Unset, str] = "application/hal+json",
-) -> Optional[Union[ConstraintViolation, Error, UserJsonhal]]:
+    accept: Union[Unset, str] = "application/json",
+) -> Optional[Union[ConstraintViolation, Error, User]]:
     """Send reset password email
 
      This endpoint sends a reset password email to the user.
 
     Args:
-        accept (Union[Unset, str]):  Default: 'application/hal+json'.
+        accept (Union[Unset, str]):  Default: 'application/json'.
         body (UserUserSendResetPassword):
 
     Raises:
@@ -183,7 +183,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Union[ConstraintViolation, Error, UserJsonhal]
+        Union[ConstraintViolation, Error, User]
     """
 
     return (
